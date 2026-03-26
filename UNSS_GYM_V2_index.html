@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>UNSS Gymnastic — Fiche d'Enchaînement</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #0047AB;
+  --blue-dark: #00358A;
+  --orange: #E85D04;
+  --light: #F5F7FF;
+  --dark: #0A0F1E;
+  --mid: #3D4966;
+  --card: #ffffff;
+  --border: #D6DCF0;
+  --success: #1A7A4A;
+  --warn: #B45309;
+  --radius: 12px;
+  --shadow: 0 4px 24px rgba(0,71,171,0.10);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--light);
+  color: var(--dark);
+  min-height: 100vh;
+  font-size: 15px;
+}
+
+/* ─── HEADER ─── */
+header {
+  background: var(--blue);
+  color: white;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 2px 12px rgba(0,71,171,0.3);
+  position: sticky; top: 0; z-index: 100;
+}
+header .logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+header .logo span { color: var(--orange); }
+header .subtitle {
+  font-size: 11px;
+  opacity: 0.75;
+  font-weight: 300;
+  line-height: 1.4;
+}
+header .badge {
+  margin-left: auto;
+  background: var(--orange);
+  color: white;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+
+/* ─── NAV TABS ─── */
+.tabs {
+  display: flex;
+  background: white;
+  border-bottom: 2px solid var(--border);
+  padding: 0 8px;
+  gap: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab-btn {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 14px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--mid);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.tab-btn.active { color: var(--blue); border-bottom-color: var(--orange); }
+.tab-btn:hover:not(.active) { color: var(--dark); background: var(--light); }
+
+/* ─── SECTION WRAPPER ─── */
+.section { display: none; padding: 16px; max-width: 900px; margin: 0 auto; }
+.section.active { display: block; }
+
+/* ─── CARDS ─── */
+.card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  margin-bottom: 18px;
+  border: 1px solid var(--border);
+}
+.card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--blue);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.card-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  background: var(--orange);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+/* ─── FORMS ─── */
+label { font-size: 12px; font-weight: 500; color: var(--mid); display: block; margin-bottom: 5px; }
+input, select, textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--dark);
+  background: white;
+  transition: border-color 0.2s;
+  outline: none;
+  -webkit-appearance: none;
+}
+input:focus, select:focus { border-color: var(--blue); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.form-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+@media (max-width: 500px) {
+  .form-row, .form-row.triple { grid-template-columns: 1fr; gap: 10px; }
+}
+.form-group { margin-bottom: 14px; }
+
+/* ─── BUTTONS ─── */
+.btn {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.18s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-primary { background: var(--blue); color: white; }
+.btn-primary:hover, .btn-primary:active { background: var(--blue-dark); }
+.btn-orange { background: var(--orange); color: white; }
+.btn-orange:hover { background: #C94D00; }
+.btn-ghost { background: transparent; color: var(--mid); border: 1.5px solid var(--border); }
+.btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+.btn-danger { background: #FEE2E2; color: #B91C1C; }
+.btn-danger:hover { background: #FECACA; }
+.btn-sm { padding: 6px 12px; font-size: 11px; }
+.btn-success { background: var(--success); color: white; }
+.btn-success:active { opacity: 0.85; }
+
+/* ─── AGRÈS SELECTOR ─── */
+.agres-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+.agres-card {
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.18s;
+  background: white;
+  -webkit-tap-highlight-color: transparent;
+}
+.agres-card:hover, .agres-card:active { border-color: var(--blue); background: var(--light); }
+.agres-card.selected { border-color: var(--orange); background: #FFF5EF; }
+.agres-card .icon { font-size: 28px; margin-bottom: 6px; }
+.agres-card .name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11px; color: var(--dark); }
+.agres-card .gender { font-size: 10px; color: var(--mid); margin-top: 2px; }
+
+/* ─── ELEMENTS TABLE ─── */
+.elements-section { margin-top: 18px; }
+.elements-category { margin-bottom: 18px; }
+.cat-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+.cat-badge {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  width: 30px; height: 30px;
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+.cat-badge.A { background: #22C55E; }
+.cat-badge.B { background: #3B82F6; }
+.cat-badge.C { background: #A855F7; }
+.cat-badge.D { background: var(--orange); }
+.cat-pts { font-size: 11px; color: var(--mid); background: var(--light); padding: 3px 9px; border-radius: 99px; font-weight: 500; }
+
+.elements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 8px;
+}
+@media (max-width: 480px) {
+  .elements-grid { grid-template-columns: 1fr 1fr; }
+}
+.element-card {
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+  background: white;
+  -webkit-tap-highlight-color: transparent;
+}
+.element-card:hover { border-color: var(--blue); }
+.element-card.selected-el { border-color: var(--orange); background: #FFF5EF; }
+.element-card .el-id { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 10px; color: var(--mid); margin-bottom: 3px; }
+.element-card .el-name { font-size: 12px; font-weight: 500; color: var(--dark); line-height: 1.3; }
+.element-card .el-desc { font-size: 10px; color: var(--mid); margin-top: 4px; line-height: 1.3; }
+.element-card .el-exig { display: inline-block; font-size: 9px; font-weight: 700; background: #EFF6FF; color: var(--blue); border-radius: 4px; padding: 2px 5px; margin-top: 5px; }
+
+/* Figure SVG placeholders */
+.figure-svg { font-size: 20px; margin-bottom: 3px; display: block; }
+
+/* ─── ENCHAÎNEMENT BUILDER ─── */
+.enchainement-list { list-style: none; display: flex; flex-direction: column; gap: 7px; min-height: 50px; }
+.enchainement-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+}
+.enchainement-item .num {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  color: white;
+  background: var(--blue);
+  width: 24px; height: 24px;
+  border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+.enchainement-item .el-info { flex: 1; min-width: 0; }
+.enchainement-item .el-info .name { font-size: 12px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.enchainement-item .el-info .meta { font-size: 10px; color: var(--mid); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.enchainement-item .diff-badge { font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 99px; color: white; flex-shrink: 0; }
+.enchainement-item .diff-badge.A { background: #22C55E; }
+.enchainement-item .diff-badge.B { background: #3B82F6; }
+.enchainement-item .diff-badge.C { background: #A855F7; }
+.enchainement-item .diff-badge.D { background: var(--orange); }
+.enchainement-item .exig-tag { font-size: 9px; background: #EFF6FF; color: var(--blue); padding: 2px 5px; border-radius: 4px; font-weight: 600; flex-shrink: 0; }
+
+/* ─── SCORE SUMMARY ─── */
+.score-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+@media (max-width: 600px) {
+  .score-summary { grid-template-columns: repeat(2, 1fr); }
+}
+.score-box {
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+.score-box .label { font-size: 10px; color: var(--mid); font-weight: 500; text-transform: uppercase; letter-spacing: 0.4px; }
+.score-box .value { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--blue); margin: 4px 0 2px; }
+.score-box.total .value { color: var(--orange); font-size: 30px; }
+.score-box .max { font-size: 10px; color: var(--mid); }
+
+/* ─── JUDGING PANEL ─── */
+.judging-header {
+  background: linear-gradient(135deg, var(--blue) 0%, #1A5DC8 100%);
+  color: white;
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.judging-header .gymnast-name { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; }
+.judging-header .agres-name { font-size: 12px; opacity: 0.8; }
+
+/* Figure judging with image */
+.figure-judging {
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 10px;
+}
+.figure-judging-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.figure-icon-box {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  background: var(--light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
+/* General faults — compact reminder style */
+.faults-reminder {
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 18px;
+}
+.faults-reminder-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--warn);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.fault-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.fault-chip {
+  background: white;
+  border: 1px solid #FDE68A;
+  border-radius: 6px;
+  padding: 5px 9px;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.fault-chip:hover, .fault-chip:active { background: #FEF3C7; border-color: var(--warn); }
+.fault-chip .pts-badge { font-family: 'Syne', sans-serif; font-weight: 700; color: #B91C1C; font-size: 11px; }
+
+/* Fautes par figure */
+.faute-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.15s;
+  background: white;
+  font-size: 11px;
+  font-family: 'DM Sans', sans-serif;
+  margin-bottom: 6px;
+  -webkit-tap-highlight-color: transparent;
+}
+.faute-btn:hover, .faute-btn:active { border-color: var(--warn); background: #FFFBEB; }
+.faute-btn .faute-pts { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 12px; color: #B91C1C; }
+.fautes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+@media (max-width: 600px) { .fautes-grid { grid-template-columns: 1fr; } }
+
+/* ─── RESULTS ─── */
+.detail-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
+.detail-table th {
+  background: var(--light);
+  padding: 8px 10px;
+  text-align: left;
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--mid);
+}
+.detail-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); }
+.detail-table tr:last-child td { border-bottom: none; }
+
+/* Mobile table scroll */
+.table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* ─── GYMNASTS LIST ─── */
+.gymnasts-list { display: flex; flex-direction: column; gap: 8px; }
+.gymnast-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.gymnast-row:hover, .gymnast-row:active { border-color: var(--blue); box-shadow: var(--shadow); }
+.gymnast-row.judged { border-color: var(--success); background: #F0FDF4; }
+.gymnast-avatar {
+  width: 36px; height: 36px;
+  border-radius: 9px;
+  background: var(--blue);
+  color: white;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.gymnast-row .g-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; }
+.gymnast-row .g-agres { font-size: 11px; color: var(--mid); }
+.gymnast-row .g-score { margin-left: auto; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 17px; color: var(--orange); flex-shrink: 0; }
+.g-status { font-size: 10px; padding: 3px 8px; border-radius: 99px; font-weight: 600; }
+.g-status.pending { background: #FEF3C7; color: #92400E; }
+.g-status.done { background: #D1FAE5; color: var(--success); }
+
+/* ─── PREVIEW MODAL ─── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,15,30,0.65);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: white;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.modal-header {
+  background: var(--blue);
+  color: white;
+  padding: 20px 24px;
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal-header h2 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; }
+.modal-body { padding: 20px 24px; }
+.modal-close {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Preview enchainement */
+.preview-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.preview-item:last-child { border-bottom: none; }
+.preview-item .p-icon { font-size: 22px; width: 36px; text-align: center; flex-shrink: 0; }
+.preview-item .p-info { flex: 1; }
+.preview-item .p-name { font-weight: 600; font-size: 13px; }
+.preview-item .p-desc { font-size: 11px; color: var(--mid); margin-top: 2px; line-height: 1.3; }
+.preview-score-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.preview-score-cell { background: var(--light); border-radius: 8px; padding: 10px; text-align: center; }
+.preview-score-cell .lbl { font-size: 10px; color: var(--mid); text-transform: uppercase; font-weight: 600; }
+.preview-score-cell .val { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--blue); }
+.preview-score-cell.total .val { color: var(--orange); }
+.exig-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.exig-chip { padding: 4px 10px; border-radius: 99px; font-size: 11px; font-weight: 600; }
+.exig-chip.ok { background: #DCFCE7; color: var(--success); }
+.exig-chip.missing { background: #FEE2E2; color: #B91C1C; }
+
+/* ─── EMPTY STATE ─── */
+.empty-state { text-align: center; padding: 36px 20px; color: var(--mid); }
+.empty-state .icon { font-size: 40px; margin-bottom: 10px; }
+.empty-state p { font-size: 13px; }
+
+/* ─── MISC ─── */
+.flex-center { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.mt12 { margin-top: 12px; }
+.chip { display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px; border-radius: 99px; font-size: 11px; font-weight: 600; }
+.chip-blue { background: #EFF6FF; color: var(--blue); }
+.chip-green { background: #DCFCE7; color: var(--success); }
+.chip-red { background: #FEE2E2; color: #B91C1C; }
+.chip-orange { background: #FFF5EF; color: var(--orange); }
+.separator { border: none; border-top: 1.5px solid var(--border); margin: 16px 0; }
+.text-sm { font-size: 11px; color: var(--mid); }
+
+.exig-status {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+  margin-top: 10px;
+}
+@media (max-width: 480px) { .exig-status { grid-template-columns: repeat(2, 1fr); } }
+.exig-item { padding: 8px; border-radius: 7px; border: 1.5px solid var(--border); text-align: center; }
+.exig-item.ok { border-color: var(--success); background: #DCFCE7; }
+.exig-item .exig-label { font-size: 9px; font-weight: 700; text-transform: uppercase; color: var(--mid); }
+.exig-item.ok .exig-label { color: var(--success); }
+.exig-item .exig-code { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 14px; }
+.exig-item.ok .exig-code { color: var(--success); }
+
+/* Actions bar */
+.actions-bar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 14px; }
+.actions-bar .ms-auto { margin-left: auto; }
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--dark);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  z-index: 9999;
+  transition: transform 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+@media print {
+  header, .tabs, .section:not(.active), .no-print { display: none !important; }
+  .section.active { display: block !important; padding: 0 !important; }
+  .card { box-shadow: none; border: 1px solid #ddd; }
+}
+
+/* Team tag */
+.team-tag {
+  display: inline-flex;
+  align-items: center;
+  background: var(--blue);
+  color: white;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 2px 9px;
+  border-radius: 99px;
+}
+
+/* Classement général */
+.ranking-card { background: var(--light); border-radius: 10px; padding: 14px; margin-bottom: 10px; }
+.ranking-name { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; }
+.ranking-detail { font-size: 11px; color: var(--mid); margin-top: 2px; }
+.ranking-score { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--orange); }
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+
+<header>
+  <div>
+    <div class="logo">UN<span>SS</span></div>
+    <div class="subtitle">Gymnastic Artistique · Équipe Éts</div>
+  </div>
+  <div class="badge">2024–2028</div>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('tab-gymnast',this)">🤸 Gymnaste</button>
+  <button class="tab-btn" onclick="showTab('tab-jury',this)">⚖️ Jury</button>
+  <button class="tab-btn" onclick="showTab('tab-results',this)">🏆 Résultats</button>
+</div>
+
+<!-- TAB 1 : GYMNASTE -->
+<div id="tab-gymnast" class="section active">
+  <div class="card">
+    <div class="card-title">Informations du gymnaste</div>
+    <div class="form-row">
+      <div>
+        <label>Prénom</label>
+        <input type="text" id="gymnast-firstname" placeholder="Ex : Camille" />
+      </div>
+      <div>
+        <label>Nom</label>
+        <input type="text" id="gymnast-lastname" placeholder="Ex : Dupont" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div>
+        <label>Établissement</label>
+        <input type="text" id="gymnast-school" placeholder="Ex : Collège Jean Moulin" />
+      </div>
+      <div>
+        <label>Équipe N°</label>
+        <input type="number" id="gymnast-team" placeholder="Ex : 1" min="1" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div>
+        <label>Niveau</label>
+        <select id="gymnast-level">
+          <option value="college">Collège</option>
+          <option value="lycee">Lycée</option>
+        </select>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Choix de l'agrès</div>
+    <div id="agres-grid" class="agres-grid"></div>
+  </div>
+
+  <div id="elements-section" class="card" style="display:none">
+    <div class="card-title">Construction de l'enchaînement</div>
+    <div id="exig-status-bar" class="exig-status"></div>
+    <hr class="separator">
+    <div id="elements-list" class="elements-section"></div>
+    <hr class="separator">
+    <div class="card-title" style="margin-top:0">Enchaînement <span id="el-count" class="chip chip-blue" style="font-size:11px">0 élément</span></div>
+    <ul id="enchainement-list" class="enchainement-list">
+      <li class="empty-state"><div class="icon">📋</div><p>Sélectionnez des éléments ci-dessus</p></li>
+    </ul>
+    <div id="note-d-preview" style="margin-top:12px"></div>
+    <div class="actions-bar">
+      <button class="btn btn-ghost" onclick="clearEnchainement()">🗑 Effacer</button>
+      <button class="btn btn-primary ms-auto" onclick="saveGymnast()">✔ Valider</button>
+    </div>
+  </div>
+
+  <div id="specific-faults-card" class="card" style="display:none">
+    <div class="card-title">Fautes spécifiques — <span id="fault-agres-name"></span></div>
+    <div id="specific-faults-list" style="font-size:12px; line-height:1.9; color:var(--dark)"></div>
+  </div>
+</div>
+
+<!-- TAB 2 : JURY -->
+<div id="tab-jury" class="section">
+  <div id="jury-gymnast-select" class="card">
+    <div class="card-title">Sélectionner un gymnaste à juger</div>
+    <div id="gymnasts-for-jury" class="gymnasts-list">
+      <div class="empty-state"><div class="icon">🤸</div><p>Aucun gymnaste enregistré.</p></div>
+    </div>
+  </div>
+
+  <div id="jury-panel" style="display:none">
+    <div class="judging-header">
+      <div>
+        <div class="gymnast-name" id="jury-gymnast-name">—</div>
+        <div class="agres-name" id="jury-agres-name">—</div>
+      </div>
+      <button class="btn btn-ghost" onclick="closeJuryPanel()" style="color:white;border-color:rgba(255,255,255,0.3);margin-left:auto">← Retour</button>
+    </div>
+
+    <!-- GENERAL FAULTS — compact reminder -->
+    <div class="faults-reminder">
+      <div class="faults-reminder-title">📋 Rappel — Fautes générales d'exécution</div>
+      <div class="fault-chips" id="general-faults-chips"></div>
+    </div>
+
+    <!-- SPECIFIC FAULTS -->
+    <div class="card" id="specific-faults-jury-card">
+      <div class="card-title">Fautes spécifiques — <span id="jury-specific-agres"></span></div>
+      <div id="specific-faults-jury"></div>
+    </div>
+
+    <!-- PER-FIGURE FAULTS -->
+    <div class="card">
+      <div class="card-title">Notation par figure</div>
+      <div id="figure-faults-list"></div>
+    </div>
+
+    <!-- NOTE E CALCULATOR -->
+    <div class="card">
+      <div class="card-title">Calcul Note E (Exécution)</div>
+      <div class="score-summary">
+        <div class="score-box">
+          <div class="label">Note E brute</div>
+          <div class="value" id="noteE-brute">10.00</div>
+          <div class="max">/10 pts</div>
+        </div>
+        <div class="score-box">
+          <div class="label">Pénalités</div>
+          <div class="value" id="noteE-penal" style="color:#B91C1C">0.00</div>
+          <div class="max">déductions</div>
+        </div>
+        <div class="score-box">
+          <div class="label">Note E finale</div>
+          <div class="value" id="noteE-final">10.00</div>
+          <div class="max">/10 pts</div>
+        </div>
+        <div class="score-box total">
+          <div class="label">Note finale</div>
+          <div class="value" id="note-finale-jury">—</div>
+          <div class="max">D + E</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end">
+        <div>
+          <label>Pénalités Jury D additionnelles</label>
+          <input type="number" id="jury-d-penal" value="0" step="0.10" min="0" style="width:110px" oninput="recalculateJuryScore()">
+        </div>
+        <div style="flex:1;min-width:150px">
+          <label>Commentaire du juge</label>
+          <input type="text" id="jury-comment" placeholder="Observations…">
+        </div>
+        <button class="btn btn-success" onclick="validateJuryScore()">✔ Valider la note</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 3 : RÉSULTATS -->
+<div id="tab-results" class="section">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+    <div>
+      <h2 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800">Résultats</h2>
+      <p class="text-sm">Classement automatique par note finale</p>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-ghost btn-sm" onclick="exportAllPDF()">📄 Export PDF</button>
+      <button class="btn btn-danger btn-sm" onclick="clearAll()">🗑 Réinitialiser</button>
+    </div>
+  </div>
+  <div id="results-list"></div>
+  <div id="no-results" class="card empty-state"><div class="icon">🏆</div><p>Aucun résultat pour l'instant.</p></div>
+</div>
+
+<!-- PREVIEW MODAL -->
+<div class="modal-overlay" id="preview-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <h2 id="preview-title">Enchaînement</h2>
+        <div id="preview-subtitle" style="font-size:12px;opacity:0.8;margin-top:2px"></div>
+      </div>
+      <button class="modal-close" onclick="closePreview()">✕</button>
+    </div>
+    <div class="modal-body" id="preview-body"></div>
+  </div>
+</div>
+
+<script>
+// ════════════ DATA ════════════
+const AGRES = [
+  { id:'bars_asym', name:'Barres Asymétriques', icon:'🦥', gender:'Filles', exig:['BI','BS','R','F'] },
+  { id:'poutre', name:'Poutre', icon:'🤸‍♀️', gender:'Filles', exig:['SM','T','LG','AC'] },
+  { id:'sol_f', name:'Sol Filles', icon:'💃', gender:'Filles', exig:['ATR','SM','LG','AC'] },
+  { id:'sol_g', name:'Sol Garçons', icon:'🕺', gender:'Garçons', exig:['ATR','SM/AP','AC AV','AC AR/LAT'] },
+  { id:'bars_par', name:'Barres Parallèles', icon:'⚡', gender:'Garçons', exig:['AP','AB','S','MP'] },
+  { id:'saut', name:'Saut', icon:'🦘', gender:'Tous', exig:[] },
+  { id:'mini_tramp', name:'Mini Trampoline', icon:'⬆️', gender:'Garçons & Filles Lyc.', exig:[] },
+];
+
+const EXIG_LABELS = {
+  bars_asym: { BI:'Barre Inf.', BS:'Barre Sup.', R:'Rotation', F:'Changement Face' },
+  poutre: { SM:'Souplesse/Maintien', T:'Tour', LG:'Liaison Gymnique', AC:'Acrobatique' },
+  sol_f: { ATR:'ATR', SM:'Souplesse/Maintien', LG:'Liaison Gymnique', AC:'2 Acrobatiques' },
+  sol_g: { ATR:'ATR', 'SM/AP':'Souplesse/Maintien/Appui', 'AC AV':'Acrobatique Avant', 'AC AR/LAT':'Acrobatique Arr./Lat.' },
+  bars_par: { AP:'À l\'Appui', AB:'Appui Brachial', S:'Suspension', MP:'Maintien/Placement' },
+};
+
+// Emoji icons per element type for visual rendering
+const ELEM_ICONS = {
+  bars_asym: { A:['🤸','🤸','↔️','⬆️','↙️','🔄','↩️','↪️','⬅️','↩️'], B:['🔃','🔄','⚡','↔️','↕️','🔄','↩️','🔁','🦶','⬅️'], C:['🔃','🔄','⚡','↕️','→','🔄','↩️','⚡','→','⬇️'], D:['⬇️','⬇️','🔄','💫','⬇️','🔄','🔄','↕️','🌀','→'] },
+  poutre: { A:['🧘','🤸','🦵','🔄','🦅','👣','🤸','🔽','⬆️','↗️'], B:['⬆️','🤸','🧘','🔄','↗️','↗️','🔃','🕯️','↗️','🔃'], C:['↩️','⬇️','🧘','🔄','🦅','↗️','🔃','🔄','⬆️','↗️'], D:['⬆️','🤸','🧘','🔄','🦅','🦅','🔃','🔃','💫','💫'] },
+  sol_f: { A:['🔃','🌊','🦵','🧘','🔄','👣','⬆️','🔄','🔄','🔃'], B:['🔃','🌉','🕯️','🧘','🦅','⬆️','⬆️','🔄','🔄','🔃'], C:['🔃','🌉','🧘','🧘','🔄','↗️','⬆️','🔄','⬆️','🔃'], D:['🔃','🌊','🌊','🌊','🔄','🦅','🦅','⚡','💫','💫'] },
+  sol_g: { A:['🔃','→','🧘','↔️','🔄','🔄','🔄','🔃','⬆️','✂️'], B:['🔃','🔃','🕯️','↔️','🔄','🔃','🔄','🔃','⬆️','⬆️'], C:['🔃','💫','🧘','↔️','🔄','⬆️','🔄','⚡','⬆️','⬆️'], D:['🔃','🔃','🧘','💫','⚡','💫','🔄','💫','💫','🌀'] },
+  bars_par: { A:['⬆️','↕️','↗️','🔽','⬆️','🦶','🔄','🧘','⬆️','⬅️'], B:['⬆️','↕️','↩️','⬆️','🔄','⬇️','⬇️','🧘','⬆️','⬅️'], C:['⬆️','↙️','🔄','⬆️','🔽','↗️','↗️','🔃','🧘','🔃'], D:['⬆️','⬆️','↩️','⬆️','🔽','⬇️','↗️','🧘','↗️','💫'] },
+};
+
+const ELEMENTS = {
+  bars_asym: {
+    A:[{id:'A1',name:'Entrée à l\'appui',desc:'Sauter → appui sur BI bras tendus',exig:null},{id:'A2',name:'Entrée à la suspension',desc:'Sauter → suspension BS bras tendus',exig:null},{id:'A3',name:'Passage de jambe BI',desc:'Appui facial BI, passage d\'une jambe sur le côté → siège latéral',exig:'BI'},{id:'A4',name:'Monter debout sur BI',desc:'Monter debout sur BI un pied après l\'autre pour attraper BS',exig:'BI'},{id:'A5',name:'S\'élancer en arrière BS',desc:'De la suspension BS, jambes fléchies sur BI, poussée simultanée → élan arrière',exig:'BS'},{id:'A6',name:'Rotation AV depuis BS',desc:'De l\'appui BS, rotation AV, descente contrôlée, arrivée pieds BI ou en suspension',exig:'R'},{id:'A7',name:'½ tour siège latéral',desc:'Du siège latéral BI ou BS, ½ tour en changeant les prises',exig:'F'},{id:'A8',name:'½ tour suspension',desc:'½ tour à la suspension',exig:'F'},{id:'A9',name:'Sortie repoussée',desc:'Appui facial BI, élancer jambes en arrière sous l\'horizontal → station debout',exig:null},{id:'A10',name:'Sortie balancer AR',desc:'De la suspension BS, balancer AV puis AR → réception debout',exig:null}],
+    B:[{id:'B1',name:'Entrée oscillation (jambe fléchie)',desc:'Mains BI, 1 pied sur BI, s\'établir siège latéral écarté par bascule, jambe fléchie',exig:null},{id:'B2',name:'Entrée renversement',desc:'Mains BI, appel 1 ou 2 pieds, s\'établir à l\'appui facial par renversement AR',exig:null},{id:'B3',name:'Coupé BI → siège',desc:'Appui facial BI, passage d\'une jambe par coupé → siège latéral',exig:'BI'},{id:'B4',name:'Passage de jambe BS',desc:'Appui facial BS, passage d\'une jambe sur le côté → siège latéral',exig:'BS'},{id:'B5',name:'Balancer AV/AR BS',desc:'De la suspension BS, balancer vers l\'avant, vers l\'arrière',exig:'BS'},{id:'B6',name:'Renversement AR BS',desc:'De la suspension BS, 1 pied sur BI, renversement AR à la BS → appui',exig:'R'},{id:'B7',name:'½ tour → appui facial',desc:'Du siège BI ou BS, ½ tour à l\'appui facial avec déplacement latéral',exig:'F'},{id:'B8',name:'Tour complet suspension',desc:'De la suspension BS, tour complet à la suspension',exig:'F'},{id:'B9',name:'Sortie pieds-mains',desc:'De la suspension, pieds sur BI, saisir alternativement la BI puis sortie pieds-mains',exig:null},{id:'B10',name:'Sortie repoussée horizontale',desc:'Appui facial BI, élancer les jambes en arrière à l\'appui libre horizontal → station debout',exig:null}],
+    C:[{id:'C1',name:'Entrée oscillation (jambe tendue)',desc:'Mains BI, 1 pied sur BI jambe tendue, siège latéral écarté par bascule, jambe tendue',exig:null},{id:'C2',name:'Entrée oscillation 2 jambes tendues',desc:'1 pied sur BI, s\'établir au siège par engagé des 2 jambes tendues par bascule',exig:null},{id:'C3',name:'Engagé 1 jambe BI',desc:'Appui facial BI, engager 1 jambe fléchie puis tendue → siège latéral',exig:'BI'},{id:'C4',name:'Balancer AV pieds au niveau BS',desc:'De la suspension BS, balancer vers l\'avant pieds au niveau de la barre',exig:'BS'},{id:'C5',name:'Prise d\'élan AR ou filé avant',desc:'Appui facial BS, prise d\'élan vers l\'AR → suspension ou filé avant',exig:'BS'},{id:'C6',name:'Tour AV une jambe ou groupé',desc:'Du siège écarté sur BI ou BS, rotation avant, retour au siège écarté ou tour d\'appui avant groupé',exig:'R'},{id:'C7',name:'Contre volée',desc:'Départ debout sur BI ou du balancé, balancé AV → ½ tour, changement 1 ou 2 mains',exig:'F'},{id:'C8',name:'½ tour coupé en appui',desc:'Appui BS, passage d\'une jambe par coupé, ½ tour → appui',exig:'F'},{id:'C9',name:'Sortie filée BS',desc:'Sortie filée BS',exig:null},{id:'C10',name:'Sortie pieds-mains BI écart',desc:'Station jambes écartées sur BI, mains sur BS, saisir BI et sortie pieds-mains',exig:null}],
+    D:[{id:'D1',name:'Bascule engagé 1 jambe',desc:'Bascule engagé d\'une jambe',exig:null},{id:'D2',name:'Bascule faciale ou dorsale',desc:'Bascule faciale ou dorsale, engager les 2 jambes tendues',exig:null},{id:'D3',name:'Pose pieds BI ou élan circulaire',desc:'Appui facial BI, pose des pieds jambes groupées/écartées et attraper la BS ou élan circulaire AR',exig:'BI'},{id:'D4',name:'Grande culbute BS',desc:'Du balancé avant, grande culbute',exig:'BS'},{id:'D5',name:'Bascule faciale BS',desc:'Bascule faciale BS (possible en entrée)',exig:'BS'},{id:'D6',name:'Tour d\'appui arrière',desc:'Tour d\'appui arrière BI ou BS',exig:'R'},{id:'D7',name:'Tour d\'appui avant carpé',desc:'Tour d\'appui avant corps carpé BI ou BS',exig:'R'},{id:'D8',name:'Oscillation 1 jambe tendue',desc:'Du siège BI, oscillation 1 jambe tendue, revenir au siège',exig:'R'},{id:'D9',name:'Sortie salto AR',desc:'Balancer vers l\'AV et sortie salto AR, corps groupé ou carpé ou tendu',exig:null},{id:'D10',name:'Sortie filée / pieds-mains ½ tour',desc:'Sortie filée de l\'appui facial ou pieds-mains BS avec ½ tour',exig:null}]
+  },
+  poutre: {
+    A:[{id:'A1',name:'Montée au siège',desc:'Sauter à l\'appui et passer une jambe tendue latéralement → siège',exig:null},{id:'A2',name:'Appui manuel et pédestre écarté',desc:'Sauter à l\'appui manuel et pédestre jambes tendues écartées',exig:null},{id:'A3',name:'Maintien 1 pied / Grand battement',desc:'Maintien sur 1 pied, jambe d\'appui tendue (tenu 2s) ou grand battement jambe à l\'horizontale',exig:'SM'},{id:'A4',name:'½ tour accroupi ou debout',desc:'½ tour accroupi bras libres ou ½ tour debout bras libres',exig:'T'},{id:'A5',name:'Saut extension',desc:'Saut extension sans ou avec changement de pieds, départ et réception 2 pieds',exig:'LG'},{id:'A6',name:'Pas chassé',desc:'1 pas chassé bras libres',exig:'LG'},{id:'A7',name:'Station fente AV',desc:'Appui manuel et sur 1 genou, élancer jambe libre AV → AR → station fente AV mains sur la poutre',exig:'AC'},{id:'A8',name:'Coucher ventral → appui',desc:'Du siège écarté → coucher ventral → appui manuel et pédestre, bras tendus',exig:'AC'},{id:'A9',name:'Sortie saut vertical',desc:'Sortie en bout de poutre : saut vertical → station debout',exig:null},{id:'A10',name:'Sortie costale',desc:'Appui manuel et sur 1 genou, élancer jambe libre AR et sortie costale',exig:null}],
+    B:[{id:'B1',name:'Montée debout oblique',desc:'Station oblique, appel 1 pied, pose de l\'autre pied sur poutre + appui 1 main, jambe libre AV → station debout',exig:null},{id:'B2',name:'Appui pédestre groupé',desc:'Sauter à l\'appui manuel et pédestre jambes groupées',exig:null},{id:'B3',name:'Maintien ½ pointes ou équilibre fessier',desc:'Maintien sur 1 pied sur ½ pointes (2s) ou équilibre fessier jambes tendues (2s)',exig:'SM'},{id:'B4',name:'Tour enveloppé 2 pieds',desc:'Tour enveloppé sur 2 pieds (½ pointes) bras libres sans arrêt',exig:'T'},{id:'B5',name:'Assemblé',desc:'Départ 2 pieds, élancer une jambe vers l\'avant pour sauter → arriver 2 pieds',exig:'LG'},{id:'B6',name:'Saut en progression AV',desc:'Appel 2 pieds, saut en progression vers l\'AV, réception 2 pieds',exig:'LG'},{id:'B7',name:'Proche vertical ATR',desc:'De la fente AV, venir proche de la verticale de l\'ATR, puis revenir en fente AV',exig:'AC'},{id:'B8',name:'Chandelle mains sous poutre',desc:'Chandelle mains sous la poutre, tenue 2 secondes',exig:'AC'},{id:'B9',name:'Sortie groupé ou écart',desc:'Sortie : saut groupé ou saut écart → station debout',exig:null},{id:'B10',name:'Sortie Rondade',desc:'Sortie en Rondade',exig:null}],
+    C:[{id:'C1',name:'Renversement AR sur poutre',desc:'De la station faciale latérale, s\'établir à l\'appui facial par renversement AR',exig:null},{id:'C2',name:'Écrasement facial',desc:'Sauter à l\'appui et descendre en écrasement facial mains sur la poutre',exig:null},{id:'C3',name:'Planche faciale ou Équerre',desc:'Planche faciale jambe d\'appui tendue, jambe libre min. à l\'horizontale (2s) ou équerre jambes écartées (2s)',exig:'SM'},{id:'C4',name:'½ tour 1 pied ½ pointes',desc:'½ tour sur 1 pied sur ½ pointes, position de la jambe libre indifférente',exig:'T'},{id:'C5',name:'Saut de chat ou groupé',desc:'Saut de chat ou saut groupé, impulsion des 2 pieds',exig:'LG'},{id:'C6',name:'Saut sissonne',desc:'Saut sissonne impulsion 2 pieds, arrivée sur 1 pied',exig:'LG'},{id:'C7',name:'ATR 1 jambe',desc:'De la fente AV, venir à l\'ATR 1 jambe à la verticale, puis revenir en fente AV',exig:'AC'},{id:'C8',name:'Roulade AV ou AR',desc:'Roulade AV départ libre ou Roulade AR, pose des mains sur ou sous la poutre',exig:'AC'},{id:'C9',name:'Sortie saut de mains',desc:'En bout de poutre : sortie en saut de mains',exig:null},{id:'C10',name:'Sortie sursaut + Rondade',desc:'Sursaut puis sortie Rondade',exig:null}],
+    D:[{id:'D1',name:'Entrée saut sans mains',desc:'En bout ou sur le côté : entrée par saut à la station debout, sans aide des mains',exig:null},{id:'D2',name:'Passage jambes fléchies→tendues',desc:'Sauter à l\'appui et passer les 2 jambes fléchies puis tendues entre les bras → siège',exig:null},{id:'D3',name:'Pied dans la main (Y) ou grand écart',desc:'Pied dans la main Y (tenu 2s) ou Grand écart antéropostérieur (tenu 2s sans les mains)',exig:'SM'},{id:'D4',name:'1 tour 1 pied ½ pointes',desc:'1 tour sur 1 pied sur ½ pointes, position de la jambe libre indifférente',exig:'T'},{id:'D5',name:'Saut cosaque',desc:'Saut cosaque, impulsion 1 ou 2 pieds',exig:'LG'},{id:'D6',name:'Saut grand jeté 180°',desc:'Saut grand jeté (écart 180°) ou saut antéro-postérieur (écart 180°)',exig:'LG'},{id:'D7',name:'ATR latéral ou souplesse AR',desc:'Appui tendu renversé latéral ou transversal jambes tendues serrées ou Souplesse arrière',exig:'AC'},{id:'D8',name:'Roue',desc:'Roue',exig:'AC'},{id:'D9',name:'Sortie salto avant groupé',desc:'Sortie salto avant groupé, appel 2 pieds',exig:null},{id:'D10',name:'Sortie salto arrière groupé',desc:'Sortie salto arrière groupé',exig:null}]
+  },
+  sol_f: {
+    A:[{id:'A1',name:'ATR 1 jambe (passager)',desc:'De la fente avant, venir à l\'ATR une jambe à la verticale, puis revenir en fente AV',exig:'ATR'},{id:'A2',name:'Onde dorsale',desc:'De la station couchée dorsale, extension dorsale → position assise dos droit',exig:'SM'},{id:'A3',name:'Grand battement',desc:'Grand battement jambe à l\'horizontale, jambe d\'appui tendue',exig:'SM'},{id:'A4',name:'Maintien 1 pied (attitude/arabesque)',desc:'Maintien sur 1 pied, jambe d\'appui tendue, tenu 2s (attitude AV/AR ou arabesque)',exig:'SM'},{id:'A5',name:'½ tour ½ pointes',desc:'½ tour sur 1 pied sur ½ pointes, position de la jambe libre indifférente',exig:'LG'},{id:'A6',name:'Pas chassé',desc:'1 pas chassé AV, bras libres',exig:'LG'},{id:'A7',name:'Saut vertical',desc:'Saut vertical, appel 2 pieds, jambes tendues serrées, réception 2 pieds',exig:'LG'},{id:'A8',name:'Roulade AR écartée',desc:'Départ sur les pieds, roulade AR, arrivée sur les pieds, jambes tendues écartées',exig:'AC'},{id:'A9',name:'Roulade AV',desc:'Départ libre, roulade AV, arrivée sur 1 ou 2 pieds',exig:'AC'},{id:'A10',name:'Roue',desc:'Départ fente, bras dans le prolongement du corps, roue arrivée libre',exig:'AC'}],
+    B:[{id:'B1',name:'ATR jambes serrées ou écartées',desc:'Départ accroupi mains au sol et placement du dos jusqu\'à l\'ATR ou venir à l\'ATR jambes serrées ou écartées, retour en fente',exig:'ATR'},{id:'B2',name:'Pont tenu 2s',desc:'De la station couchée dorsale, s\'établir en pont (tenu 2s), jambes serrées et tendues',exig:'SM'},{id:'B3',name:'Chandelle tenu 2s',desc:'Chandelle tenue 2s, bras tendus en appui au sol',exig:'SM'},{id:'B4',name:'Planche faciale',desc:'Planche faciale, jambe d\'appui tendue, tenue 2s, jambe libre minimum à l\'horizontale',exig:'SM'},{id:'B5',name:'Saut de chat',desc:'Saut de chat',exig:'LG'},{id:'B6',name:'Saut groupé',desc:'Impulsion 2 pieds, saut groupé',exig:'LG'},{id:'B7',name:'Saut vertical ½ tour',desc:'Saut vertical avec ½ tour, appel 2 pieds, jambes tendues serrées, réception 2 pieds',exig:'LG'},{id:'B8',name:'Roulade AR groupée',desc:'Roulade AR groupée, arrivée jambes fléchies',exig:'AC'},{id:'B9',name:'Roulade AV jambes écartées',desc:'Départ libre, roulade AV arrivée jambes écartées avec ou sans aide des mains',exig:'AC'},{id:'B10',name:'Roue pied-pied + saut vertical',desc:'Roue pied-pied. Le 2ème pied vient se placer à côté du 1er, puis saut vertical',exig:'AC'}],
+    C:[{id:'C1',name:'ATR roulade ou ½ tour ATR',desc:'Départ libre et ATR roulade ou ½ tour à l\'ATR (180°) jambes serrées tendues',exig:'ATR'},{id:'C2',name:'Pont avant ou arrière',desc:'ATR puis descente en pont avant (tenu 2s) ou de la station debout descente en pont arrière (tenu 2s)',exig:'SM'},{id:'C3',name:'Grand écart ou écrasement facial',desc:'Grand écart antéropostérieur (tenu 2s) ou écrasement facial (tenu 2s)',exig:'SM'},{id:'C4',name:'Pied dans la main (Y)',desc:'Pied dans la main Y (tenu 2s)',exig:'SM'},{id:'C5',name:'Tour 1 pied ½ pointes',desc:'Tour sur 1 pied sur ½ pointes, position de la jambe libre indifférente',exig:'LG'},{id:'C6',name:'Saut cosaque ou sissonne',desc:'Impulsion 1 ou 2 pieds, saut cosaque ou impulsion 2 pieds, saut sissonne',exig:'LG'},{id:'C7',name:'Saut vertical tour complet',desc:'Appel 2 pieds, saut vertical tour complet réception 2 pieds',exig:'LG'},{id:'C8',name:'Roulade AR jambes tendues serrées',desc:'Roulade AR jambes tendues et serrées durant tout l\'élément',exig:'AC'},{id:'C9',name:'Saut de mains',desc:'Saut de mains',exig:'AC'},{id:'C10',name:'Rondade',desc:'Rondade',exig:'AC'}],
+    D:[{id:'D1',name:'ATR + 1 tour',desc:'De la fente AV, venir à l\'ATR puis 1 tour à l\'ATR jambes serrées et tendues',exig:'ATR'},{id:'D2',name:'Tic-Tac',desc:'Départ debout renversement avant, pose d\'un pied au sol et revenir à la position initiale',exig:'SM'},{id:'D3',name:'Souplesse AR 1 jambe',desc:'Souplesse AR d\'une jambe',exig:'SM'},{id:'D4',name:'Souplesse AV 1 jambe',desc:'Souplesse AV d\'une jambe',exig:'SM'},{id:'D5',name:'Tour et ½',desc:'1 Tour et ½ sur 1 pied sur ½ pointes, position de la jambe libre indifférente',exig:'LG'},{id:'D6',name:'Grand jeté AV grand écart',desc:'Grand jeté AV au grand écart (≥135°)',exig:'LG'},{id:'D7',name:'Grand jeté changement de jambe',desc:'Saut grand jeté changement de jambe (≥135°)',exig:'LG'},{id:'D8',name:'Flic Flac AR',desc:'Flic Flac AR arrivée sur 1 ou 2 pieds',exig:'AC'},{id:'D9',name:'Salto AV groupé ou carpé',desc:'Salto AV groupé ou carpé réception 2 pieds ou pieds décalés',exig:'AC'},{id:'D10',name:'Salto AR groupé ou tendu',desc:'Salto AR groupé ou tendu',exig:'AC'}]
+  },
+  sol_g: {
+    A:[{id:'A1',name:'ATR (départ accroupi)',desc:'Départ accroupi mains au sol, placement du dos jusqu\'à l\'ATR',exig:'ATR'},{id:'A2',name:'ATR passager (fente)',desc:'Départ de la fente, ATR passager',exig:'ATR'},{id:'A3',name:'Planche faciale écartée',desc:'Planche faciale jambes écartées (tenue 2 sec)',exig:'SM/AP'},{id:'A4',name:'½ tour appui facial → dorsal',desc:'De l\'appui facial tendu, ½ tour à l\'appui dorsal tendu en passant par l\'appui costal',exig:'SM/AP'},{id:'A5',name:'Roulade AV 2 pieds serrés',desc:'Roulade AV arrivée 2 pieds serrés',exig:'AC AV'},{id:'A6',name:'Roulade AV + chandelle',desc:'De la fente AV, roulade en AV avec passage par la chandelle, arrivée 2 pieds serrés',exig:'AC AV'},{id:'A7',name:'Roulade AR groupée',desc:'Roulade AR groupée, arrivée jambes fléchies',exig:'AC AR/LAT'},{id:'A8',name:'Roue',desc:'Roue',exig:'AC AR/LAT'},{id:'A9',name:'Saut vertical',desc:'Saut vertical, appel 2 pieds, jambes tendues serrées, réception 2 pieds',exig:null},{id:'A10',name:'Saut ciseaux de jambes',desc:'Saut, impulsion 1 jambe, ciseaux de jambes, revenir sur la jambe libre',exig:null}],
+    B:[{id:'B1',name:'ATR (départ genoux)',desc:'De la station à genoux, assis sur les talons, mains au sol, placement du dos, corps groupé genoux serrés → ATR',exig:'ATR'},{id:'B2',name:'ATR passager et valse',desc:'ATR passager et valse (½ tour en ATR = 180°)',exig:'ATR'},{id:'B3',name:'Chandelle bras tendus',desc:'Chandelle bras tendus en appui au sol (tenue 2s)',exig:'SM/AP'},{id:'B4',name:'1 tour complet appui facial→dorsal',desc:'De l\'appui facial tendu, 1 tour complet à l\'appui facial tendu en passant par l\'appui dorsal tendu passager',exig:'SM/AP'},{id:'B5',name:'Roulade AV jambes écartées',desc:'Roulade avant jambes écartées, arrivée jambes tendues écartées',exig:'AC AV'},{id:'B6',name:'ATR roulade avant',desc:'ATR roulade avant',exig:'AC AV'},{id:'B7',name:'Roulade AR jambes tendues écartées',desc:'Roulade Arrière, arrivée jambes tendues écartées ou serrées',exig:'AC AR/LAT'},{id:'B8',name:'Rondade',desc:'Rondade',exig:'AC AR/LAT'},{id:'B9',name:'Saut vertical ½ tour',desc:'Appel 2 pieds saut vertical avec ½ tour et réception 2 pieds',exig:null},{id:'B10',name:'Saut groupé',desc:'Appel 2 pieds saut groupé, et réception 2 pieds',exig:null}],
+    C:[{id:'C1',name:'ATR jambes tendues serrées',desc:'Mains au sol, placement du dos, monter les jambes tendues serrées à l\'ATR',exig:'ATR'},{id:'C2',name:'Healy',desc:'De l\'ATR, tour complet en appui sur 1 bras → appui dorsal sur 1 ou 2 jambes',exig:'ATR'},{id:'C3',name:'Planche costale / faciale / Y',desc:'Sur 1 pied, planche costale ou faciale ou Y, tenue 2s',exig:'SM/AP'},{id:'C4',name:'½ cercle appui facial → dorsal',desc:'De l\'appui tendu facial, ½ cercle à l\'appui tendu dorsal',exig:'SM/AP'},{id:'C5',name:'Roulade AV jambes tendues serrées',desc:'Roulade Avant jambes tendues et serrées',exig:'AC AV'},{id:'C6',name:'Saut de mains',desc:'Saut de mains, réception 2 pieds',exig:'AC AV'},{id:'C7',name:'Roulade AR ATR bras fléchis',desc:'Roulade Arrière bras fléchis à l\'ATR, jambes serrées et tendues',exig:'AC AR/LAT'},{id:'C8',name:'Flic Flac Arrière',desc:'Flic Flac Arrière (= flip arrière)',exig:'AC AR/LAT'},{id:'C9',name:'Saut vertical 1 tour',desc:'Appel 2 pieds saut vertical avec 1 tour et réception 2 pieds',exig:null},{id:'C10',name:'Saut carpé écarté',desc:'Appel 2 pieds saut carpé, jambes écartées et tendues à l\'horizontale, réception 2 pieds',exig:null}],
+    D:[{id:'D1',name:'ATR en force passager',desc:'ATR en force passager',exig:'ATR'},{id:'D2',name:'ATR + 2 valses (1 tour)',desc:'ATR passager et 2 valses (2 valses = 1 tour en ATR = 360°)',exig:'ATR'},{id:'D3',name:'Grand écart ou écrasement facial',desc:'Grand écart antéro-postérieur (tenu 2s) ou Écrasement facial jambes écartées (tenu 2s)',exig:'SM/AP'},{id:'D4',name:'1 cercle appui facial',desc:'De l\'appui tendu facial, 1 cercle à l\'appui tendu facial',exig:'SM/AP'},{id:'D5',name:'Flip avant',desc:'Flip avant',exig:'AC AV'},{id:'D6',name:'Salto Avant groupé ou carpé',desc:'Salto Avant groupé ou carpé réception 2 pieds ou pieds décalés',exig:'AC AV'},{id:'D7',name:'Roulade AR ATR bras tendus',desc:'Roulade Arrière bras tendus à l\'ATR jambes serrées et tendues',exig:'AC AR/LAT'},{id:'D8',name:'Salto Arrière groupé',desc:'Salto Arrière groupé',exig:'AC AR/LAT'},{id:'D9',name:'Salto arrière tendu ou tempo',desc:'Salto arrière tendu ou tempo',exig:'AC AR/LAT'},{id:'D10',name:'Saut 1 tour ½ (540°)',desc:'Appel 2 pieds saut vertical avec 1 tour ½ et réception 2 pieds',exig:null}]
+  },
+  bars_par: {
+    A:[{id:'A1',name:'Entrée appui (pieds sous barres)',desc:'Sauter en bout de barres à l\'appui tendu ; pieds sous la hauteur des barres',exig:null},{id:'A2',name:'Balancer AR et AV (hauteur barres)',desc:'Balancer vers l\'arrière et balancer vers l\'avant, pieds à hauteur des barres',exig:'AP'},{id:'A3',name:'Élan du siège à l\'appui',desc:'Du siège, prise d\'élan par lancer de jambes, à l\'appui tendu',exig:'AP'},{id:'A4',name:'Suspension → appui brachial',desc:'De la suspension, balancer AV et AR pour s\'établir à l\'appui brachial, jambes fléchies autorisées',exig:'AB'},{id:'A5',name:'Appui brachial → siège écarté',desc:'De l\'appui brachial, balancer AV, poser les jambes écartées sur les barres → siège écarté',exig:'AB'},{id:'A6',name:'Suspension + pose pieds au sol',desc:'De la suspension, balancer AV, AR, poser les pieds au sol',exig:'S'},{id:'A7',name:'Rotation AR + saut à l\'appui',desc:'En bout ou sous la barre, rotation arrière puis saut à l\'appui tendu (uniquement en entrée)',exig:'S'},{id:'A8',name:'Siège écarté bras derrière (2s)',desc:'Siège écarté, bras derrière, tenu 2 secondes',exig:'MP'},{id:'A9',name:'Monter à l\'équerre → siège écarté',desc:'De l\'appui tendu, sans élan, monter les jambes tendues par l\'équerre → siège écarté AV jambes tendues',exig:'MP'},{id:'A10',name:'Sortie faciale corps sous horizontal',desc:'De l\'appui tendu, balancer AR et sortie faciale corps sous l\'horizontale → station droite',exig:null}],
+    B:[{id:'B1',name:'Entrée appui (pieds à hauteur barres)',desc:'Sauter en bout de barre à l\'appui tendu ; pieds à la hauteur des barres',exig:null},{id:'B2',name:'Balancer AV et AR à l\'horizontale',desc:'Balancer vers l\'arrière et balancer vers l\'avant à l\'horizontale',exig:'AP'},{id:'B3',name:'½ tour appui',desc:'De l\'appui tendu, ½ tour sans arrêt',exig:'AP'},{id:'B4',name:'Appui brachial → appui tendu (pieds sous)',desc:'De l\'appui brachial, balancer AR et s\'établir à l\'appui tendu (pieds sous les barres)',exig:'AB'},{id:'B5',name:'Rouleau avant',desc:'Rouleau avant',exig:'AB'},{id:'B6',name:'Bascule de fond → appui brachial',desc:'Bascule de fond arrivée à l\'appui brachial',exig:'S'},{id:'B7',name:'Oscillation → appui brachial',desc:'De l\'appui tendu, oscillation, et s\'établir à l\'appui brachial',exig:'S'},{id:'B8',name:'Flexion genoux niveau barres (2s)',desc:'De l\'appui tendu, flexion des jambes serrées, élévation des genoux pointes au niveau des barres, tenu 2s',exig:'MP'},{id:'B9',name:'Montée au siège écarté AR',desc:'De l\'appui tendu, monter le bassin jambes fléchies → siège écarté AR jambes tendues',exig:'MP'},{id:'B10',name:'Sortie faciale corps au-dessus horizontal',desc:'De l\'appui tendu, balancer AR et sortie faciale corps au-dessus de l\'horizontale → station droite',exig:null}],
+    C:[{id:'C1',name:'Entrée appui (pieds au-dessus barres)',desc:'Sauter en bout de barre à l\'appui tendu ; pieds au-dessus des barres',exig:null},{id:'C2',name:'Balancer AR à 45°',desc:'Balancer vers l\'arrière à 45°',exig:'AP'},{id:'C3',name:'Tour complet appui',desc:'De l\'appui tendu, tour complet sans arrêt',exig:'AP'},{id:'C4',name:'Grand élan → appui tendu (pieds hauteur)',desc:'De l\'appui brachial, balancé AR → appui tendu, pieds à la hauteur des barres (Grand élan)',exig:'AB'},{id:'C5',name:'Temps de ventre → siège écarté',desc:'De l\'appui brachial, balancer AV et s\'établir au siège écarté (Temps de ventre)',exig:'AB'},{id:'C6',name:'Bascule de fond → siège écarté',desc:'Bascule de fond pour arriver au siège écarté',exig:'S'},{id:'C7',name:'Bascule fixe → siège écarté au-dessus barres',desc:'De l\'appui tendu, oscillation, s\'établir à l\'appui au siège écarté, jambes au-dessus des barres (Bascule fixe)',exig:'S'},{id:'C8',name:'Appui brachial renversé (2s)',desc:'Appui brachial renversé tenu 2 secondes',exig:'MP'},{id:'C9',name:'Équerre tenue 2s',desc:'Équerre tenue 2 secondes',exig:'MP'},{id:'C10',name:'Sortie ATR décalé',desc:'Sortie ATR décalé',exig:null}],
+    D:[{id:'D1',name:'Entrée coupé écart avec tremplin',desc:'Coupé écart à l\'appui ou à l\'équerre avec tremplin',exig:null},{id:'D2',name:'Balancer à l\'ATR marqué',desc:'Balancer à l\'ATR marqué',exig:'AP'},{id:'D3',name:'Balancer AV + ½ tour horizontal',desc:'De l\'appui tendu, balancer avant et ½ tour corps droit à l\'horizontal',exig:'AP'},{id:'D4',name:'Grand élan → appui tendu (pieds au-dessus)',desc:'De l\'appui brachial, balancer AR → appui tendu, pieds au-dessus des barres (Grand élan)',exig:'AB'},{id:'D5',name:'Temps de ventre → appui tendu AV',desc:'De l\'appui brachial, balancer AV → appui tendu AV (Temps de ventre)',exig:'AB'},{id:'D6',name:'Bascule de fond (de la suspension)',desc:'De la suspension, bascule de fond',exig:'S'},{id:'D7',name:'Bascule fixe → appui tendu',desc:'De l\'appui tendu, oscillation et s\'établir à l\'appui tendu (Bascule fixe)',exig:'S'},{id:'D8',name:'Placement dos de l\'équerre serrée',desc:'Placement du dos de l\'équerre serrée, revenir au siège écart',exig:'MP'},{id:'D9',name:'Placement dos siège écarté',desc:'Placement du dos jambes écartées et tendues du siège écarté, jusqu\'à l\'alignement mains/épaules/bassin',exig:'MP'},{id:'D10',name:'Sortie salto AR groupé sur le côté',desc:'Salto arrière groupé sur le côté',exig:null}]
+  }
+};
+
+const DIFF_PTS = { A:0.4, B:0.6, C:0.8, D:1.0 };
+
+const GENERAL_FAULTS = [
+  {name:'Bras fléchis à l\'appui', pts:[0.1,0.3,0.5]},
+  {name:'Jambes fléchies', pts:[0.1,0.3,0.5]},
+  {name:'Genoux écartés (<épaules)', pts:[0.1]},
+  {name:'Genoux écartés (>épaules)', pts:[0.3]},
+  {name:'Hauteur/amplitude insuffisantes', pts:[0.1,0.3,0.5]},
+  {name:'Écart de jambes insuffisant', pts:[0.1,0.3,0.5]},
+  {name:'Position groupée/carpée/tendue insuf.', pts:[0.1,0.3,0.5]},
+  {name:'Corps relâché', pts:[0.1,0.3,0.5]},
+  {name:'Corps cassé', pts:[0.1,0.3,0.5]},
+  {name:'Alignement ATR insuffisant', pts:[0.1,0.3,0.5]},
+  {name:'Fautes d\'axe', pts:[0.1,0.3,0.5]},
+  {name:'Rotation incomplète', pts:[0.3]},
+  {name:'Pointes de pieds', pts:[0.1]},
+  {name:'Mouvements pour maintenir l\'équilibre', pts:[0.1,0.3,0.5]},
+  {name:'Pas supplémentaire/sursaut (max 0.80)', pts:[0.1]},
+  {name:'Grand pas/saut env. 50 cm (max 0.80)', pts:[0.3]},
+  {name:'Toucher l\'agrès sans tomber', pts:[0.3]},
+  {name:'Flexion complète en réception', pts:[0.5]},
+  {name:'Chute (mains/genoux/bassin/agrès)', pts:[1.0]},
+  {name:'Dynamisme insuffisant', pts:[0.1,0.3,0.5]},
+  {name:'Arrêt dans l\'enchaînement (>2s)', pts:[0.3]},
+  {name:'Enchaînement sans sortie/sortie non répertoriée', pts:[0.3]},
+];
+
+const SPECIFIC_FAULTS = {
+  bars_asym:[{name:'Toucher le sol avec les pieds',pts:[0.3]},{name:'Heurter le sol avec les pieds (chute)',pts:[1.0]},{name:'Arrêt prolongé plus de 2 secondes',pts:[0.5]}],
+  poutre:[{name:'S\'accrocher à la poutre pour éviter la chute',pts:[0.5]},{name:'Utilisation insuffisante de l\'espace',pts:[0.3]},{name:'Passage proche de la poutre (bassin)',pts:[0.3]},{name:'Dépassement de 1min10',pts:[0.3]}],
+  sol_f:[{name:'Terminer avant ou après la musique',pts:[0.3]},{name:'Utilisation insuffisante de l\'espace',pts:[0.3]},{name:'Passage proche du sol (bassin)',pts:[0.3]},{name:'Dépassement de 1 minute',pts:[0.3]},{name:'Mouvement sans musique (ou musique avec parole)',pts:[1.0]},{name:'Sortie praticable : 1 main ou 1 pied ext.',pts:[0.1]},{name:'Sortie praticable : 2 pieds / 2 mains ext.',pts:[0.3]}],
+  sol_g:[{name:'Dépassement de 1 minute',pts:[0.3]},{name:'Sortie praticable : 1 main ou 1 pied ext.',pts:[0.1]},{name:'Sortie praticable : 2 membres ext. ou autre partie du corps',pts:[0.3]},{name:'Réception directement à l\'extérieur',pts:[0.3]}],
+  bars_par:[{name:'Toucher le sol avec les pieds',pts:[0.3]},{name:'Heurter le sol avec les pieds (chute)',pts:[1.0]},{name:'Déplacement ou ajustement de prise',pts:[0.1]}],
+  saut:[{name:'Corps ne passant pas par la verticale (Rondade/Pétrick)',pts:[0.1,0.3,0.5]},{name:'Épaules en avant',pts:[0.1,0.3,0.5]},{name:'Appui prolongé',pts:[0.1,0.3,0.5]},{name:'Bras fléchis',pts:[0.1,0.3,0.5]},{name:'Manque de hauteur',pts:[0.1,0.3,0.5]},{name:'Longueur insuffisante (zone 0.80m)',pts:[0.5]}],
+  mini_tramp:[{name:'Hauteur rotation insuffisante',pts:[0.3,0.5,1.0]},{name:'Fermeture/Ouverture insuffisante',pts:[0.1,0.3,0.5]},{name:'Rotation longitudinale commencée avant position renversée',pts:[1.0]},{name:'Arrivée pieds décalés',pts:[0.5]},{name:'Rotation longitudinale incomplète',pts:[0.1,0.3,0.5]},{name:'Déviation par rapport à la course d\'élan',pts:[0.1,0.3]}],
+};
+
+// ════════════ STATE ════════════
+let currentAgres = null;
+let enchainement = [];
+let gymnastsDB = JSON.parse(localStorage.getItem('unss_gymnasts_v2') || '[]');
+let currentJuryGym = null;
+let juryFaultCounts = {};
+let juryFaultLabels = {}; // for PDF
+
+function saveDB() { localStorage.setItem('unss_gymnasts_v2', JSON.stringify(gymnastsDB)); }
+
+// ════════════ TOAST ════════════
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ════════════ TABS ════════════
+function showTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(btn) btn.classList.add('active');
+  if(id === 'tab-jury') renderJuryList();
+  if(id === 'tab-results') renderResults();
+}
+
+// ════════════ AGRÈS GRID ════════════
+function renderAgresGrid() {
+  const g = document.getElementById('agres-grid');
+  g.innerHTML = AGRES.map(a => `
+    <div class="agres-card ${currentAgres === a.id ? 'selected' : ''}" onclick="selectAgres('${a.id}')">
+      <div class="icon">${a.icon}</div>
+      <div class="name">${a.name}</div>
+      <div class="gender">${a.gender}</div>
+    </div>
+  `).join('');
+}
+
+function selectAgres(id) {
+  currentAgres = id;
+  enchainement = [];
+  renderAgresGrid();
+  const agres = AGRES.find(a => a.id === id);
+  document.getElementById('elements-section').style.display = 'block';
+  renderExigStatusBar(agres);
+  renderElementsList(id);
+  renderEnchainementList();
+  renderNoteDPreview();
+  const sfCard = document.getElementById('specific-faults-card');
+  sfCard.style.display = 'block';
+  document.getElementById('fault-agres-name').textContent = agres.name;
+  const sfList = SPECIFIC_FAULTS[id] || [];
+  document.getElementById('specific-faults-list').innerHTML = sfList.length
+    ? sfList.map(f => `<div style="padding:3px 0">▶ <b>${f.name}</b> : ${f.pts.map(p => `-${p.toFixed(2)} pt`).join(' / ')}</div>`).join('')
+    : '<em>Voir fautes générales</em>';
+}
+
+// ════════════ EXIGENCES ════════════
+function renderExigStatusBar(agres) {
+  const bar = document.getElementById('exig-status-bar');
+  if (!agres.exig || agres.exig.length === 0) { bar.innerHTML = ''; return; }
+  const fulfilled = enchainement.filter(e => e.exig).map(e => e.exig);
+  bar.innerHTML = agres.exig.map(e => {
+    const ok = fulfilled.includes(e);
+    const label = EXIG_LABELS[agres.id] ? (EXIG_LABELS[agres.id][e] || e) : e;
+    return `<div class="exig-item ${ok ? 'ok' : ''}">
+      <div class="exig-code">${e}</div>
+      <div class="exig-label">${label}</div>
+      <div style="font-size:14px;margin-top:3px">${ok ? '✅' : '⬜'}</div>
+    </div>`;
+  }).join('');
+}
+
+// ════════════ ELEMENTS LIST ════════════
+function getElemIcon(agresId, cat, idx) {
+  const icons = ELEM_ICONS[agresId];
+  if(icons && icons[cat] && icons[cat][idx]) return icons[cat][idx];
+  return cat === 'A' ? '⭐' : cat === 'B' ? '🌟' : cat === 'C' ? '✨' : '💥';
+}
+
+function renderElementsList(agresId) {
+  const container = document.getElementById('elements-list');
+  const els = ELEMENTS[agresId];
+  if (!els) {
+    container.innerHTML = '<p class="text-sm">Les éléments pour cet agrès sont définis par un tableau de valeurs spécifique (saut / mini-trampoline). Composez votre enchaînement librement.</p>';
+    return;
+  }
+  container.innerHTML = ['A','B','C','D'].map(cat => {
+    const items = els[cat] || [];
+    return `<div class="elements-category">
+      <div class="cat-header">
+        <div class="cat-badge ${cat}">${cat}</div>
+        <span style="font-family:'Syne',sans-serif;font-weight:700;font-size:12px">Difficulté ${cat}</span>
+        <span class="cat-pts">${DIFF_PTS[cat].toFixed(2)} pt par élément</span>
+      </div>
+      <div class="elements-grid">
+        ${items.map((el, idx) => {
+          const isInEnch = enchainement.some(e => e.id === el.id);
+          const icon = getElemIcon(agresId, cat, idx);
+          return `<div class="element-card ${isInEnch ? 'selected-el' : ''}" onclick="toggleElement('${agresId}','${cat}','${el.id}')">
+            <div class="el-id">${icon} ${el.id}</div>
+            <div class="el-name">${el.name}</div>
+            <div class="el-desc">${el.desc.substring(0,60)}${el.desc.length>60?'…':''}</div>
+            ${el.exig ? `<span class="el-exig">${el.exig}</span>` : ''}
+          </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ════════════ ENCHAINEMENT ════════════
+function toggleElement(agresId, cat, elId) {
+  const existing = enchainement.findIndex(e => e.id === elId);
+  if (existing >= 0) {
+    enchainement.splice(existing, 1);
+  } else {
+    const el = ELEMENTS[agresId][cat].find(e => e.id === elId);
+    const idx = ELEMENTS[agresId][cat].findIndex(e => e.id === elId);
+    const icon = getElemIcon(agresId, cat, idx);
+    enchainement.push({ id:elId, cat, name:el.name, desc:el.desc, exig:el.exig, pts:DIFF_PTS[cat], icon });
+  }
+  renderElementsList(agresId);
+  renderEnchainementList();
+  renderExigStatusBar(AGRES.find(a => a.id === agresId));
+  renderNoteDPreview();
+}
+
+function renderEnchainementList() {
+  const list = document.getElementById('enchainement-list');
+  if (enchainement.length === 0) {
+    list.innerHTML = '<li class="empty-state"><div class="icon">📋</div><p>Sélectionnez des éléments ci-dessus</p></li>';
+    document.getElementById('el-count').textContent = '0 élément';
+    return;
+  }
+  document.getElementById('el-count').textContent = `${enchainement.length} élément${enchainement.length>1?'s':''}`;
+  list.innerHTML = enchainement.map((el, i) => `
+    <li class="enchainement-item">
+      <div class="num">${i+1}</div>
+      <div style="font-size:18px;flex-shrink:0">${el.icon||'⭐'}</div>
+      <div class="el-info">
+        <div class="name">${el.name}</div>
+        <div class="meta">${el.id} · ${el.desc.substring(0,50)}${el.desc.length>50?'…':''}</div>
+      </div>
+      ${el.exig ? `<span class="exig-tag">${el.exig}</span>` : ''}
+      <span class="diff-badge ${el.cat}">${el.cat} · ${el.pts.toFixed(2)}</span>
+      <button class="btn btn-danger btn-sm" onclick="removeElement(${i})">✕</button>
+    </li>
+  `).join('');
+}
+
+function removeElement(idx) {
+  enchainement.splice(idx, 1);
+  renderEnchainementList();
+  if (currentAgres) {
+    renderElementsList(currentAgres);
+    renderExigStatusBar(AGRES.find(a => a.id === currentAgres));
+  }
+  renderNoteDPreview();
+}
+
+function clearEnchainement() {
+  enchainement = [];
+  renderEnchainementList();
+  if (currentAgres) {
+    renderElementsList(currentAgres);
+    renderExigStatusBar(AGRES.find(a => a.id === currentAgres));
+  }
+  renderNoteDPreview();
+}
+
+function renderNoteDPreview() {
+  const preview = document.getElementById('note-d-preview');
+  const noteD = computeNoteD();
+  preview.innerHTML = `
+    <div style="background:var(--light);border-radius:8px;padding:10px 14px;display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+      <span style="font-size:11px;color:var(--mid);font-weight:600">Aperçu Note D</span>
+      <span><b style="font-family:'Syne',sans-serif;color:var(--blue);font-size:15px">${noteD.diff.toFixed(2)}</b> <span style="font-size:10px;color:var(--mid)">Diff. (${Math.min(enchainement.length,8)} élém.)</span></span>
+      <span style="color:var(--mid)">+</span>
+      <span><b style="font-family:'Syne',sans-serif;color:var(--blue);font-size:15px">${noteD.exig.toFixed(2)}</b> <span style="font-size:10px;color:var(--mid)">Exig. (${noteD.exigCount}/4)</span></span>
+      <span style="color:var(--mid)">=</span>
+      <span><b style="font-family:'Syne',sans-serif;color:var(--orange);font-size:17px">${noteD.total.toFixed(2)}</b> <span style="font-size:10px;color:var(--mid)">/10</span></span>
+      ${enchainement.length <= 5 && enchainement.length > 0 ? '<span class="chip chip-red">⚠ Trop court (-2pts)</span>' : ''}
+    </div>
+  `;
+}
+
+function computeNoteD() {
+  const sorted = [...enchainement].sort((a,b) => b.pts - a.pts);
+  const seen = new Set();
+  const top8 = [];
+  for (const el of sorted) {
+    if (!seen.has(el.id) && top8.length < 8) { top8.push(el); seen.add(el.id); }
+  }
+  const diff = top8.reduce((s, e) => s + e.pts, 0);
+  const agres = AGRES.find(a => a.id === currentAgres);
+  let exigCount = 0;
+  if (agres && agres.exig.length > 0) {
+    const fulfilledExig = new Set();
+    for (const el of enchainement) {
+      if (el.exig && !fulfilledExig.has(el.exig)) fulfilledExig.add(el.exig);
+    }
+    exigCount = fulfilledExig.size;
+  }
+  const exig = exigCount * 0.5;
+  const total = diff + exig;
+  return { diff, exig, exigCount, total, top8 };
+}
+
+// ════════════ SAVE GYMNAST ════════════
+function saveGymnast() {
+  const firstname = document.getElementById('gymnast-firstname').value.trim();
+  const lastname = document.getElementById('gymnast-lastname').value.trim();
+  const school = document.getElementById('gymnast-school').value.trim();
+  const team = document.getElementById('gymnast-team').value.trim();
+  const level = document.getElementById('gymnast-level').value;
+  if (!firstname) { showToast('⚠️ Veuillez saisir le prénom du gymnaste.'); return; }
+  if (!currentAgres) { showToast('⚠️ Veuillez sélectionner un agrès.'); return; }
+  if (enchainement.length === 0) { showToast('⚠️ Veuillez composer un enchaînement.'); return; }
+  const noteD = computeNoteD();
+  const record = {
+    id: Date.now(),
+    name: firstname,
+    lastname,
+    school,
+    team: team ? parseInt(team) : null,
+    level,
+    agresId: currentAgres,
+    agresName: AGRES.find(a => a.id === currentAgres).name,
+    enchainement: [...enchainement],
+    noteD,
+    noteE: null,
+    noteDPenal: 0,
+    comment: '',
+    finalScore: null,
+    judged: false,
+    faultLog: [],
+  };
+  gymnastsDB.push(record);
+  saveDB();
+  showToast(`✅ Enchaînement de ${firstname} enregistré !`);
+  enchainement = [];
+  currentAgres = null;
+  document.getElementById('gymnast-firstname').value = '';
+  document.getElementById('gymnast-lastname').value = '';
+  document.getElementById('gymnast-school').value = '';
+  document.getElementById('gymnast-team').value = '';
+  document.getElementById('elements-section').style.display = 'none';
+  document.getElementById('specific-faults-card').style.display = 'none';
+  renderAgresGrid();
+}
+
+// ════════════ PREVIEW ════════════
+function openPreview(gymId) {
+  const g = gymnastsDB.find(x => x.id === gymId);
+  if (!g) return;
+  const agres = AGRES.find(a => a.id === g.agresId);
+  document.getElementById('preview-title').textContent = `${g.name}${g.lastname ? ' ' + g.lastname : ''}`;
+  let sub = `${g.agresName} · ${g.level}`;
+  if(g.school) sub += ` · ${g.school}`;
+  if(g.team) sub += ` · Équipe ${g.team}`;
+  document.getElementById('preview-subtitle').textContent = sub;
+
+  const noteD = g.noteD;
+  const exigFulfilled = new Set((g.enchainement||[]).filter(e => e.exig).map(e => e.exig));
+  
+  let body = `
+    <div class="preview-score-row">
+      <div class="preview-score-cell">
+        <div class="lbl">Note D Diff.</div>
+        <div class="val">${noteD?.diff?.toFixed(2)||'—'}</div>
+      </div>
+      <div class="preview-score-cell">
+        <div class="lbl">Note D Exig.</div>
+        <div class="val">${noteD?.exig?.toFixed(2)||'—'}</div>
+      </div>
+      <div class="preview-score-cell total">
+        <div class="lbl">Note D Totale</div>
+        <div class="val">${noteD?.total?.toFixed(2)||'—'}</div>
+      </div>
+    </div>
+  `;
+
+  if(agres && agres.exig.length > 0) {
+    body += `<div class="exig-chips">`;
+    agres.exig.forEach(e => {
+      const ok = exigFulfilled.has(e);
+      const label = EXIG_LABELS[agres.id]?.[e] || e;
+      body += `<span class="exig-chip ${ok?'ok':'missing'}">${ok?'✅':'❌'} ${e} — ${label}</span>`;
+    });
+    body += `</div>`;
+  }
+
+  body += `<div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px">Enchaînement (${(g.enchainement||[]).length} éléments)</div>`;
+  (g.enchainement||[]).forEach((el, i) => {
+    body += `<div class="preview-item">
+      <div class="p-icon">${el.icon||'⭐'}</div>
+      <div class="p-info">
+        <div class="p-name"><span class="diff-badge ${el.cat}" style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;padding:2px 6px;border-radius:99px;color:white;background:${el.cat==='A'?'#22C55E':el.cat==='B'?'#3B82F6':el.cat==='C'?'#A855F7':'#E85D04'}">${el.cat}</span> ${el.name}</div>
+        <div class="p-desc">${el.desc}</div>
+        ${el.exig ? `<span class="exig-chip ok" style="margin-top:4px;display:inline-flex">✓ ${el.exig}</span>` : ''}
+      </div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:var(--blue);flex-shrink:0">${el.pts.toFixed(2)}</div>
+    </div>`;
+  });
+
+  document.getElementById('preview-body').innerHTML = body;
+  document.getElementById('preview-modal').classList.add('open');
+}
+
+function closePreview() {
+  document.getElementById('preview-modal').classList.remove('open');
+}
+
+// ════════════ JURY LIST ════════════
+function renderJuryList() {
+  const container = document.getElementById('gymnasts-for-jury');
+  if (gymnastsDB.length === 0) {
+    container.innerHTML = '<div class="empty-state"><div class="icon">🤸</div><p>Aucun gymnaste enregistré.</p></div>';
+    return;
+  }
+  container.innerHTML = gymnastsDB.map(g => {
+    const fullName = g.name + (g.lastname ? ' ' + g.lastname : '');
+    return `<div class="gymnast-row ${g.judged ? 'judged' : ''}">
+      <div class="gymnast-avatar">${g.name.charAt(0).toUpperCase()}</div>
+      <div style="flex:1;min-width:0">
+        <div class="g-name">${fullName}</div>
+        <div class="g-agres">${g.agresName}${g.school?' · '+g.school:''}${g.team?' · Éq.'+g.team:''}</div>
+      </div>
+      <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();openPreview(${g.id})" style="flex-shrink:0">👁 Voir</button>
+      ${g.judged ? `<div class="g-score">${g.finalScore !== null ? g.finalScore.toFixed(2) : '—'}</div>` : ''}
+      <span class="g-status ${g.judged ? 'done' : 'pending'}" onclick="openJuryPanel(${g.id})" style="cursor:pointer;flex-shrink:0">${g.judged ? 'Noté ✔' : 'Juger →'}</span>
+    </div>`;
+  }).join('');
+}
+
+// ════════════ JURY PANEL ════════════
+function openJuryPanel(gymId) {
+  currentJuryGym = gymnastsDB.find(g => g.id === gymId);
+  if (!currentJuryGym) return;
+  juryFaultCounts = {};
+  juryFaultLabels = {};
+  document.getElementById('jury-gymnast-select').style.display = 'none';
+  document.getElementById('jury-panel').style.display = 'block';
+  const fullName = currentJuryGym.name + (currentJuryGym.lastname ? ' ' + currentJuryGym.lastname : '');
+  document.getElementById('jury-gymnast-name').textContent = fullName;
+  let sub = `${currentJuryGym.agresName} · ${currentJuryGym.level}`;
+  if(currentJuryGym.school) sub += ` · ${currentJuryGym.school}`;
+  if(currentJuryGym.team) sub += ` · Équipe ${currentJuryGym.team}`;
+  document.getElementById('jury-agres-name').textContent = sub;
+  document.getElementById('jury-specific-agres').textContent = currentJuryGym.agresName;
+  document.getElementById('jury-d-penal').value = currentJuryGym.noteDPenal || 0;
+  document.getElementById('jury-comment').value = currentJuryGym.comment || '';
+  renderGeneralFaultsChips();
+  renderSpecificFaultsJury();
+  renderFigureFaults();
+  recalculateJuryScore();
+  // scroll to top
+  window.scrollTo(0,0);
+}
+
+function closeJuryPanel() {
+  document.getElementById('jury-gymnast-select').style.display = 'block';
+  document.getElementById('jury-panel').style.display = 'none';
+  currentJuryGym = null;
+  renderJuryList();
+}
+
+// General faults as compact chips (reminder style)
+function renderGeneralFaultsChips() {
+  const container = document.getElementById('general-faults-chips');
+  container.innerHTML = GENERAL_FAULTS.map((f, fi) => {
+    return f.pts.map(p => `
+      <div class="fault-chip" onclick="addFault('gen_${fi}_${p.toFixed(2)}',${p},'${f.name.replace(/'/g,"\\'")}')">
+        <span>${f.name}</span>
+        <span class="pts-badge">-${p.toFixed(2)}</span>
+      </div>
+    `).join('');
+  }).join('');
+}
+
+function renderSpecificFaultsJury() {
+  const container = document.getElementById('specific-faults-jury');
+  const faults = SPECIFIC_FAULTS[currentJuryGym.agresId] || [];
+  if (faults.length === 0) { container.innerHTML = '<p class="text-sm">Pas de fautes spécifiques pour cet agrès.</p>'; return; }
+  container.innerHTML = faults.map((f, fi) => {
+    return f.pts.map(p => `
+      <div class="faute-btn" onclick="addFault('spec_${fi}_${p.toFixed(2)}',${p},'${f.name.replace(/'/g,"\\'")}')">
+        <span>${f.name}</span>
+        <span class="faute-pts">-${p.toFixed(2)}</span>
+      </div>
+    `).join('');
+  }).join('');
+}
+
+function renderFigureFaults() {
+  const container = document.getElementById('figure-faults-list');
+  const ench = currentJuryGym.enchainement;
+  if (!ench || ench.length === 0) {
+    container.innerHTML = '<p class="text-sm">Enchaînement libre (pas de liste de figures détaillée).</p>';
+    return;
+  }
+  container.innerHTML = ench.map((el, i) => {
+    const key = `fig_${i}`;
+    const count = juryFaultCounts[key]?.total || 0;
+    const catColor = el.cat==='A'?'#22C55E':el.cat==='B'?'#3B82F6':el.cat==='C'?'#A855F7':'#E85D04';
+    return `<div class="figure-judging">
+      <div class="figure-judging-header">
+        <div class="figure-icon-box">${el.icon||'⭐'}</div>
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <span style="font-family:'Syne',sans-serif;font-size:12px;font-weight:800;background:${catColor};color:white;padding:2px 7px;border-radius:5px">${el.cat}</span>
+            <span style="font-weight:600;font-size:13px">${el.name}</span>
+          </div>
+          <div style="font-size:11px;color:var(--mid);margin-top:3px;line-height:1.3">${el.desc}</div>
+        </div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:#B91C1C;flex-shrink:0">-${count.toFixed(2)}pt</div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button onclick="addFault('${key}_exec_0.1',0.1,'Faute légère — ${el.name}')" style="background:#FEF3C7;border:1px solid #F59E0B;border-radius:6px;padding:8px 12px;cursor:pointer;font-size:11px;font-weight:600;color:#92400E;-webkit-tap-highlight-color:transparent">Légère -0.10</button>
+        <button onclick="addFault('${key}_exec_0.3',0.3,'Faute moyenne — ${el.name}')" style="background:#FED7AA;border:1px solid #F97316;border-radius:6px;padding:8px 12px;cursor:pointer;font-size:11px;font-weight:600;color:#C2410C;-webkit-tap-highlight-color:transparent">Moyenne -0.30</button>
+        <button onclick="addFault('${key}_exec_0.5',0.5,'Grosse faute — ${el.name}')" style="background:#FECACA;border:1px solid #F87171;border-radius:6px;padding:8px 12px;cursor:pointer;font-size:11px;font-weight:600;color:#B91C1C;-webkit-tap-highlight-color:transparent">Grosse -0.50</button>
+        <button onclick="addFault('${key}_exec_1.0',1.0,'Chute — ${el.name}')" style="background:#FEE2E2;border:1px solid #EF4444;border-radius:6px;padding:8px 12px;cursor:pointer;font-size:11px;font-weight:700;color:#991B1B;-webkit-tap-highlight-color:transparent">Chute -1.00</button>
+        <button onclick="resetFigureFault('${key}')" style="background:var(--light);border:1px solid var(--border);border-radius:6px;padding:8px 12px;cursor:pointer;font-size:11px;color:var(--mid);-webkit-tap-highlight-color:transparent">↺ Reset</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function addFault(key, pts, label) {
+  if (!juryFaultCounts[key]) juryFaultCounts[key] = { total: 0, entries: [] };
+  juryFaultCounts[key].total = Math.round((juryFaultCounts[key].total + pts) * 100) / 100;
+  juryFaultCounts[key].entries.push(pts);
+  if (!juryFaultLabels[key]) juryFaultLabels[key] = label;
+  renderFigureFaults();
+  recalculateJuryScore();
+  showToast(`-${pts.toFixed(2)} pt : ${label.substring(0,35)}`);
+}
+
+function resetFigureFault(key) {
+  if (juryFaultCounts[key]) { juryFaultCounts[key] = { total: 0, entries: [] }; }
+  renderFigureFaults();
+  recalculateJuryScore();
+}
+
+function recalculateJuryScore() {
+  if (!currentJuryGym) return;
+  let totalDeductions = 0;
+  for (const k in juryFaultCounts) { totalDeductions += juryFaultCounts[k].total; }
+  totalDeductions = Math.round(totalDeductions * 100) / 100;
+  const noteE = Math.max(0, Math.round((10 - totalDeductions) * 100) / 100);
+  const dPenal = parseFloat(document.getElementById('jury-d-penal').value || 0);
+  const noteD = currentJuryGym.noteD.total;
+  const finale = Math.max(0, Math.round((noteD + noteE - dPenal) * 100) / 100);
+  document.getElementById('noteE-brute').textContent = '10.00';
+  document.getElementById('noteE-penal').textContent = totalDeductions.toFixed(2);
+  document.getElementById('noteE-final').textContent = noteE.toFixed(2);
+  document.getElementById('note-finale-jury').textContent = finale.toFixed(2);
+}
+
+function validateJuryScore() {
+  if (!currentJuryGym) return;
+  let totalDeductions = 0;
+  const faultLog = [];
+  for (const k in juryFaultCounts) {
+    const fc = juryFaultCounts[k];
+    if (fc.total > 0) {
+      faultLog.push({ key: k, label: juryFaultLabels[k] || k, total: fc.total, entries: fc.entries });
+    }
+    totalDeductions += fc.total;
+  }
+  totalDeductions = Math.round(totalDeductions * 100) / 100;
+  const noteE = Math.max(0, Math.round((10 - totalDeductions) * 100) / 100);
+  const dPenal = parseFloat(document.getElementById('jury-d-penal').value || 0);
+  const noteD = currentJuryGym.noteD.total;
+  const finale = Math.max(0, Math.round((noteD + noteE - dPenal) * 100) / 100);
+  const comment = document.getElementById('jury-comment').value;
+  const idx = gymnastsDB.findIndex(g => g.id === currentJuryGym.id);
+  gymnastsDB[idx].noteE = noteE;
+  gymnastsDB[idx].noteDPenal = dPenal;
+  gymnastsDB[idx].comment = comment;
+  gymnastsDB[idx].finalScore = finale;
+  gymnastsDB[idx].judged = true;
+  gymnastsDB[idx].faultLog = faultLog;
+  gymnastsDB[idx].totalDeductions = totalDeductions;
+  saveDB();
+  showToast(`✅ Note de ${currentJuryGym.name} validée : ${finale.toFixed(2)} pts`);
+  closeJuryPanel();
+}
+
+// ════════════ RESULTS ════════════
+function renderResults() {
+  const judged = gymnastsDB.filter(g => g.judged).sort((a,b) => b.finalScore - a.finalScore);
+  const pending = gymnastsDB.filter(g => !g.judged);
+  const container = document.getElementById('results-list');
+  const noResults = document.getElementById('no-results');
+  if (gymnastsDB.length === 0) {
+    container.innerHTML = '';
+    noResults.style.display = 'block';
+    return;
+  }
+  noResults.style.display = 'none';
+  let html = '';
+
+  if (judged.length > 0) {
+    // Classement individuel
+    html += `<div class="card">
+      <div class="card-title">🥇 Classement individuel — gymnaste noté(e)s</div>
+      <div class="table-wrapper">
+      <table class="detail-table">
+        <thead><tr><th>#</th><th>Gymnaste</th><th>Établissement</th><th>Éq.</th><th>Agrès</th><th>Note D</th><th>Note E</th><th>Pénal.</th><th style="color:var(--orange)">Finale</th><th></th></tr></thead>
+        <tbody>
+          ${judged.map((g,i) => `<tr>
+            <td style="font-family:'Syne',sans-serif;font-weight:800;color:${i===0?'var(--orange)':'var(--dark)'};font-size:16px">${i===0?'🥇':i===1?'🥈':i===2?'🥉':(i+1)}</td>
+            <td style="font-weight:600">${g.name}${g.lastname?' '+g.lastname:''}</td>
+            <td style="font-size:11px;color:var(--mid)">${g.school||'—'}</td>
+            <td><span class="team-tag">${g.team||'—'}</span></td>
+            <td style="font-size:12px">${g.agresName}</td>
+            <td>${g.noteD?.total?.toFixed(2)??'—'}</td>
+            <td>${g.noteE?.toFixed(2)??'—'}</td>
+            <td style="color:#B91C1C">${g.noteDPenal>0?'-'+g.noteDPenal.toFixed(2):'—'}</td>
+            <td style="font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:var(--orange)">${g.finalScore?.toFixed(2)??'—'}</td>
+            <td style="display:flex;gap:5px">
+              <button class="btn btn-ghost btn-sm" onclick="openPreview(${g.id})">👁</button>
+              <button class="btn btn-ghost btn-sm" onclick="exportGymnastPDF(${g.id})">📄</button>
+            </td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+      </div>
+    </div>`;
+
+    // Classement général par gymnaste (sum of all scores)
+    const byGym = {};
+    judged.forEach(g => {
+      const key = `${g.name}|${g.lastname}|${g.school}|${g.team}`;
+      if(!byGym[key]) byGym[key] = { name: g.name, lastname: g.lastname, school: g.school, team: g.team, total: 0, performances: [] };
+      byGym[key].total = Math.round((byGym[key].total + g.finalScore) * 100) / 100;
+      byGym[key].performances.push({ agres: g.agresName, score: g.finalScore });
+    });
+    const generalRanking = Object.values(byGym).sort((a,b) => b.total - a.total);
+    if(generalRanking.length > 1 || (generalRanking.length === 1 && generalRanking[0].performances.length > 1)) {
+      html += `<div class="card">
+        <div class="card-title">🌟 Classement général — cumul des performances</div>
+        ${generalRanking.map((r, i) => {
+          const medal = i===0?'🥇':i===1?'🥈':i===2?'🥉':'';
+          return `<div class="ranking-card" style="${i===0?'background:#FFF5EF;border:1.5px solid var(--orange)':''}">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:${i===0?'var(--orange)':'var(--mid)'};width:28px">${medal||i+1}</div>
+              <div style="flex:1">
+                <div class="ranking-name">${r.name}${r.lastname?' '+r.lastname:''} ${r.team?`<span class="team-tag">Éq.${r.team}</span>`:''}</div>
+                <div class="ranking-detail">${r.school||''} · ${r.performances.map(p=>`${p.agres}: ${p.score.toFixed(2)}`).join(' | ')}</div>
+              </div>
+              <div class="ranking-score">${r.total.toFixed(2)}</div>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>`;
+    }
+  }
+
+  if (pending.length > 0) {
+    html += `<div class="card">
+      <div class="card-title">⏳ En attente de jugement</div>
+      ${pending.map(g => `<div style="padding:9px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px">
+        <div class="gymnast-avatar" style="width:30px;height:30px;font-size:12px">${g.name.charAt(0)}</div>
+        <div style="flex:1">
+          <div style="font-weight:600;font-size:12px">${g.name}${g.lastname?' '+g.lastname:''}</div>
+          <div class="text-sm">${g.agresName}${g.school?' · '+g.school:''}${g.team?' · Éq.'+g.team:''}</div>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="openPreview(${g.id})">👁 Voir</button>
+        <span class="g-status pending">En attente</span>
+      </div>`).join('')}
+    </div>`;
+  }
+
+  container.innerHTML = html;
+}
+
+// ════════════ PDF ════════════
+function exportGymnastPDF(gymId) {
+  const g = gymnastsDB.find(x => x.id === gymId);
+  if (!g) return;
+  const win = window.open('', '_blank', 'width=900,height=700');
+  win.document.write(buildPDFHtml(g));
+  win.document.close();
+  setTimeout(() => win.print(), 800);
+}
+
+function buildPDFHtml(g) {
+  const ench = g.enchainement || [];
+  const exigFulfilled = new Set(ench.filter(e => e.exig).map(e => e.exig));
+  const agres = AGRES.find(a => a.id === g.agresId);
+  const fullName = g.name + (g.lastname ? ' ' + g.lastname : '');
+  const faultLog = g.faultLog || [];
+  
+  let faultSection = '';
+  if(faultLog.length > 0) {
+    faultSection = `
+      <div class="section-title">Détail des fautes notées par le jury</div>
+      <table>
+        <thead><tr><th>Faute</th><th>Déductions</th><th>Total</th></tr></thead>
+        <tbody>
+          ${faultLog.map(f => `<tr>
+            <td>${f.label||f.key}</td>
+            <td style="font-size:11px;color:#3D4966">${f.entries.map(e=>'-'+e.toFixed(2)).join(', ')}</td>
+            <td style="font-weight:700;color:#B91C1C">-${f.total.toFixed(2)} pt</td>
+          </tr>`).join('')}
+          <tr style="background:#FEE2E2">
+            <td colspan="2" style="font-weight:700;text-align:right">Total déductions</td>
+            <td style="font-weight:800;color:#B91C1C">-${(g.totalDeductions||0).toFixed(2)} pt</td>
+          </tr>
+        </tbody>
+      </table>`;
+  }
+
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'DM Sans',sans-serif;color:#0A0F1E;padding:28px;max-width:800px;margin:0 auto}
+    .pdf-header{background:#0047AB;color:white;border-radius:10px;padding:20px 24px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center}
+    .pdf-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:800}
+    .pdf-sub{font-size:12px;opacity:0.8;margin-top:3px}
+    .pdf-meta{font-size:11px;opacity:0.7;margin-top:2px}
+    .score-row{display:flex;gap:12px;margin-bottom:20px}
+    .score-cell{flex:1;background:#F5F7FF;border-radius:8px;padding:12px;text-align:center}
+    .score-cell .lbl{font-size:10px;font-weight:500;color:#3D4966;text-transform:uppercase}
+    .score-cell .val{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#0047AB;margin:4px 0}
+    .score-cell.total .val{color:#E85D04;font-size:28px}
+    table{width:100%;border-collapse:collapse;margin-bottom:16px}
+    th{background:#F5F7FF;padding:7px 10px;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;color:#3D4966;text-align:left}
+    td{padding:7px 10px;border-bottom:1px solid #D6DCF0;font-size:12px}
+    .section-title{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#0047AB;border-left:4px solid #E85D04;padding-left:9px;margin:18px 0 10px}
+    .exig-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+    .exig-chip{padding:4px 10px;border-radius:99px;font-size:11px;font-weight:600}
+    .exig-ok{background:#DCFCE7;color:#1A7A4A}
+    .exig-no{background:#FEE2E2;color:#B91C1C}
+    .badge{display:inline-flex;align-items:center;background:#0047AB;color:white;font-family:'Syne',sans-serif;font-weight:700;font-size:10px;padding:2px 8px;border-radius:99px}
+    @media print{body{padding:14px}}
+  </style></head><body>
+  <div class="pdf-header">
+    <div>
+      <div class="pdf-title">Fiche résultats — ${fullName}</div>
+      <div class="pdf-sub">${g.agresName} · ${g.level}</div>
+      <div class="pdf-meta">${g.school||''}${g.team?' · Équipe '+g.team:''} · UNSS 2024–2028</div>
+    </div>
+    <div style="text-align:right">
+      <div style="font-family:'Syne',sans-serif;font-size:38px;font-weight:800;color:#FFFFFF">${g.finalScore?.toFixed(2)??'—'}</div>
+      <div style="font-size:11px;opacity:0.7">Note finale</div>
+    </div>
+  </div>
+  <div class="score-row">
+    <div class="score-cell"><div class="lbl">Note D — Diff.</div><div class="val">${g.noteD?.diff?.toFixed(2)??'—'}</div><div style="font-size:10px;color:#3D4966">/8 pts</div></div>
+    <div class="score-cell"><div class="lbl">Note D — Exig.</div><div class="val">${g.noteD?.exig?.toFixed(2)??'—'}</div><div style="font-size:10px;color:#3D4966">/2 pts</div></div>
+    <div class="score-cell"><div class="lbl">Note D Totale</div><div class="val">${g.noteD?.total?.toFixed(2)??'—'}</div><div style="font-size:10px;color:#3D4966">/10 pts</div></div>
+    <div class="score-cell"><div class="lbl">Note E — Exécution</div><div class="val">${g.noteE?.toFixed(2)??'—'}</div><div style="font-size:10px;color:#3D4966">/10 pts</div></div>
+    <div class="score-cell total"><div class="lbl">Note Finale</div><div class="val">${g.finalScore?.toFixed(2)??'—'}</div><div style="font-size:10px;color:#3D4966">D+E${g.noteDPenal>0?' - pénal.':''}</div></div>
+  </div>
+  <div class="section-title">Enchaînement (${ench.length} éléments)</div>
+  <table>
+    <thead><tr><th>#</th><th>Élément</th><th>Description</th><th>Diff.</th><th>Valeur</th><th>Exig.</th></tr></thead>
+    <tbody>
+      ${ench.map((el,i) => `<tr>
+        <td><b>${i+1}</b></td>
+        <td><b>${el.id}</b> ${el.name}</td>
+        <td style="font-size:10px;color:#3D4966">${el.desc.substring(0,65)}${el.desc.length>65?'…':''}</td>
+        <td>${el.cat}</td>
+        <td>${el.pts.toFixed(2)} pt</td>
+        <td>${el.exig||'—'}</td>
+      </tr>`).join('')}
+    </tbody>
+  </table>
+  ${agres && agres.exig.length > 0 ? `
+  <div class="section-title">Exigences de composition</div>
+  <div class="exig-row">
+    ${agres.exig.map(e => `<span class="exig-chip ${exigFulfilled.has(e)?'exig-ok':'exig-no'}">${exigFulfilled.has(e)?'✅':'❌'} ${e}</span>`).join('')}
+  </div>` : ''}
+  ${faultSection}
+  ${g.comment ? `<div class="section-title">Commentaires du juge</div><p style="font-size:12px;color:#3D4966;font-style:italic">${g.comment}</p>` : ''}
+  <div style="margin-top:28px;border-top:1px solid #D6DCF0;padding-top:10px;font-size:10px;color:#3D4966;text-align:center">
+    UNSS · Gymnastic Artistique · Équipe Établissement · Code 2024–2028 · Généré le ${new Date().toLocaleDateString('fr-FR')}
+  </div>
+  </body></html>`;
+}
+
+function exportAllPDF() {
+  const judged = gymnastsDB.filter(g => g.judged).sort((a,b) => b.finalScore - a.finalScore);
+  if (judged.length === 0) { showToast('⚠️ Aucun résultat noté à exporter.'); return; }
+  const win = window.open('', '_blank', 'width=900,height=700');
+  let content = `<!DOCTYPE html><html><head><meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'DM Sans',sans-serif;color:#0A0F1E;padding:28px;max-width:800px;margin:0 auto}
+    table{width:100%;border-collapse:collapse;margin-bottom:16px}
+    th{background:#F5F7FF;padding:7px 10px;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;color:#3D4966;text-align:left}
+    td{padding:7px 10px;border-bottom:1px solid #D6DCF0;font-size:12px}
+    h1{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#0047AB;margin-bottom:4px}
+    h2{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:#0047AB;margin:16px 0 10px}
+    .badge{display:inline-flex;background:#0047AB;color:white;font-family:'Syne',sans-serif;font-weight:700;font-size:10px;padding:2px 8px;border-radius:99px}
+    @media print{body{padding:14px}}
+  </style></head><body>
+  <h1>🏆 Résultats — Compétition UNSS</h1>
+  <p style="color:#3D4966;font-size:12px;margin-bottom:16px">Généré le ${new Date().toLocaleDateString('fr-FR')} · Code 2024–2028</p>
+  <h2>Classement individuel</h2>
+  <table>
+    <thead><tr><th>Place</th><th>Gymnaste</th><th>Établissement</th><th>Éq.</th><th>Agrès</th><th>Note D</th><th>Note E</th><th>Finale</th></tr></thead>
+    <tbody>
+      ${judged.map((g,i) => `<tr>
+        <td style="font-family:'Syne',sans-serif;font-weight:800">${i===0?'🥇':i===1?'🥈':i===2?'🥉':(i+1)}</td>
+        <td><b>${g.name}${g.lastname?' '+g.lastname:''}</b></td>
+        <td style="font-size:11px">${g.school||'—'}</td>
+        <td>${g.team?`<span class="badge">Éq.${g.team}</span>`:'—'}</td>
+        <td>${g.agresName}</td>
+        <td>${g.noteD?.total?.toFixed(2)??'—'}</td>
+        <td>${g.noteE?.toFixed(2)??'—'}</td>
+        <td style="font-family:'Syne',sans-serif;font-weight:800;color:#E85D04;font-size:14px">${g.finalScore?.toFixed(2)??'—'}</td>
+      </tr>`).join('')}
+    </tbody>
+  </table>
+  </body></html>`;
+  win.document.write(content);
+  win.document.close();
+  setTimeout(() => win.print(), 800);
+}
+
+function clearAll() {
+  if (!confirm('Supprimer tous les gymnastes et résultats ?')) return;
+  gymnastsDB = [];
+  saveDB();
+  renderResults();
+  renderJuryList();
+  showToast('🗑 Données effacées');
+}
+
+// ════════════ INIT ════════════
+renderAgresGrid();
+
+// Close modal on overlay click
+document.getElementById('preview-modal').addEventListener('click', function(e) {
+  if(e.target === this) closePreview();
+});
+</script>
+</body>
+</html>
