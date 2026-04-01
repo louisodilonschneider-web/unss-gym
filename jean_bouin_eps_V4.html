@@ -1,0 +1,3253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collège Pasteur — EPI Jean Bouin</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1a2b6b;
+  --navy-light: #223380;
+  --orange: #e8581a;
+  --orange-light: #f07030;
+  --white: #ffffff;
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --border: #dde3f0;
+  --text: #1a2340;
+  --muted: #6b7a99;
+  --green: #1caa55;
+  --red: #e03030;
+  --yellow: #f5b800;
+  --ahead: #1caa55;
+  --behind: #e03030;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ─── HEADER ─────────────────────────────────────────────── */
+header {
+  background: var(--navy);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 58px;
+  border-bottom: 3px solid var(--orange);
+}
+.logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+.logo-college { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:22px; color:var(--white); }
+.logo-college span { color:var(--orange); }
+.logo-sub { font-size:11px; color:#8ba0d4; letter-spacing:.5px; }
+
+/* ─── NAV ─────────────────────────────────────────────────── */
+nav {
+  background: var(--navy-light);
+  display: flex;
+  gap: 2px;
+  padding: 0 24px;
+  overflow-x: auto;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+nav button {
+  background: none;
+  border: none;
+  color: #afc4f0;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:600;
+  font-size:14px;
+  padding: 11px 16px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  transition: all .2s;
+  letter-spacing: .3px;
+}
+nav button:hover { color:var(--white); background:rgba(255,255,255,.06); }
+nav button.active { color:var(--orange); border-bottom-color:var(--orange); background:rgba(232,88,26,.1); }
+
+/* ─── MAIN ────────────────────────────────────────────────── */
+main { padding: 28px 24px; max-width: 1300px; margin: 0 auto; }
+
+.page { display: none; }
+.page.active { display: block; }
+
+/* ─── PAGE TITLES ─────────────────────────────────────────── */
+h1.page-title {
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900; font-size:28px;
+  color: var(--navy);
+  border-left: 5px solid var(--orange);
+  padding-left: 14px;
+  margin-bottom: 24px;
+}
+h2.section-title {
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700; font-size:18px;
+  color: var(--navy);
+  margin-bottom: 12px;
+  display:flex; align-items:center; gap:8px;
+}
+
+/* ─── CARD ────────────────────────────────────────────────── */
+.card {
+  background: var(--card);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  padding: 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(26,43,107,.06);
+}
+
+/* ─── FORM ELEMENTS ───────────────────────────────────────── */
+label { font-size:11px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; display:block; margin-bottom:4px; }
+input[type="text"], input[type="number"], input[type="time"], select, textarea {
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:8px 10px;
+  font-size:14px;
+  font-family:'Barlow',sans-serif;
+  color: var(--text);
+  background: var(--white);
+  transition: border-color .2s;
+}
+input:focus, select:focus, textarea:focus {
+  outline:none;
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(26,43,107,.1);
+}
+.form-row { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:14px; }
+.form-col { flex:1; min-width:140px; }
+
+/* ─── BUTTONS ─────────────────────────────────────────────── */
+.btn {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:9px 18px; border-radius:7px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700; font-size:14px; letter-spacing:.4px;
+  border:none; cursor:pointer; transition:all .15s;
+}
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--navy-light); transform:translateY(-1px); box-shadow:0 4px 12px rgba(26,43,107,.3); }
+.btn-orange { background:var(--orange); color:var(--white); }
+.btn-orange:hover { background:var(--orange-light); transform:translateY(-1px); }
+.btn-outline { background:transparent; color:var(--navy); border:2px solid var(--navy); }
+.btn-outline:hover { background:var(--navy); color:var(--white); }
+.btn-green { background:var(--green); color:var(--white); }
+.btn-red { background:var(--red); color:var(--white); }
+.btn-sm { padding:6px 12px; font-size:12px; }
+.btn-xs { padding:4px 8px; font-size:11px; }
+
+/* ─── TABLE ────────────────────────────────────────────────── */
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { background:var(--navy); color:var(--white); font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:12px; letter-spacing:.5px; padding:10px 12px; text-align:left; }
+td { padding:9px 12px; border-bottom:1px solid var(--border); }
+tr:last-child td { border-bottom:none; }
+tr:hover td { background:rgba(26,43,107,.03); }
+
+/* ─── CHRONO ──────────────────────────────────────────────── */
+.chrono-display {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:64px; font-weight:900;
+  color: var(--navy);
+  text-align:center; letter-spacing:4px;
+  padding: 20px 0;
+}
+.chrono-display.running { color:var(--orange); }
+.chrono-btns { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; }
+
+/* ─── TEAMS GRID ──────────────────────────────────────────── */
+.teams-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; }
+.team-card {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 2px 8px rgba(26,43,107,.06);
+}
+.team-header {
+  background:var(--navy);
+  color:var(--white);
+  padding:10px 16px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.team-header .team-name {
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700; font-size:16px; letter-spacing:.3px;
+}
+.team-body { padding:14px 16px; }
+.member-tag {
+  display:inline-block;
+  background:rgba(26,43,107,.08);
+  color:var(--navy);
+  border-radius:20px;
+  padding:3px 10px;
+  font-size:12px; font-weight:600;
+  margin:3px;
+}
+
+/* ─── LIVE TRACKING ────────────────────────────────────────── */
+.live-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:16px; }
+.live-card {
+  background:var(--card);
+  border:2px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+  transition: border-color .2s, box-shadow .2s;
+}
+.live-card.running { border-color:var(--orange); box-shadow:0 0 0 3px rgba(232,88,26,.15); }
+.live-card.finished { border-color:var(--green); }
+.live-card-header {
+  background:var(--navy);
+  color:var(--white);
+  padding:10px 16px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.live-card-body { padding:14px 16px; }
+.live-stats { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px; }
+.live-stat {
+  background:var(--bg);
+  border-radius:8px;
+  padding:8px 12px;
+  text-align:center;
+}
+.live-stat-val {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:22px; font-weight:900;
+  color:var(--navy);
+}
+.live-stat-val.ahead { color:var(--ahead); }
+.live-stat-val.behind { color:var(--behind); }
+.live-stat-lbl { font-size:10px; color:var(--muted); font-weight:600; text-transform:uppercase; }
+
+.members-btns { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+.member-btn {
+  background:var(--navy);
+  color:var(--white);
+  border:none;
+  border-radius:8px;
+  padding:8px 14px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700; font-size:14px;
+  cursor:pointer;
+  transition:all .15s;
+  position:relative;
+}
+.member-btn:hover { background:var(--orange); transform:scale(1.05); }
+.member-btn.clicked { background:var(--green); }
+.member-btn .click-count {
+  position:absolute; top:-6px; right:-6px;
+  background:var(--orange);
+  color:var(--white);
+  border-radius:50%;
+  width:18px; height:18px;
+  font-size:10px; font-weight:900;
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* ─── PROGRESS BAR ─────────────────────────────────────────── */
+.progress-wrap { background:var(--border); border-radius:6px; height:10px; margin:8px 0; overflow:hidden; }
+.progress-bar { height:100%; border-radius:6px; transition:width .4s; background:linear-gradient(90deg,var(--navy),var(--orange)); }
+
+/* ─── LAP LOG ──────────────────────────────────────────────── */
+.lap-log { max-height:160px; overflow-y:auto; font-size:12px; }
+.lap-row { display:flex; gap:10px; padding:4px 0; border-bottom:1px solid var(--border); }
+.lap-row:last-child { border-bottom:none; }
+.lap-num { color:var(--muted); font-weight:700; width:60px; }
+
+/* ─── PHYSICS PAGE ─────────────────────────────────────────── */
+.physics-section { margin-bottom:28px; }
+.formula-box {
+  background:linear-gradient(135deg,var(--navy),var(--navy-light));
+  color:var(--white);
+  border-radius:10px;
+  padding:16px 20px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:18px; font-weight:700;
+  text-align:center;
+  margin-bottom:14px;
+}
+.formula-box span { color:var(--orange); }
+
+/* ─── BADGE ────────────────────────────────────────────────── */
+.badge {
+  display:inline-block;
+  padding:2px 8px; border-radius:4px;
+  font-size:11px; font-weight:700;
+  font-family:'Barlow Condensed',sans-serif;
+}
+.badge-navy { background:rgba(26,43,107,.1); color:var(--navy); }
+.badge-orange { background:rgba(232,88,26,.12); color:var(--orange); }
+.badge-green { background:rgba(28,170,85,.12); color:var(--green); }
+.badge-red { background:rgba(224,48,48,.12); color:var(--red); }
+
+/* ─── ALERTS ────────────────────────────────────────────────── */
+.alert { padding:12px 16px; border-radius:8px; font-size:13px; margin-bottom:14px; border-left:4px solid; }
+.alert-info { background:rgba(26,43,107,.06); border-color:var(--navy); color:var(--navy); }
+.alert-orange { background:rgba(232,88,26,.08); border-color:var(--orange); color:#c44810; }
+
+/* ─── DATA ACTIONS ─────────────────────────────────────────── */
+.data-actions { display:flex; gap:10px; flex-wrap:wrap; align-items:center; padding:14px 0; }
+
+/* ─── MODAL ─────────────────────────────────────────────────── */
+.modal-bg {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,.5); z-index:1000;
+  align-items:center; justify-content:center;
+}
+.modal-bg.open { display:flex; }
+.modal {
+  background:var(--white); border-radius:12px;
+  padding:28px; width:90%; max-width:480px;
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+  position:relative;
+}
+.modal h3 { font-family:'Barlow Condensed',sans-serif; font-size:20px; font-weight:700; color:var(--navy); margin-bottom:16px; }
+.modal-close { position:absolute; top:14px; right:16px; background:none; border:none; font-size:22px; cursor:pointer; color:var(--muted); }
+
+/* ─── PRINT ─────────────────────────────────────────────────── */
+@media print {
+  nav, .data-actions, .btn, .member-btn, .chrono-btns { display:none !important; }
+  .page { display:block !important; break-after:page; }
+  body { background:white; }
+}
+
+/* ─── SCROLLBAR ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width:6px; height:6px; }
+::-webkit-scrollbar-track { background:var(--bg); }
+::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+
+.tag-input-wrap { display:flex; flex-wrap:wrap; gap:6px; padding:6px; border:1px solid var(--border); border-radius:6px; background:var(--white); min-height:38px; }
+.tag { background:var(--navy); color:var(--white); border-radius:4px; padding:2px 8px; font-size:12px; display:flex; align-items:center; gap:4px; }
+.tag .rm { cursor:pointer; font-size:14px; opacity:.7; }
+.tag .rm:hover { opacity:1; }
+.tag-input { border:none; outline:none; font-size:13px; flex:1; min-width:100px; }
+
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+
+@media(max-width:600px) {
+  .grid2, .grid3 { grid-template-columns:1fr; }
+  .live-stats { grid-template-columns:1fr 1fr; }
+  .chrono-display { font-size:44px; }
+}
+
+.seance-tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }
+.seance-tab { padding:6px 14px; border-radius:20px; border:2px solid var(--border); background:var(--white); font-size:12px; font-weight:700; cursor:pointer; font-family:'Barlow Condensed',sans-serif; }
+.seance-tab.active { background:var(--navy); color:var(--white); border-color:var(--navy); }
+
+.absent-badge { background:rgba(224,48,48,.12); color:var(--red); border-radius:4px; padding:2px 6px; font-size:11px; font-weight:700; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-text">
+    <div class="logo-college">Collège <span>Pasteur</span></div>
+    <div class="logo-sub">Gestion EPS — Villemomble</div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <button class="active" onclick="showPage('p1')">🎓 Classe</button>
+  <button onclick="showPage('p2')">📊 Données</button>
+  <button onclick="showPage('p2b')">👥 Groupes</button>
+  <button onclick="showPage('pWarm')">🔥 Échauffement</button>
+  <button onclick="showPage('p3')">👁 Live — Passages</button>
+  <button onclick="showPage('p3b')">🤝 Live — Transmissions</button>
+  <button onclick="showPage('pFrac')">⚡ Fractionné</button>
+  <button onclick="showPage('pLibre')">📏 Live Libre</button>
+  <button onclick="showPage('p4')">📋 Bilan</button>
+  <button onclick="showPage('p5')">🔬 Physique-Chimie</button>
+</nav>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE 1 — CLASSE (import CSV + gestion élèves + équipes + chrono)
+════════════════════════════════════════════════════════ -->
+<div class="page active" id="p1">
+  <h1 class="page-title">🎓 Classe &amp; Équipes</h1>
+
+  <div class="alert alert-info">
+    <strong>Objectif EPI :</strong> Reproduire le record de Jean Bouin (3000 m en <strong>8 min 09 s</strong> — 1912) en relais. Vitesse cible : <strong>22,07 km/h</strong>.
+  </div>
+
+  <!-- ── Séances ── -->
+  <div class="card">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+      <h2 class="section-title" style="margin:0">📅 Séances</h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+        <input type="text" id="seanceName" placeholder="Ex : Séance 2 — 07/04/2026" style="width:240px">
+        <button class="btn btn-primary btn-sm" onclick="addSeance()">+ Nouvelle séance</button>
+      </div>
+    </div>
+    <div class="seance-tabs" id="seanceTabs"></div>
+  </div>
+
+  <!-- ── Import CSV ── -->
+  <div class="card">
+    <h2 class="section-title">📂 Importer la liste de la classe (CSV)</h2>
+    <div class="alert alert-info" style="margin-bottom:12px;font-size:12px">
+      Format attendu : une colonne <strong>prénom</strong> obligatoire. Colonnes optionnelles reconnues :
+      <strong>nom</strong>, <strong>sexe</strong> (M/F), <strong>niveau</strong>, <strong>groupe</strong>.
+      Première ligne = en-têtes. Séparateur : virgule ou point-virgule.
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;">
+      <div>
+        <label>Fichier CSV</label>
+        <input type="file" id="csvFile" accept=".csv,.txt" onchange="previewCSV(event)"
+          style="display:block;margin-top:4px;font-size:13px">
+      </div>
+      <div style="flex:1;min-width:200px">
+        <label>Ou coller le contenu CSV</label>
+        <textarea id="csvPaste" rows="3" placeholder="prénom,nom,sexe&#10;Alice,Martin,F&#10;Bob,Dupont,M"
+          style="width:100%;font-size:12px;font-family:monospace;border:1px solid var(--border);border-radius:6px;padding:8px;resize:vertical"></textarea>
+      </div>
+      <button class="btn btn-orange" onclick="importCSV()">⬆ Importer</button>
+    </div>
+    <div id="csvPreview" style="margin-top:10px"></div>
+  </div>
+
+  <!-- ── Liste élèves ── -->
+  <div class="card">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
+      <h2 class="section-title" style="margin:0">🧑‍🤝‍🧑 Liste de la classe (<span id="studentCount">0</span> élèves)</h2>
+      <button class="btn btn-primary btn-sm" onclick="showAddStudentForm()">+ Ajouter manuellement</button>
+    </div>
+    <div id="addStudentForm" style="display:none;margin-bottom:14px">
+      <div class="form-row">
+        <div class="form-col"><label>Prénom *</label><input type="text" id="newPrenom" placeholder="Alice"></div>
+        <div class="form-col"><label>Nom</label><input type="text" id="newNom" placeholder="Martin"></div>
+        <div class="form-col" style="flex:0 0 100px"><label>Sexe</label>
+          <select id="newSexe"><option value="">—</option><option value="F">F</option><option value="M">M</option></select>
+        </div>
+        <div class="form-col"><label>Niveau / info</label><input type="text" id="newNiveau" placeholder="3ème B"></div>
+        <div class="form-col" style="flex:0 0 140px;display:flex;align-items:flex-end;gap:6px">
+          <button class="btn btn-orange btn-sm" onclick="addStudentManual()">Ajouter</button>
+          <button class="btn btn-outline btn-sm" onclick="hideAddStudentForm()">Annuler</button>
+        </div>
+      </div>
+    </div>
+    <div id="studentTable"></div>
+  </div>
+
+  <!-- ── Créer une équipe depuis la classe ── -->
+  <div class="card" id="teamFormCard">
+    <h2 class="section-title">➕ Créer / Modifier une équipe</h2>
+    <div class="form-row" style="align-items:flex-end">
+      <div class="form-col" style="flex:0 0 180px;">
+        <label>Nom de l'équipe *</label>
+        <input type="text" id="teamName" placeholder="Équipe A">
+      </div>
+      <div class="form-col" style="flex:0 0 150px;">
+        <label>&nbsp;</label>
+        <button class="btn btn-orange" style="width:100%;height:38px" onclick="saveTeam()">💾 Enregistrer</button>
+      </div>
+    </div>
+    <div style="margin-top:12px">
+      <label>Membres sélectionnés (<span id="memberCount">0</span>)</label>
+      <div id="memberTags" style="display:flex;flex-wrap:wrap;gap:6px;min-height:36px;padding:6px;border:1px solid var(--border);border-radius:6px;background:#fff;margin-top:4px;cursor:text" onclick="document.getElementById('memberInput').focus()"></div>
+      <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
+        <input type="text" id="memberInput" placeholder="Taper un prénom puis Entrée…" style="flex:1;max-width:280px"
+          onkeydown="addMemberTag(event)">
+        <button class="btn btn-primary btn-sm" onclick="addMemberFromInput()">+ Ajouter</button>
+      </div>
+    </div>
+    <div id="classPickerWrap" style="margin-top:10px"></div>
+    <div id="editTeamId" data-id="" style="display:none"></div>
+  </div>
+
+  <!-- ── Liste équipes ── -->
+  <div id="teamsList" class="teams-grid"></div>
+
+  <!-- ── Chronomètre commun ── -->
+  <div class="card" style="margin-top:8px">
+    <h2 class="section-title">⏱ Chronomètre commun</h2>
+    <div class="chrono-display" id="chronoDisplay">00:00.0</div>
+    <div class="chrono-btns">
+      <button class="btn btn-green" onclick="chronoStart()">▶ Démarrer</button>
+      <button class="btn btn-orange" onclick="chronoLap()">🏁 Tour</button>
+      <button class="btn btn-outline" onclick="chronoPause()">⏸ Pause</button>
+      <button class="btn btn-red btn-sm" onclick="chronoReset()">↺ Réinit.</button>
+    </div>
+    <div id="lapList" style="margin-top:14px; max-height:120px; overflow-y:auto;"></div>
+  </div>
+
+  <div class="data-actions">
+    <button class="btn btn-primary" onclick="exportJSON()">⬇ Exporter JSON</button>
+    <button class="btn btn-outline" onclick="triggerImport()">⬆ Importer JSON</button>
+    <input type="file" id="jsonImport" accept=".json" style="display:none" onchange="importJSON(event)">
+    <button class="btn btn-orange" onclick="window.print()">🖨 Imprimer / PDF</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE 2 — DONNÉES INDIVIDUELLES & COLLECTIVES
+════════════════════════════════════════════════════════ -->
+<div class="page" id="p2">
+  <h1 class="page-title">📊 Saisie des Temps</h1>
+
+  <div class="alert alert-info">
+    Saisissez les temps individuels (400 m) puis collectifs (2×400 m, 4×400 m, 4×800 m) par équipe.
+  </div>
+
+  <div class="card">
+    <div class="form-row">
+      <div class="form-col" style="flex:0 0 200px">
+        <label>Équipe</label>
+        <select id="dataTeamSelect" onchange="refreshDataForm()"></select>
+      </div>
+      <div class="form-col" style="flex:0 0 200px">
+        <label>Séance</label>
+        <select id="dataSeanceSelect"></select>
+      </div>
+    </div>
+  </div>
+
+  <!-- 400 m individuel -->
+  <div class="card">
+    <h2 class="section-title">🏃 400 m Individuel</h2>
+    <div id="indiv400Container"></div>
+  </div>
+
+  <!-- 400 m à deux -->
+  <div class="card">
+    <h2 class="section-title">👥 400 m à Deux</h2>
+    <div id="duo400Container"></div>
+    <button class="btn btn-primary btn-sm" style="margin-top:8px" onclick="addDuoRow()">+ Ajouter une paire</button>
+  </div>
+
+  <!-- 400 m à quatre -->
+  <div class="card">
+    <h2 class="section-title">👥👥 400 m à Quatre</h2>
+    <div id="quad400Container"></div>
+    <button class="btn btn-primary btn-sm" style="margin-top:8px" onclick="addQuadRow(400)">+ Ajouter un groupe</button>
+  </div>
+
+  <!-- 800 m à quatre -->
+  <div class="card">
+    <h2 class="section-title">🏅 800 m à Quatre</h2>
+    <div id="quad800Container"></div>
+    <button class="btn btn-primary btn-sm" style="margin-top:8px" onclick="addQuadRow(800)">+ Ajouter un groupe</button>
+  </div>
+
+  <!-- Groupe de 5 -->
+  <div class="card">
+    <h2 class="section-title">⭐ Groupe de 5 — Trio &amp; Quintette</h2>
+    <div class="alert alert-info" style="margin-bottom:10px;font-size:12px">Pour les groupes de 5 élèves : temps en trio (3 élèves) et à cinq.</div>
+    <h3 style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px">Trio (3 élèves)</h3>
+    <div id="trio400Container"></div>
+    <button class="btn btn-primary btn-sm" style="margin-top:6px" onclick="addGroupRow(3,400)">+ Trio 400 m</button>
+    <div id="trio800Container" style="margin-top:10px"></div>
+    <button class="btn btn-primary btn-sm" style="margin-top:6px" onclick="addGroupRow(3,800)">+ Trio 800 m</button>
+    <h3 style="font-size:13px;font-weight:700;color:var(--navy);margin:14px 0 8px">Quintette (5 élèves)</h3>
+    <div id="quint400Container"></div>
+    <button class="btn btn-primary btn-sm" style="margin-top:6px" onclick="addGroupRow(5,400)">+ Quintette 400 m</button>
+    <div id="quint800Container" style="margin-top:10px"></div>
+    <button class="btn btn-primary btn-sm" style="margin-top:6px" onclick="addGroupRow(5,800)">+ Quintette 800 m</button>
+  </div>
+
+  <div class="data-actions">
+    <button class="btn btn-orange" onclick="saveDataPage()">💾 Sauvegarder tous les temps</button>
+    <button class="btn btn-primary" onclick="exportJSON()">⬇ Exporter JSON</button>
+    <button class="btn btn-outline" onclick="window.print()">🖨 Imprimer / PDF</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE 2B — GROUPEMENTS, ABSENCES & OBJECTIFS
+════════════════════════════════════════════════════════ -->
+<div class="page" id="p2b">
+  <h1 class="page-title">👥 Groupes, Absences &amp; Objectifs de la Séance</h1>
+
+  <div class="card">
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;">
+      <div>
+        <label>Séance concernée</label>
+        <select id="grpSeanceSelect" style="width:240px" onchange="renderGroupPage()"></select>
+      </div>
+      <button class="btn btn-orange btn-sm" onclick="autoGroupBySpeed()">⚡ Grouper automatiquement par niveau</button>
+    </div>
+  </div>
+
+  <!-- Absences -->
+  <div class="card">
+    <h2 class="section-title">🚫 Absences &amp; Blessures du jour</h2>
+    <div class="alert alert-info" style="margin-bottom:12px;font-size:12px">
+      Marquez les élèves <strong>absents</strong> (non présents) ou <strong>blessés</strong> (présents mais ne courent pas). Ils seront exclus des groupes et des calculs.
+    </div>
+    <div id="absenceGrid" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+  </div>
+
+  <!-- Groupes du jour -->
+  <div class="card">
+    <h2 class="section-title">🏃 Groupes / Équipes du jour</h2>
+    <div class="alert alert-info" style="margin-bottom:10px;font-size:12px">
+      Les équipes définies page Classe sont chargées ici. Vous pouvez les modifier pour cette séance (les absents sont exclus automatiquement).
+      Cliquez sur un élève présent pour l'ajouter à un groupe ou l'en retirer.
+    </div>
+    <div id="seanceGroupsContainer"></div>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-primary btn-sm" onclick="addSeanceGroup()">+ Ajouter un groupe</button>
+      <button class="btn btn-outline btn-sm" onclick="saveGroupPage()">💾 Sauvegarder les groupes</button>
+    </div>
+  </div>
+
+  <!-- Objectifs par groupe -->
+  <div class="card">
+    <h2 class="section-title">🎯 Objectifs calculés par groupe</h2>
+    <div class="alert alert-info" style="margin-bottom:12px;font-size:12px">
+      Basés sur les vitesses individuelles connues (page Données). Si aucune donnée disponible, les objectifs sont ceux de Jean Bouin.
+    </div>
+    <div id="objectifsContainer"></div>
+  </div>
+
+  <div class="data-actions">
+    <button class="btn btn-orange" onclick="saveGroupPage()">💾 Sauvegarder</button>
+    <button class="btn btn-primary" onclick="exportJSON()">⬇ Exporter JSON</button>
+    <button class="btn btn-outline" onclick="window.print()">🖨 Imprimer / PDF</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE ECHAUFFEMENT
+════════════════════════════════════════════════════════ -->
+<div class="page" id="pWarm">
+  <h1 class="page-title">🔥 Échauffement</h1>
+  <div class="alert alert-info">
+    Chaque semaine l'échauffement s'allonge : <strong>5 → 7 → 9 → 12 → 14 → 17 → 20 min</strong>.<br>
+    L'échauffement est validé s'il est réalisé <strong>sans arrêt</strong>. Chaque arrêt coûte <strong>1 vie</strong> (capital initial : <strong>20 vies</strong>).
+  </div>
+
+  <div class="card">
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end">
+      <div><label>Séance</label><select id="warmSeanceSelect" style="width:220px" onchange="renderWarmPage()"></select></div>
+      <div><label>Durée cible (min)</label>
+        <select id="warmDuration" style="width:100px">
+          <option value="5">5 min</option><option value="7">7 min</option><option value="9">9 min</option>
+          <option value="12">12 min</option><option value="14">14 min</option><option value="17">17 min</option>
+          <option value="20" selected>20 min</option>
+        </select>
+      </div>
+      <button class="btn btn-green" onclick="startWarm()">▶ Lancer</button>
+      <button class="btn btn-red btn-sm" onclick="resetWarm()">↺ Reset</button>
+    </div>
+    <div style="margin-top:12px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+      <div class="chrono-display" id="warmChronoDisplay" style="font-size:44px;padding:6px 0">00:00</div>
+      <div>
+        <div style="font-size:12px;color:var(--muted);font-weight:600">OBJECTIF</div>
+        <div id="warmTargetDisplay" style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--navy)">05:00</div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--muted);font-weight:600">STATUT</div>
+        <div id="warmStatus" style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;color:var(--green)">En attente</div>
+      </div>
+    </div>
+    <div class="progress-wrap" style="margin-top:10px"><div class="progress-bar" id="warmProgress" style="width:0%;background:linear-gradient(90deg,var(--green),var(--orange))"></div></div>
+  </div>
+
+  <!-- Élèves / groupes -->
+  <div id="warmStudentsGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px"></div>
+
+  <div class="data-actions">
+    <button class="btn btn-orange" onclick="saveWarmData()">💾 Sauvegarder</button>
+    <button class="btn btn-primary" onclick="exportJSON()">⬇ Exporter JSON</button>
+    <button class="btn btn-outline" onclick="window.print()">🖨 Imprimer / PDF</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE FRACTIONNÉ
+════════════════════════════════════════════════════════ -->
+<div class="page" id="pFrac">
+  <h1 class="page-title">⚡ Fractionné</h1>
+  <div class="alert alert-info">
+    Créez plusieurs programmes nommés, puis affiliez chaque groupe à un programme. Suivez ensuite les passages toutes les 400 m.
+  </div>
+
+  <div class="card">
+    <label>Séance</label>
+    <select id="fracSeanceSelect" style="width:240px;margin-bottom:14px" onchange="renderFracGroups()"></select>
+  </div>
+
+  <!-- ── BIBLIOTHÈQUE DE PROGRAMMES ── -->
+  <div class="card">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px">
+      <h2 class="section-title" style="margin:0">📚 Programmes</h2>
+      <button class="btn btn-primary btn-sm" onclick="addFracProg()">+ Nouveau programme</button>
+    </div>
+    <div id="fracProgLibrary"></div>
+  </div>
+
+  <!-- ── AFFILIATION GROUPES → PROGRAMMES ── -->
+  <div class="card">
+    <h2 class="section-title">🔗 Affiliation groupes → programmes</h2>
+    <div id="fracGroupAssign"></div>
+  </div>
+
+  <!-- ── ESTIMATION ── -->
+  <div class="card" id="fracEstimationCard" style="display:none">
+    <h2 class="section-title">⏱ Estimation par groupe</h2>
+    <div id="fracEstimation"></div>
+  </div>
+
+  <!-- ── LANCEMENT ── -->
+  <div class="card">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+      <button class="btn btn-orange btn-sm" onclick="computeFracEstimation()">📊 Calculer estimations</button>
+      <button class="btn btn-green" onclick="startFrac()">▶ Lancer</button>
+      <button class="btn btn-red btn-sm" onclick="resetFrac()">↺ Reset</button>
+      <div class="chrono-display" id="fracChronoDisplay" style="font-size:36px;padding:4px 0">00:00.0</div>
+    </div>
+  </div>
+
+  <!-- Live cards -->
+  <div class="live-grid" id="fracLiveGrid"></div>
+
+  <div class="data-actions">
+    <button class="btn btn-orange" onclick="saveFracData()">💾 Sauvegarder</button>
+    <button class="btn btn-primary" onclick="exportJSON()">⬇ Exporter JSON</button>
+    <button class="btn btn-outline" onclick="window.print()">🖨 Imprimer / PDF</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE 3 — SUIVI LIVE PAR PASSAGES
+════════════════════════════════════════════════════════ -->
+<div class="page" id="p3">
+  <h1 class="page-title">👁 Suivi Live — Passages devant l'enseignant</h1>
+
+  <div class="alert alert-info">
+    <strong>Mode Passages :</strong> Cliquez sur le prénom de l'élève chaque fois qu'il passe devant vous.
+    Le <strong>1er clic = 200 m</strong> (mi-piste), les clics suivants = <strong>400 m</strong> chacun (tour complet).
+  </div>
+
+  <div class="card">
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;">
+      <div>
+        <label>Séance</label>
+        <select id="liveSeanceSelect" style="width:220px"></select>
+      </div>
+      <div>
+        <label>Groupes participants</label>
+        <div id="liveTeamCheckboxes" style="display:flex;flex-wrap:wrap;gap:8px;padding:6px 0;"></div>
+      </div>
+      <button class="btn btn-green" onclick="startRace()">▶ Lancer la course</button>
+      <button class="btn btn-red btn-sm" onclick="resetRace()">↺ Reset</button>
+    </div>
+    <div style="margin-top:10px;display:flex;align-items:center;gap:16px;">
+      <div class="chrono-display" id="liveChronoDisplay" style="font-size:40px;padding:8px 0;">00:00.0</div>
+      <div>
+        <div style="font-size:12px;color:var(--muted);font-weight:600">OBJECTIF JEAN BOUIN</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--navy)">08:09.0 / 3000 m</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="live-grid" id="liveGrid"></div>
+
+  <div class="data-actions">
+    <button class="btn btn-orange" onclick="saveLiveData()">💾 Sauvegarder la séance</button>
+    <button class="btn btn-primary" onclick="exportJSON()">⬇ Exporter JSON</button>
+    <button class="btn btn-outline" onclick="window.print()">🖨 Imprimer / PDF</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE 3B — SUIVI LIVE PAR TRANSMISSIONS DE TÉMOIN
+════════════════════════════════════════════════════════ -->
+<div class="page" id="p3b">
+  <h1 class="page-title">🤝 Suivi Live — Transmissions de Témoin</h1>
+
+  <div class="alert alert-orange">
+    <strong>Mode Transmissions :</strong> Pour chaque équipe, cliquez sur le prénom du coureur
+    <strong>qui reçoit le témoin</strong> (= fin de la fraction du coureur précédent).
+    Chaque fraction correspond à la distance convenue (configurable ci-dessous).
+    Le 1er clic lance la course et enregistre la fin du 1er coureur.
+  </div>
+
+  <div class="card">
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;">
+      <div>
+        <label>Séance</label>
+        <select id="relaySeanceSelect" style="width:220px"></select>
+      </div>
+      <div>
+        <label>Distance par fraction (m)</label>
+        <select id="relayFracDist" style="width:140px">
+          <option value="200">200 m</option>
+          <option value="400" selected>400 m</option>
+          <option value="600">600 m</option>
+          <option value="800">800 m</option>
+          <option value="1000">1000 m</option>
+        </select>
+      </div>
+      <div>
+        <label>Groupes participants</label>
+        <div id="relayTeamCheckboxes" style="display:flex;flex-wrap:wrap;gap:8px;padding:6px 0;"></div>
+      </div>
+      <button class="btn btn-green" onclick="startRelay()">▶ Lancer la course</button>
+      <button class="btn btn-red btn-sm" onclick="resetRelay()">↺ Reset</button>
+    </div>
+    <div style="margin-top:10px;display:flex;align-items:center;gap:16px;">
+      <div class="chrono-display" id="relayChronoDisplay" style="font-size:40px;padding:8px 0;">00:00.0</div>
+      <div>
+        <div style="font-size:12px;color:var(--muted);font-weight:600">OBJECTIF JEAN BOUIN</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--navy)">08:09.0 / 3000 m</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="live-grid" id="relayGrid"></div>
+
+  <div class="data-actions">
+    <button class="btn btn-orange" onclick="saveRelayData()">💾 Sauvegarder la séance</button>
+    <button class="btn btn-primary" onclick="exportJSON()">⬇ Exporter JSON</button>
+    <button class="btn btn-outline" onclick="window.print()">🖨 Imprimer / PDF</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE LIBRE — LIVE DISTANCE LIBRE
+════════════════════════════════════════════════════════ -->
+<div class="page" id="pLibre">
+  <h1 class="page-title">📏 Live — Distance Libre</h1>
+  <div class="alert alert-info">
+    Définissez la distance cible, puis cliquez sur chaque passage d'élève. La comparaison avec Jean Bouin est calculée au prorata de la distance choisie.
+  </div>
+
+  <div class="card">
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end">
+      <div>
+        <label>Séance</label>
+        <select id="libreSeanceSelect" style="width:200px"></select>
+      </div>
+      <div>
+        <label>Distance cible (m)</label>
+        <input type="number" id="libreTargetDist" value="1000" min="100" step="100" style="width:120px">
+      </div>
+      <div>
+        <label>Groupes participants</label>
+        <div id="libreTeamCheckboxes" style="display:flex;flex-wrap:wrap;gap:8px;padding:4px 0"></div>
+      </div>
+      <button class="btn btn-green" onclick="startLibre()">▶ Lancer</button>
+      <button class="btn btn-red btn-sm" onclick="resetLibre()">↺ Reset</button>
+    </div>
+    <div style="margin-top:10px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+      <div class="chrono-display" id="libreChronoDisplay" style="font-size:40px;padding:6px 0">00:00.0</div>
+      <div id="libreBouin" style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;color:var(--navy)"></div>
+    </div>
+  </div>
+
+  <div class="live-grid" id="libreGrid"></div>
+
+  <div class="data-actions">
+    <button class="btn btn-orange" onclick="saveState();showToast('Sauvegardé ✓')">💾 Sauvegarder</button>
+    <button class="btn btn-primary" onclick="exportJSON()">⬇ Exporter JSON</button>
+    <button class="btn btn-outline" onclick="window.print()">🖨 Imprimer / PDF</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE 4 — BILAN
+════════════════════════════════════════════════════════ -->
+<div class="page" id="p4">
+  <h1 class="page-title">📋 Bilan par Équipe</h1>
+
+  <div class="card">
+    <div class="form-row">
+      <div class="form-col" style="flex:0 0 200px">
+        <label>Équipe</label>
+        <select id="bilanTeamSelect" onchange="renderBilan()"></select>
+      </div>
+    </div>
+  </div>
+
+  <div id="bilanContent"></div>
+
+  <div class="data-actions">
+    <button class="btn btn-primary" onclick="exportJSON()">⬇ Exporter JSON</button>
+    <button class="btn btn-outline" onclick="triggerImport()">⬆ Importer JSON</button>
+    <input type="file" id="jsonImport2" accept=".json" style="display:none" onchange="importJSON(event)">
+    <button class="btn btn-orange" onclick="window.print()">🖨 Imprimer / PDF</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE 5 — PHYSIQUE-CHIMIE
+════════════════════════════════════════════════════════ -->
+<div class="page" id="p5">
+  <h1 class="page-title">🔬 Physique-Chimie — Étude des Vitesses</h1>
+
+  <div class="alert alert-orange">
+    <strong>Pour la collègue de Physique-Chimie :</strong> Analyse des vitesses, comparaison avec Jean Bouin, et calcul du temps potentiel en relais.
+  </div>
+
+  <!-- Bouin reference -->
+  <div class="card physics-section">
+    <h2 class="section-title">🏆 Référence : Jean Bouin (1912)</h2>
+    <div class="grid3">
+      <div class="live-stat">
+        <div class="live-stat-val">3000 m</div>
+        <div class="live-stat-lbl">Distance</div>
+      </div>
+      <div class="live-stat">
+        <div class="live-stat-val">8 min 09 s</div>
+        <div class="live-stat-lbl">Temps officiel</div>
+      </div>
+      <div class="live-stat">
+        <div class="live-stat-val">22.07 km/h</div>
+        <div class="live-stat-lbl">Vitesse moyenne</div>
+      </div>
+    </div>
+    <div class="formula-box" style="margin-top:14px">
+      v = d / t &nbsp;→&nbsp; <span>v = 3000 m / 489 s = 6.13 m/s = 22.07 km/h</span>
+    </div>
+  </div>
+
+  <!-- Sélection équipe -->
+  <div class="card">
+    <div class="form-row">
+      <div class="form-col" style="flex:0 0 200px">
+        <label>Équipe à analyser</label>
+        <select id="physTeamSelect" onchange="renderPhysics()"></select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vitesses individuelles -->
+  <div class="card physics-section">
+    <h2 class="section-title">🏃 Vitesses individuelles sur 400 m</h2>
+    <div id="physIndivTable"></div>
+  </div>
+
+  <!-- Vitesses collectives -->
+  <div class="card physics-section">
+    <h2 class="section-title">👥 Vitesses collectives</h2>
+    <div id="physCollecTable"></div>
+  </div>
+
+  <!-- Calcul relais -->
+  <div class="card physics-section">
+    <h2 class="section-title">⚡ Exercice : Temps potentiel en relais</h2>
+  <div class="alert alert-info" style="margin-bottom:14px">
+    En supposant que chaque coureur court à sa vitesse maximale mesurée, quel serait le temps total du groupe sur 3000 m en relais ? <strong>Les segments de 100 m correspondent au fractionné réalisé lors de la course live.</strong>
+  </div>
+    <div id="physRelaisCalc"></div>
+  </div>
+
+  <div class="data-actions">
+    <button class="btn btn-orange" onclick="window.print()">🖨 Imprimer / PDF</button>
+    <button class="btn btn-primary" onclick="exportJSON()">⬇ Exporter JSON</button>
+  </div>
+</div>
+
+</main>
+
+<!-- MODAL JSON IMPORT -->
+<div class="modal-bg" id="importModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>Coller le JSON</h3>
+    <textarea id="jsonPasteArea" rows="10" placeholder='Coller votre JSON ici…' style="width:100%;font-size:12px;font-family:monospace;border:1px solid var(--border);border-radius:6px;padding:10px;"></textarea>
+    <div style="margin-top:12px;display:flex;gap:8px;">
+      <button class="btn btn-orange" onclick="importFromPaste()">Importer</button>
+      <button class="btn btn-outline" onclick="closeModal()">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════
+//  STATE
+// ════════════════════════════════════════════════════════
+const BOUIN_TIME = 489; // seconds (8min 9sec)
+const BOUIN_DIST = 3000;
+const BOUIN_SPEED = BOUIN_DIST / BOUIN_TIME; // m/s
+
+let state = {
+  seances: [],
+  currentSeance: null,
+  students: [],   // [{id, prenom, nom, sexe, niveau}]
+  teams: [],
+  data: {},
+  live: {},
+  relay: {},
+  seanceGroups: {}, // seanceGroups[sid] = { absents:[], groups:[{id,name,members:[]}] }
+};
+
+function saveState() {
+  try { localStorage.setItem('jb_state', JSON.stringify(state)); } catch(e) {}
+}
+
+function loadState() {
+  try {
+    const s = localStorage.getItem('jb_state');
+    if (s) state = JSON.parse(s);
+    if (!state.seances) state.seances = [];
+    if (!state.students) state.students = [];
+    if (!state.teams) state.teams = [];
+    if (!state.data) state.data = {};
+    if (!state.live) state.live = {};
+    if (!state.relay) state.relay = {};
+    if (!state.seanceGroups) state.seanceGroups = {};
+  } catch(e) {}
+  if (!state.seances.length) {
+    addSeance(true);
+  } else {
+    state.currentSeance = state.seances[state.seances.length - 1].id;
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  CSV IMPORT
+// ════════════════════════════════════════════════════════
+function parseCSVText(text) {
+  // Detect separator
+  const sep = text.includes(';') ? ';' : ',';
+  const lines = text.trim().split(/\r?\n/).filter(l => l.trim());
+  if (lines.length < 2) return [];
+  const headers = lines[0].split(sep).map(h => h.trim().toLowerCase().replace(/['"]/g,''));
+  const findCol = (...names) => { for (const n of names) { const i = headers.indexOf(n); if (i>=0) return i; } return -1; };
+  const iPrenom  = findCol('prénom','prenom','firstname','first_name','nom_prénom','name');
+  const iNom     = findCol('nom','lastname','last_name','surname');
+  const iSexe    = findCol('sexe','genre','gender','sex');
+  const iNiveau  = findCol('niveau','class','classe','group','groupe','level');
+  if (iPrenom === -1) { alert('Colonne "prénom" introuvable. Vérifiez vos en-têtes.'); return []; }
+  const students = [];
+  for (let i = 1; i < lines.length; i++) {
+    const cols = lines[i].split(sep).map(c => c.trim().replace(/^["']|["']$/g,''));
+    const prenom = cols[iPrenom] || '';
+    if (!prenom) continue;
+    students.push({
+      id: 'stu_' + Date.now() + '_' + i,
+      prenom,
+      nom:    iNom    >= 0 ? cols[iNom]    || '' : '',
+      sexe:   iSexe   >= 0 ? cols[iSexe]   || '' : '',
+      niveau: iNiveau >= 0 ? cols[iNiveau] || '' : '',
+    });
+  }
+  return students;
+}
+
+function previewCSV(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('csvPaste').value = e.target.result;
+    const students = parseCSVText(e.target.result);
+    showCSVPreview(students);
+  };
+  reader.readAsText(file, 'UTF-8');
+}
+
+function showCSVPreview(students) {
+  const el = document.getElementById('csvPreview');
+  if (!students.length) { el.innerHTML='<p style="color:var(--red);font-size:13px">Aucun élève détecté.</p>'; return; }
+  el.innerHTML = `<div style="font-size:13px;color:var(--muted);margin-bottom:6px">${students.length} élève(s) détecté(s) — aperçu :</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px">
+      ${students.slice(0,12).map(s=>`<span class="member-tag">${s.prenom}${s.nom?' '+s.nom:''}</span>`).join('')}
+      ${students.length>12?`<span style="color:var(--muted);font-size:12px">…+${students.length-12}</span>`:''}
+    </div>`;
+}
+
+function importCSV() {
+  const text = document.getElementById('csvPaste').value.trim();
+  if (!text) { alert('Collez du contenu CSV ou sélectionnez un fichier.'); return; }
+  const students = parseCSVText(text);
+  if (!students.length) return;
+  // Merge: add only students not already present (match by prenom+nom)
+  let added = 0;
+  students.forEach(s => {
+    const exists = state.students.some(e => e.prenom.toLowerCase()===s.prenom.toLowerCase() && e.nom.toLowerCase()===s.nom.toLowerCase());
+    if (!exists) { state.students.push(s); added++; }
+  });
+  saveState();
+  renderStudentTable();
+  renderClassPicker();
+  showToast(`${added} élève(s) importé(s) ✓`);
+  document.getElementById('csvPreview').innerHTML = '';
+  document.getElementById('csvPaste').value = '';
+}
+
+// ════════════════════════════════════════════════════════
+//  STUDENT TABLE
+// ════════════════════════════════════════════════════════
+function renderStudentTable() {
+  const el = document.getElementById('studentTable');
+  if (!el) return;
+  document.getElementById('studentCount').textContent = state.students.length;
+  if (!state.students.length) {
+    el.innerHTML = '<p style="color:var(--muted);font-size:13px">Aucun élève. Importez un CSV ou ajoutez manuellement.</p>';
+    return;
+  }
+  el.innerHTML = `<table>
+    <thead><tr><th>Prénom</th><th>Nom</th><th>Sexe</th><th>Niveau</th><th style="width:80px">Actions</th></tr></thead>
+    <tbody>
+      ${state.students.map(s => `<tr>
+        <td><strong>${s.prenom}</strong></td>
+        <td>${s.nom||'—'}</td>
+        <td>${s.sexe||'—'}</td>
+        <td>${s.niveau||'—'}</td>
+        <td><button class="btn btn-red btn-xs" onclick="removeStudent('${s.id}')">✕</button></td>
+      </tr>`).join('')}
+    </tbody>
+  </table>`;
+}
+
+function showAddStudentForm() { document.getElementById('addStudentForm').style.display='block'; }
+function hideAddStudentForm() { document.getElementById('addStudentForm').style.display='none'; }
+function addStudentManual() {
+  const prenom = document.getElementById('newPrenom').value.trim();
+  if (!prenom) { alert('Le prénom est obligatoire.'); return; }
+  state.students.push({
+    id: 'stu_'+Date.now(),
+    prenom,
+    nom: document.getElementById('newNom').value.trim(),
+    sexe: document.getElementById('newSexe').value,
+    niveau: document.getElementById('newNiveau').value.trim()
+  });
+  document.getElementById('newPrenom').value='';
+  document.getElementById('newNom').value='';
+  document.getElementById('newSexe').value='';
+  document.getElementById('newNiveau').value='';
+  hideAddStudentForm();
+  saveState();
+  renderStudentTable();
+  renderClassPicker();
+}
+function renameStudent(id, field, value) {
+  const s = state.students.find(s=>s.id===id);
+  if (s) { s[field] = value.trim(); saveState(); renderClassPicker(); }
+}
+
+function removeStudent(id) {
+  state.students = state.students.filter(s=>s.id!==id);
+  saveState();
+  renderStudentTable();
+  renderClassPicker();
+}
+
+// Class picker for team builder
+function renderClassPicker() {
+  const el = document.getElementById('classPickerWrap');
+  if (!el || !state.students.length) return;
+  el.innerHTML = `<div style="font-size:11px;color:var(--muted);margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:.4px">Sélection rapide depuis la classe :</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px">
+      ${state.students.map(s=>`<button class="btn btn-outline btn-xs" onclick="pickStudent('${s.prenom}')">${s.prenom}${s.nom?' '+s.nom[0]+'.':''}</button>`).join('')}
+    </div>`;
+}
+function pickStudent(prenom) {
+  if (!tempMembers.includes(prenom)) {
+    tempMembers.push(prenom);
+    renderMemberTags();
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  GROUPEMENTS PAGE (2b)
+// ════════════════════════════════════════════════════════
+function renderGroupPage() {
+  const sid = document.getElementById('grpSeanceSelect')?.value || state.currentSeance;
+  if (!sid) return;
+  if (!state.seanceGroups[sid]) {
+    // Init from teams
+    state.seanceGroups[sid] = {
+      absents: [],
+      groups: state.teams.map(t => ({ id: t.id, name: t.name, members: [...t.members], color: t.color }))
+    };
+  }
+  const sg = state.seanceGroups[sid];
+
+  // Absences + Blessures
+  const absEl = document.getElementById('absenceGrid');
+  if (absEl) {
+    const fromTeams = state.teams.flatMap(t=>t.members);
+    const fromStudents = state.students.map(s=>s.prenom);
+    const allNames = [...new Set([...fromTeams, ...fromStudents])];
+    if (!sg.blesses) sg.blesses = [];
+    absEl.innerHTML = allNames.map(name => {
+      const absent = sg.absents.includes(name);
+      const blesse = sg.blesses.includes(name);
+      let cls = 'btn-outline', icon = '';
+      if (absent)  { cls = 'btn-red';    icon = ' 🚫'; }
+      if (blesse)  { cls = 'btn-orange'; icon = ' 🩹'; }
+      return `<div style="display:flex;flex-direction:column;align-items:center;gap:3px">
+        <span style="font-size:11px;font-weight:700;color:var(--navy)">${name}</span>
+        <div style="display:flex;gap:4px">
+          <button class="btn ${absent?'btn-red':'btn-outline'} btn-xs" title="Absent"
+            onclick="toggleAbsenceGroup('${sid}','${name}','absent')">🚫${absent?' Abs':''}</button>
+          <button class="btn ${blesse?'btn-orange':'btn-outline'} btn-xs" title="Blessé"
+            onclick="toggleAbsenceGroup('${sid}','${name}','blesse')">🩹${blesse?' Bles':''}</button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  // Groups
+  renderSeanceGroups(sid);
+  // Objectifs
+  renderObjectifs(sid);
+}
+
+function toggleAbsenceGroup(sid, name, type) {
+  const sg = state.seanceGroups[sid];
+  if (!sg.blesses) sg.blesses = [];
+  const list = type === 'blesse' ? sg.blesses : sg.absents;
+  const other = type === 'blesse' ? sg.absents : sg.blesses;
+  // Remove from the other list first
+  const oi = other.indexOf(name);
+  if (oi !== -1) other.splice(oi, 1);
+  // Toggle in this list
+  const i = list.indexOf(name);
+  if (i === -1) list.push(name); else list.splice(i, 1);
+  saveState();
+  renderGroupPage();
+}
+
+function renderSeanceGroups(sid) {
+  const sg = state.seanceGroups[sid];
+  const el = document.getElementById('seanceGroupsContainer');
+  if (!el) return;
+  if (!sg.groups.length) { el.innerHTML='<p style="color:var(--muted);font-size:13px">Aucun groupe défini.</p>'; return; }
+
+  // All present members from teams + students list, excluding absents
+  const fromTeams = state.teams.flatMap(t=>t.members);
+  const fromStudents = state.students.map(s=>s.prenom);
+  const allAvailable = [...new Set([...fromTeams, ...fromStudents])].filter(m => !sg.absents.includes(m));
+
+  el.innerHTML = sg.groups.map((g,gi) => {
+    if (!sg.blesses) sg.blesses = [];
+    const presentMembers = g.members.filter(m => !sg.absents.includes(m) && !sg.blesses.includes(m));
+    const absentMembers  = g.members.filter(m => sg.absents.includes(m));
+    const blesseMembers  = g.members.filter(m => sg.blesses.includes(m));
+    // Members not yet in this group (can be in another group — allows duplicates for reshuffling)
+    const notInThisGroup = allAvailable.filter(m => !presentMembers.includes(m));
+    return `<div class="card" style="margin-bottom:10px;border-left:4px solid ${g.color||'var(--navy)'}">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap">
+        <input type="text" value="${g.name}" style="font-weight:700;font-size:15px;border:1px solid var(--border);border-radius:5px;padding:3px 8px;color:var(--navy);width:130px"
+          onchange="renameSeanceGroup('${sid}',${gi},this.value)">
+        <span style="font-size:12px;color:var(--muted)">${presentMembers.length} présent(s)${absentMembers.length?` · <span class="absent-badge">🚫 ${absentMembers.join(', ')}</span>`:''}${blesseMembers.length?` · <span style="background:rgba(232,88,26,.12);color:var(--orange);border-radius:4px;padding:2px 6px;font-size:11px;font-weight:700">🩹 ${blesseMembers.join(', ')}</span>`:''}</span>
+        <button class="btn btn-red btn-xs" style="margin-left:auto" onclick="removeSeanceGroup('${sid}',${gi})">✕ Suppr.</button>
+      </div>
+      <div style="margin-bottom:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center">
+        <span style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.3px;margin-right:4px">Membres :</span>
+        ${presentMembers.map(m=>`<span class="member-tag">${m}
+          <span class="rm" onclick="removeFromSeanceGroup('${sid}',${gi},'${m}')">×</span></span>`).join('')}
+        ${!presentMembers.length ? '<span style="color:var(--muted);font-size:12px;font-style:italic">Aucun membre</span>' : ''}
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center">
+        <span style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.3px;margin-right:4px">+ Ajouter :</span>
+        ${notInThisGroup.map(m=>`<button class="btn btn-outline btn-xs" onclick="addToSeanceGroup('${sid}',${gi},'${m}')">${m}</button>`).join('')}
+        ${!notInThisGroup.length ? '<span style="color:var(--muted);font-size:12px;font-style:italic">Tous ajoutés</span>' : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renameSeanceGroup(sid, gi, name) { state.seanceGroups[sid].groups[gi].name=name; saveState(); }
+function removeSeanceGroup(sid, gi) { state.seanceGroups[sid].groups.splice(gi,1); saveState(); renderGroupPage(); }
+function addToSeanceGroup(sid, gi, name) {
+  if (!state.seanceGroups[sid].groups[gi].members.includes(name)) {
+    state.seanceGroups[sid].groups[gi].members.push(name);
+  }
+  saveState(); renderGroupPage();
+}
+function removeFromSeanceGroup(sid, gi, name) {
+  state.seanceGroups[sid].groups[gi].members=state.seanceGroups[sid].groups[gi].members.filter(m=>m!==name);
+  saveState(); renderGroupPage();
+}
+function addSeanceGroup() {
+  const sid = document.getElementById('grpSeanceSelect')?.value || state.currentSeance;
+  if (!state.seanceGroups[sid]) state.seanceGroups[sid]={absents:[],groups:[]};
+  const idx = state.seanceGroups[sid].groups.length;
+  state.seanceGroups[sid].groups.push({id:'grp_'+Date.now(),name:`Groupe ${idx+1}`,members:[],color:teamColors[idx%teamColors.length]});
+  saveState(); renderGroupPage();
+}
+
+function autoGroupBySpeed() {
+  const sid = document.getElementById('grpSeanceSelect')?.value || state.currentSeance;
+  if (!state.seanceGroups[sid]) state.seanceGroups[sid]={absents:[],groups:[]};
+  const absents = state.seanceGroups[sid].absents;
+  // Collect speeds for all members
+  const allMembers = [...new Set(state.teams.flatMap(t=>t.members))].filter(m=>!absents.includes(m));
+  const speeds = {};
+  allMembers.forEach(m => {
+    state.seances.forEach(s => {
+      const d = state.data[s.id];
+      if (!d) return;
+      Object.values(d).forEach(td => {
+        const t = td.indiv400?.[m];
+        if (t) { const sp=speedFromTime(t,400); if(!speeds[m]||sp>speeds[m]) speeds[m]=sp; }
+      });
+    });
+    if (!speeds[m]) speeds[m] = 0;
+  });
+  // Sort by speed
+  const sorted = [...allMembers].sort((a,b)=>speeds[b]-speeds[a]);
+  // Group into teams of ~4
+  const nGroups = Math.max(1, Math.ceil(sorted.length/4));
+  const groups = Array.from({length:nGroups},(_,i)=>({
+    id:'grp_auto_'+i,name:`Groupe ${i+1}`,members:[],color:teamColors[i%teamColors.length]
+  }));
+  // Serpentine fill for balanced levels
+  sorted.forEach((m,i) => {
+    const gi = i % (2*nGroups) < nGroups ? i%nGroups : nGroups-1-(i%nGroups);
+    groups[gi].members.push(m);
+  });
+  state.seanceGroups[sid].groups = groups;
+  saveState(); renderGroupPage();
+  showToast('Groupes auto-générés par niveau ✓');
+}
+
+function saveGroupPage() { saveState(); showToast('Groupes et absences sauvegardés ✓'); }
+
+// ── Objectifs par groupe ──────────────────────────────
+function renderObjectifs(sid) {
+  const sg = state.seanceGroups[sid];
+  const el = document.getElementById('objectifsContainer');
+  if (!el || !sg?.groups.length) return;
+
+  // Bouin reference times
+  const b200  = BOUIN_SPEED; // m/s
+  const tB200  = fmtTime((200/b200)*1000);
+  const tB400  = fmtTime((400/b200)*1000);
+  const tB800  = fmtTime((800/b200)*1000);
+  const tB1200 = fmtTime((1200/b200)*1000);
+
+  el.innerHTML = sg.groups.map(g => {
+    const present = g.members.filter(m => !sg.absents.includes(m));
+    if (!present.length) return `<div class="card" style="margin-bottom:10px;opacity:.5"><strong>${g.name}</strong> — tous absents</div>`;
+
+    // Collect best speeds per member
+    const memberSp = {};
+    present.forEach(m => {
+      state.seances.forEach(s => {
+        const d = state.data[s.id];
+        if (!d) return;
+        Object.values(d).forEach(td => {
+          const t = td.indiv400?.[m];
+          if (t) { const sp=speedFromTime(t,400)/3.6; if(!memberSp[m]||sp>memberSp[m]) memberSp[m]=sp; }
+        });
+      });
+    });
+
+    const withData = present.filter(m => memberSp[m]);
+    const avgSpMs = withData.length
+      ? withData.reduce((a,m)=>a+memberSp[m],0)/withData.length
+      : b200; // fallback to Bouin
+
+    // Duo objectives (200m, 400m) — use avg speed of best pair
+    const duoSp = avgSpMs;
+    const oDuo200  = fmtTime((200  / duoSp) * 1000);
+    const oDuo400  = fmtTime((400  / duoSp) * 1000);
+
+    // Trio/Quatuor objectives (400m, 800m, 1200m)
+    const grpSp = avgSpMs;
+    const oGrp400  = fmtTime((400  / grpSp) * 1000);
+    const oGrp800  = fmtTime((800  / grpSp) * 1000);
+    const oGrp1200 = fmtTime((1200 / grpSp) * 1000);
+
+    const hasData = withData.length > 0;
+    const note = hasData
+      ? `<span style="font-size:11px;color:var(--muted)">Basé sur la vitesse moyenne du groupe : ${(avgSpMs*3.6).toFixed(2)} km/h</span>`
+      : `<span style="font-size:11px;color:var(--orange)">⚠ Pas de données — objectifs Bouin affichés</span>`;
+
+    return `<div class="card" style="margin-bottom:10px;border-left:4px solid ${g.color||'var(--navy)'}">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px">
+        <strong style="font-size:15px;color:var(--navy)">${g.name}</strong>
+        <span>${present.map(m=>`<span class="member-tag">${m}</span>`).join('')}</span>
+        ${note}
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px">
+        <div class="live-stat" style="text-align:left;padding:10px 14px">
+          <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px">👫 Duo — 200 m</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--navy)">${oDuo200}</div>
+          <div style="font-size:11px;color:var(--muted)">Bouin : ${tB200}</div>
+        </div>
+        <div class="live-stat" style="text-align:left;padding:10px 14px">
+          <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px">👫 Duo — 400 m</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--navy)">${oDuo400}</div>
+          <div style="font-size:11px;color:var(--muted)">Bouin : ${tB400}</div>
+        </div>
+        <div class="live-stat" style="text-align:left;padding:10px 14px">
+          <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px">👥 Groupe — 400 m</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--orange)">${oGrp400}</div>
+          <div style="font-size:11px;color:var(--muted)">Bouin : ${tB400}</div>
+        </div>
+        <div class="live-stat" style="text-align:left;padding:10px 14px">
+          <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px">👥 Groupe — 800 m</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--orange)">${oGrp800}</div>
+          <div style="font-size:11px;color:var(--muted)">Bouin : ${tB800}</div>
+        </div>
+        <div class="live-stat" style="text-align:left;padding:10px 14px">
+          <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px">👥 Groupe — 1200 m</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--orange)">${oGrp1200}</div>
+          <div style="font-size:11px;color:var(--muted)">Bouin : ${tB1200}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ════════════════════════════════════════════════════════
+//  CHRONO
+// ════════════════════════════════════════════════════════
+let chronoMs = 0, chronoRunning = false, chronoInterval = null, chronoStart0 = 0, laps = [];
+let liveMs = 0, liveRunning = false, liveInterval = null, liveStart0 = 0;
+
+function fmtTime(ms) {
+  const m = Math.floor(ms/60000);
+  const s = Math.floor((ms%60000)/1000);
+  const t = Math.floor((ms%1000)/100);
+  return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')+'.'+t;
+}
+
+function chronoStart() {
+  if (chronoRunning) return;
+  chronoRunning = true;
+  chronoStart0 = Date.now() - chronoMs;
+  chronoInterval = setInterval(() => {
+    chronoMs = Date.now() - chronoStart0;
+    const el = document.getElementById('chronoDisplay');
+    el.textContent = fmtTime(chronoMs);
+    el.classList.add('running');
+  }, 100);
+}
+function chronoPause() {
+  if (!chronoRunning) return;
+  clearInterval(chronoInterval);
+  chronoRunning = false;
+  document.getElementById('chronoDisplay').classList.remove('running');
+}
+function chronoReset() {
+  chronoPause(); chronoMs = 0; laps = [];
+  document.getElementById('chronoDisplay').textContent = '00:00.0';
+  document.getElementById('chronoDisplay').classList.remove('running');
+  document.getElementById('lapList').innerHTML = '';
+}
+function chronoLap() {
+  if (!chronoRunning) return;
+  laps.push(chronoMs);
+  const el = document.getElementById('lapList');
+  const prev = laps.length > 1 ? laps[laps.length-2] : 0;
+  const split = chronoMs - prev;
+  el.innerHTML = laps.map((t,i) => `<div class="lap-row"><span class="lap-num">Tour ${i+1}</span><span>${fmtTime(t)}</span><span style="color:var(--muted);margin-left:10px">+${fmtTime(i>0?t-laps[i-1]:t)}</span></div>`).reverse().join('');
+}
+
+// ════════════════════════════════════════════════════════
+//  SEANCES
+// ════════════════════════════════════════════════════════
+function addSeance(init=false) {
+  const nameEl = document.getElementById('seanceName');
+  const label = init ? `Séance 1 — ${new Date().toLocaleDateString('fr-FR')}` : (nameEl?.value.trim() || `Séance ${state.seances.length+1} — ${new Date().toLocaleDateString('fr-FR')}`);
+  const id = 'seq_'+Date.now();
+  state.seances.push({ id, label });
+  state.currentSeance = id;
+  if (!init && nameEl) nameEl.value = '';
+  saveState();
+  renderSeanceTabs();
+  renderAllSelects();
+}
+
+function renderSeanceTabs() {
+  const el = document.getElementById('seanceTabs');
+  if (!el) return;
+  el.innerHTML = state.seances.map(s => `<button class="seance-tab ${s.id===state.currentSeance?'active':''}" onclick="switchSeance('${s.id}')">${s.label}</button>`).join('');
+}
+
+function switchSeance(id) {
+  state.currentSeance = id;
+  saveState();
+  renderSeanceTabs();
+  renderAllSelects();
+}
+
+// ════════════════════════════════════════════════════════
+//  MEMBER TAGS
+// ════════════════════════════════════════════════════════
+let tempMembers = [];
+
+function addMemberFromInput() {
+  const input = document.getElementById('memberInput');
+  if (!input) return;
+  const v = input.value.trim();
+  if (v && !tempMembers.includes(v)) {
+    tempMembers.push(v);
+    renderMemberTags();
+  }
+  input.value = '';
+  input.focus();
+}
+
+// kept for backward compat (onkeydown in old HTML)
+function addMemberTag(e) {
+  if (e.key === 'Enter' || e.key === ',' || e.key === 'Tab') {
+    e.preventDefault();
+    addMemberFromInput();
+  }
+}
+
+function removeMember(name) {
+  tempMembers = tempMembers.filter(m => m !== name);
+  renderMemberTags();
+}
+
+function renderMemberTags() {
+  const wrap = document.getElementById('memberTags');
+  const countEl = document.getElementById('memberCount');
+  if (!wrap) return;
+  wrap.innerHTML = tempMembers.map(m =>
+    `<span style="display:inline-flex;align-items:center;gap:4px;background:var(--navy);color:#fff;border-radius:4px;padding:3px 8px;font-size:12px;font-weight:600">
+      ${m}
+      <span style="cursor:pointer;opacity:.7;font-size:15px;line-height:1" onclick="removeMember('${m}')">×</span>
+    </span>`
+  ).join('');
+  if (countEl) countEl.textContent = tempMembers.length;
+}
+
+// ════════════════════════════════════════════════════════
+//  TEAMS
+// ════════════════════════════════════════════════════════
+function saveTeam() {
+  const name = document.getElementById('teamName').value.trim();
+  if (!name) { alert('Entrez un nom d\'équipe.'); return; }
+  if (tempMembers.length < 1) { alert('Ajoutez au moins 1 membre.'); return; }
+  const editIdEl = document.getElementById('editTeamId');
+  const editId = editIdEl ? editIdEl.getAttribute('data-id') : '';
+  if (editId) {
+    const t = state.teams.find(t => t.id === editId);
+    if (t) { t.name = name; t.members = [...tempMembers]; }
+    editIdEl.setAttribute('data-id', '');
+    document.querySelector('#editTeamId').previousElementSibling && null;
+  } else {
+    state.teams.push({
+      id: 'team_' + Date.now(),
+      name,
+      members: [...tempMembers],
+      color: teamColors[state.teams.length % teamColors.length]
+    });
+  }
+  document.getElementById('teamName').value = '';
+  tempMembers = [];
+  renderMemberTags();
+  saveState();
+  renderTeamsList();
+  renderAllSelects();
+  showToast(`Équipe "${name}" enregistrée ✓`);
+}
+
+const teamColors = ['#1a2b6b','#e8581a','#1caa55','#8b4fc8','#e03030','#1796c8','#c8a018'];
+
+function renderTeamsList() {
+  const el = document.getElementById('teamsList');
+  if (!el) return;
+  el.innerHTML = state.teams.map(t => `
+    <div class="team-card">
+      <div class="team-header" style="background:${t.color||'var(--navy)'}">
+        <span class="team-name">${t.name}</span>
+        <span style="font-size:12px;opacity:.8">${t.members.length} coureur${t.members.length>1?'s':''}</span>
+      </div>
+      <div class="team-body">
+        <div style="margin-bottom:8px">${t.members.map(m=>`<span class="member-tag">${m}</span>`).join('')}</div>
+        <div style="margin-bottom:6px">
+          <input type="text" value="${t.name}" style="font-weight:700;font-size:13px;border:1px solid var(--border);border-radius:5px;padding:3px 8px;width:160px;color:var(--navy)"
+            onchange="renameTeam('${t.id}',this.value)">
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px">
+          <button class="btn btn-outline btn-xs" onclick="editTeam('${t.id}')">✏ Modifier membres</button>
+          <button class="btn btn-red btn-xs" onclick="deleteTeam('${t.id}')">🗑 Supprimer</button>
+        </div>
+      </div>
+    </div>
+  `).join('') || '<p style="color:var(--muted);font-size:14px">Aucune équipe créée.</p>';
+}
+
+function renameTeam(id, name) {
+  const t = state.teams.find(t=>t.id===id);
+  if (t && name.trim()) { t.name = name.trim(); saveState(); renderAllSelects(); }
+}
+
+function editTeam(id) {
+  const t = state.teams.find(t => t.id === id);
+  if (!t) return;
+  document.getElementById('teamName').value = t.name;
+  tempMembers = [...t.members];
+  renderMemberTags();
+  document.getElementById('editTeamId').setAttribute('data-id', id);
+  // Scroll to & highlight the form
+  const card = document.getElementById('teamName').closest('.card');
+  if (card) {
+    card.scrollIntoView({behavior:'smooth', block:'center'});
+    card.style.boxShadow = '0 0 0 3px var(--orange)';
+    setTimeout(() => { card.style.boxShadow = ''; }, 2000);
+  }
+}
+function deleteTeam(id) {
+  if (!confirm('Supprimer cette équipe ?')) return;
+  state.teams = state.teams.filter(t=>t.id!==id);
+  saveState();
+  renderTeamsList();
+  renderAllSelects();
+}
+
+// ════════════════════════════════════════════════════════
+//  DATA PAGE
+// ════════════════════════════════════════════════════════
+function refreshDataForm() {
+  const tid = document.getElementById('dataTeamSelect')?.value;
+  const sid = document.getElementById('dataSeanceSelect')?.value || state.currentSeance;
+  if (!tid || !sid) return;
+  if (!state.data[sid]) state.data[sid]={};
+  if (!state.data[sid][tid]) state.data[sid][tid]={ indiv400:{}, duo400:[], quad400:[], quad800:[], grp3_400:[], grp3_800:[], grp5_400:[], grp5_800:[] };
+  const d = state.data[sid][tid];
+  const t = state.teams.find(t=>t.id===tid);
+  if (!t) return;
+
+  // Indiv 400
+  const ic = document.getElementById('indiv400Container');
+  ic.innerHTML = `<div class="form-row" style="flex-wrap:wrap">` +
+    t.members.map(m => {
+      const v = d.indiv400[m]||'';
+      const absent = d.absents && d.absents.includes(m);
+      return `<div class="form-col" style="min-width:180px;flex:0 0 200px">
+        <label>${m} <span class="absent-badge" id="ab_${slugify(m)}" style="display:${absent?'inline':'none'}">Absent</span></label>
+        <div style="display:flex;gap:4px">
+          <input type="text" placeholder="mm:ss" id="i400_${slugify(m)}" value="${v}" oninput="autoSaveIndiv('${tid}','${sid}','${m}',this.value)" style="flex:1">
+          <button class="btn btn-outline btn-xs" onclick="toggleAbsent('${tid}','${sid}','${m}')" title="Absent">🚫</button>
+        </div>
+      </div>`;
+    }).join('') + `</div>`;
+
+  // Duo 400
+  renderDuoRows(tid, sid, d);
+  // Quad 400
+  renderQuadRows(tid, sid, d, 400);
+  // Quad 800
+  renderQuadRows(tid, sid, d, 800);
+  // Trio & Quint
+  renderGroupSizeRows(tid, sid, d, 3, 400);
+  renderGroupSizeRows(tid, sid, d, 3, 800);
+  renderGroupSizeRows(tid, sid, d, 5, 400);
+  renderGroupSizeRows(tid, sid, d, 5, 800);
+}
+
+function slugify(s) { return s.replace(/[^a-z0-9]/gi,'_'); }
+
+function autoSaveIndiv(tid,sid,member,val) {
+  if (!state.data[sid]) state.data[sid]={};
+  if (!state.data[sid][tid]) state.data[sid][tid]={indiv400:{},duo400:[],quad400:[],quad800:[]};
+  state.data[sid][tid].indiv400[member] = val;
+  saveState();
+}
+
+function toggleAbsent(tid,sid,member) {
+  const d = state.data[sid][tid];
+  if (!d.absents) d.absents=[];
+  const i = d.absents.indexOf(member);
+  if (i===-1) d.absents.push(member); else d.absents.splice(i,1);
+  saveState();
+  refreshDataForm();
+}
+
+function renderDuoRows(tid,sid,d) {
+  const c = document.getElementById('duo400Container');
+  const t = state.teams.find(t=>t.id===tid);
+  const opts = t ? t.members.map(m=>`<option value="${m}">${m}</option>`).join('') : '';
+  c.innerHTML = (d.duo400||[]).map((row,i) => `
+    <div class="form-row" style="align-items:flex-end">
+      <div class="form-col" style="flex:0 0 150px"><label>Coureur 1</label><select onchange="saveMultiRow('${tid}','${sid}','duo400',${i},'m1',this.value)">${opts}</select></div>
+      <div class="form-col" style="flex:0 0 150px"><label>Coureur 2</label><select onchange="saveMultiRow('${tid}','${sid}','duo400',${i},'m2',this.value)">${opts}</select></div>
+      <div class="form-col" style="flex:0 0 120px"><label>Temps (mm:ss)</label><input type="text" placeholder="02:10" value="${row.time||''}" oninput="saveMultiRow('${tid}','${sid}','duo400',${i},'time',this.value)"></div>
+      <div class="form-col" style="flex:0 0 80px;display:flex;align-items:flex-end"><button class="btn btn-red btn-xs" onclick="removeMultiRow('${tid}','${sid}','duo400',${i})">🗑</button></div>
+    </div>
+  `).join('');
+  // Set select values
+  (d.duo400||[]).forEach((row,i) => {
+    const selects = c.querySelectorAll('.form-row')[i]?.querySelectorAll('select');
+    if (selects) { selects[0].value=row.m1||''; selects[1].value=row.m2||''; }
+  });
+}
+
+function addDuoRow() {
+  const tid = document.getElementById('dataTeamSelect').value;
+  const sid = document.getElementById('dataSeanceSelect').value || state.currentSeance;
+  if (!state.data[sid][tid].duo400) state.data[sid][tid].duo400=[];
+  state.data[sid][tid].duo400.push({m1:'',m2:'',time:''});
+  renderDuoRows(tid,sid,state.data[sid][tid]);
+}
+
+function renderQuadRows(tid,sid,d,dist) {
+  const key = `quad${dist}`;
+  const c = document.getElementById(`quad${dist}Container`);
+  const t = state.teams.find(t=>t.id===tid);
+  const opts = t ? t.members.map(m=>`<option value="${m}">${m}</option>`).join('') : '';
+  c.innerHTML = (d[key]||[]).map((row,i) => `
+    <div class="form-row" style="align-items:flex-end;flex-wrap:wrap">
+      ${['m1','m2','m3','m4'].map((k,j)=>`<div class="form-col" style="flex:0 0 140px"><label>Coureur ${j+1}</label><select onchange="saveMultiRow('${tid}','${sid}','${key}',${i},'${k}',this.value)">${opts}</select></div>`).join('')}
+      <div class="form-col" style="flex:0 0 120px"><label>Temps (mm:ss)</label><input type="text" placeholder="03:30" value="${row.time||''}" oninput="saveMultiRow('${tid}','${sid}','${key}',${i},'time',this.value)"></div>
+      <div class="form-col" style="flex:0 0 60px;display:flex;align-items:flex-end"><button class="btn btn-red btn-xs" onclick="removeMultiRow('${tid}','${sid}','${key}',${i})">🗑</button></div>
+    </div>
+  `).join('');
+  (d[key]||[]).forEach((row,i) => {
+    const sels = c.querySelectorAll('.form-row')[i]?.querySelectorAll('select');
+    if (sels) { ['m1','m2','m3','m4'].forEach((k,j)=>{ sels[j].value=row[k]||''; }); }
+  });
+}
+
+function addGroupRow(size, dist) {
+  const tid = document.getElementById('dataTeamSelect').value;
+  const sid = document.getElementById('dataSeanceSelect').value || state.currentSeance;
+  const key = `grp${size}_${dist}`;
+  if (!state.data[sid][tid][key]) state.data[sid][tid][key] = [];
+  const emptyRow = {};
+  for (let i=1;i<=size;i++) emptyRow[`m${i}`]='';
+  emptyRow.time='';
+  state.data[sid][tid][key].push(emptyRow);
+  renderGroupSizeRows(tid, sid, state.data[sid][tid], size, dist);
+}
+
+function renderGroupSizeRows(tid, sid, d, size, dist) {
+  const key = `grp${size}_${dist}`;
+  const cid = `${size===3?'trio':'quint'}${dist}Container`;
+  const c = document.getElementById(cid);
+  if (!c) return;
+  const t = state.teams.find(t=>t.id===tid);
+  const opts = t ? t.members.map(m=>`<option value="${m}">${m}</option>`).join('') : '';
+  c.innerHTML = (d[key]||[]).map((row,i) => `
+    <div class="form-row" style="align-items:flex-end;flex-wrap:wrap">
+      ${Array.from({length:size},(_,j)=>`<div class="form-col" style="flex:0 0 130px"><label>Coureur ${j+1}</label><select onchange="saveMultiRow('${tid}','${sid}','${key}',${i},'m${j+1}',this.value)">${opts}</select></div>`).join('')}
+      <div class="form-col" style="flex:0 0 110px"><label>Temps (mm:ss)</label><input type="text" placeholder="03:30" value="${row.time||''}" oninput="saveMultiRow('${tid}','${sid}','${key}',${i},'time',this.value)"></div>
+      <div class="form-col" style="flex:0 0 50px;display:flex;align-items:flex-end"><button class="btn btn-red btn-xs" onclick="removeMultiRow('${tid}','${sid}','${key}',${i})">🗑</button></div>
+    </div>
+  `).join('');
+  (d[key]||[]).forEach((row,i) => {
+    const sels = c.querySelectorAll('.form-row')[i]?.querySelectorAll('select');
+    if (sels) Array.from({length:size},(_,j)=>{ if(sels[j]) sels[j].value=row[`m${j+1}`]||''; });
+  });
+}
+
+function addQuadRow(dist) {
+  const tid = document.getElementById('dataTeamSelect').value;
+  const sid = document.getElementById('dataSeanceSelect').value || state.currentSeance;
+  const key=`quad${dist}`;
+  if (!state.data[sid][tid][key]) state.data[sid][tid][key]=[];
+  state.data[sid][tid][key].push({m1:'',m2:'',m3:'',m4:'',time:''});
+  renderQuadRows(tid,sid,state.data[sid][tid],dist);
+}
+
+function saveMultiRow(tid,sid,key,i,field,val) {
+  state.data[sid][tid][key][i][field] = val;
+  saveState();
+}
+function removeMultiRow(tid,sid,key,i) {
+  state.data[sid][tid][key].splice(i,1);
+  saveState();
+  refreshDataForm();
+}
+function saveDataPage() { saveState(); showToast('Données sauvegardées ✓'); }
+
+// ════════════════════════════════════════════════════════
+//  LIVE RACE
+// ════════════════════════════════════════════════════════
+// Règle : 1er clic = 200 m (passage ligne à mi-piste), clics suivants = 400 m (tour complet)
+function lapDistAt(lapIndex) { return lapIndex === 0 ? 200 : 400; }
+function totalDistAfterN(n) {
+  if (n <= 0) return 0;
+  return 200 + (n - 1) * 400;
+}
+let liveTeams = [];
+let raceStarted = false;
+
+function startRace() {
+  if (liveRunning) return;
+  const sid = document.getElementById('liveSeanceSelect').value || state.currentSeance;
+  liveTeams = [];
+  document.querySelectorAll('.live-team-check:checked').forEach(cb => {
+    const t = state.teams.find(t=>t.id===cb.value);
+    if (t) liveTeams.push({...t, laps:[], done:false});
+  });
+  if (!liveTeams.length) { alert('Sélectionnez au moins une équipe.'); return; }
+  if (!state.live[sid]) state.live[sid]={};
+  liveTeams.forEach(t => { if (!state.live[sid][t.id]) state.live[sid][t.id]={laps:[]}; });
+  raceStarted = true;
+  liveRunning = true;
+  liveMs = 0;
+  liveStart0 = Date.now();
+  liveInterval = setInterval(() => {
+    liveMs = Date.now() - liveStart0;
+    document.getElementById('liveChronoDisplay').textContent = fmtTime(liveMs);
+    updateLiveCards();
+  }, 100);
+  renderLiveGrid(sid);
+}
+
+function resetRace() {
+  clearInterval(liveInterval);
+  liveRunning = false; liveMs = 0; raceStarted = false;
+  document.getElementById('liveChronoDisplay').textContent = '00:00.0';
+  liveTeams = [];
+  renderLiveGrid(null);
+}
+
+function recordLap(teamId, memberName) {
+  if (!raceStarted) return;
+  const sid = document.getElementById('liveSeanceSelect').value || state.currentSeance;
+  const lt = liveTeams.find(t=>t.id===teamId);
+  if (!lt || lt.done) return;
+  const lapTime = liveMs;
+  const lapIdx = lt.laps.length; // 0 = premier passage (200m), 1+ = passages suivants (400m)
+  const prev = lapIdx > 0 ? lt.laps[lapIdx-1].time : 0;
+  const split = lapTime - prev;
+  const segDist = lapDistAt(lapIdx); // 200m ou 400m
+  const totalDist = totalDistAfterN(lapIdx + 1);
+  lt.laps.push({ time:lapTime, split, member:memberName, dist:totalDist, segDist });
+  if (!state.live[sid][teamId]) state.live[sid][teamId]={laps:[]};
+  state.live[sid][teamId].laps = lt.laps;
+  if (totalDist >= BOUIN_DIST) lt.done = true;
+  saveState();
+  updateLiveCards();
+  // Auto-stop chrono when ALL teams are done
+  if (liveTeams.length && liveTeams.every(t => t.done)) {
+    clearInterval(liveInterval); liveRunning = false;
+    document.getElementById('liveChronoDisplay').classList.remove('running');
+    showToast('🏁 Tous les groupes ont terminé !');
+  }
+}
+
+function renderLiveGrid(sid) {
+  const el = document.getElementById('liveGrid');
+  if (!liveTeams.length) { el.innerHTML='<p style="color:var(--muted);padding:20px">Configurez et lancez la course ci-dessus.</p>'; return; }
+  el.innerHTML = liveTeams.map(t => `
+    <div class="live-card ${t.done?'finished':''}" id="lc_${t.id}">
+      <div class="live-card-header" style="background:${t.color||'var(--navy)'}">
+        <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px">${t.name}</span>
+        <span id="lc_dist_${t.id}" style="font-size:13px;opacity:.9">0 / 3000 m</span>
+      </div>
+      <div class="live-card-body">
+        <div class="progress-wrap"><div class="progress-bar" id="lc_prog_${t.id}" style="width:0%"></div></div>
+        <div class="live-stats">
+          <div class="live-stat"><div class="live-stat-val" id="lc_split200_${t.id}">—</div><div class="live-stat-lbl" id="lc_split200_lbl_${t.id}">1er passage (200 m)</div></div>
+          <div class="live-stat"><div class="live-stat-val" id="lc_split400_${t.id}">—</div><div class="live-stat-lbl">Tour 400 m</div></div>
+          <div class="live-stat"><div class="live-stat-val" id="lc_speed_${t.id}">—</div><div class="live-stat-lbl">km/h groupe</div></div>
+          <div class="live-stat"><div class="live-stat-val" id="lc_diff_${t.id}">—</div><div class="live-stat-lbl">Δ mètres vs Bouin</div></div>
+          <div class="live-stat" style="grid-column:span 2"><div class="live-stat-val" id="lc_difft_${t.id}">—</div><div class="live-stat-lbl">Δ temps vs Bouin (+ = retard, − = avance)</div></div>
+        </div>
+        <div class="members-btns" id="lc_btns_${t.id}">
+          ${t.members.map(m=>`<button class="member-btn" id="mb_${t.id}_${slugify(m)}" onclick="recordLap('${t.id}','${m}')">${m}<span class="click-count" id="cc_${t.id}_${slugify(m)}">0</span></button>`).join('')}
+        </div>
+        <div class="lap-log" id="lc_log_${t.id}" style="margin-top:10px"></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function updateLiveCards() {
+  liveTeams.forEach(t => {
+    const laps = t.laps;
+    const n = laps.length;
+    const totalDist = n > 0 ? laps[n-1].dist : 0;
+    const card = document.getElementById(`lc_${t.id}`);
+    if (!card) return;
+    if (t.done) card.classList.add('finished');
+    document.getElementById(`lc_dist_${t.id}`).textContent = `${totalDist} / 3000 m`;
+    document.getElementById(`lc_prog_${t.id}`).style.width = Math.min(100, totalDist/30)+'%';
+
+    // Dernier split avec label dynamique (200m si 1er, 400m si suivants)
+    if (n >= 1) {
+      const lastLap = laps[n-1];
+      document.getElementById(`lc_split200_${t.id}`).textContent = fmtTime(lastLap.split);
+      const lbl = document.getElementById(`lc_split200_lbl_${t.id}`);
+      if (lbl) lbl.textContent = lastLap.segDist === 200 ? '1er passage (200 m)' : `Dernier 400 m (P.${n})`;
+    }
+
+    // Split 400m : dernier segment de 400m
+    if (n >= 1) {
+      const last400 = [...laps].reverse().find(l => l.segDist === 400);
+      if (last400) document.getElementById(`lc_split400_${t.id}`).textContent = fmtTime(last400.split);
+    }
+
+    // Vitesse moyenne sur la totalité
+    if (n >= 1 && laps[n-1].time > 0) {
+      const speed = (totalDist / (laps[n-1].time/1000)) * 3.6;
+      document.getElementById(`lc_speed_${t.id}`).textContent = speed.toFixed(2)+' km/h';
+    }
+
+    // Δ distance & Δ temps vs Bouin
+    if (n >= 1 && laps[n-1].time > 0) {
+      const elapsedSec = laps[n-1].time / 1000;
+      // Δ mètres : + = groupe en avance (a couru plus que Bouin à cet instant)
+      const bouinDistAtTime = elapsedSec * BOUIN_SPEED;
+      const diffM = totalDist - bouinDistAtTime;
+      const elDist = document.getElementById(`lc_diff_${t.id}`);
+      elDist.textContent = (diffM >= 0 ? '+' : '') + diffM.toFixed(0) + ' m';
+      elDist.className = 'live-stat-val ' + (diffM >= 0 ? 'ahead' : 'behind');
+
+      // Δ temps : + = RETARD du groupe sur Bouin, - = AVANCE du groupe sur Bouin
+      // = temps réel - temps qu'aurait mis Bouin pour la même distance
+      const bouinTimeAtDist = totalDist / BOUIN_SPEED;
+      const diffT = elapsedSec - bouinTimeAtDist; // + retard, - avance
+      const elTime = document.getElementById(`lc_difft_${t.id}`);
+      if (elTime) {
+        elTime.textContent = (diffT > 0 ? '+' : '') + diffT.toFixed(1) + ' s';
+        elTime.className = 'live-stat-val ' + (diffT <= 0 ? 'ahead' : 'behind');
+      }
+    }
+
+    // Click counts & log
+    const counts = {};
+    laps.forEach(l => { counts[l.member] = (counts[l.member]||0)+1; });
+    t.members.forEach(m => {
+      const cc = document.getElementById(`cc_${t.id}_${slugify(m)}`);
+      if (cc) cc.textContent = counts[m]||0;
+      const mb = document.getElementById(`mb_${t.id}_${slugify(m)}`);
+      if (mb) mb.className = 'member-btn' + (counts[m] ? ' clicked' : '');
+    });
+    const logEl = document.getElementById(`lc_log_${t.id}`);
+    if (logEl) logEl.innerHTML = [...laps].reverse().map((l,i) => `
+      <div class="lap-row">
+        <span class="lap-num">P.${laps.length-i} (${l.segDist}m)</span>
+        <span>${l.member}</span>
+        <span style="color:var(--muted);margin-left:auto">${fmtTime(l.time)}</span>
+        <span style="color:var(--orange);margin-left:10px">+${fmtTime(l.split)}</span>
+        <span style="margin-left:10px;font-size:11px;color:${(l.dist - l.time/1000*BOUIN_SPEED)>=0?'var(--ahead)':'var(--behind)'}">
+          ${((l.dist - l.time/1000*BOUIN_SPEED)>=0?'+':'')}${(l.dist - l.time/1000*BOUIN_SPEED).toFixed(0)}m vs Bouin
+        </span>
+      </div>`).join('');
+  });
+}
+
+function saveLiveData() { saveState(); showToast('Données live sauvegardées ✓'); }
+
+// ════════════════════════════════════════════════════════
+//  RELAY TRANSMISSION MODE (page 3b)
+// ════════════════════════════════════════════════════════
+let relayTeams = [];
+let relayStarted = false;
+let relayMs = 0, relayRunning = false, relayInterval = null, relayStart0 = 0;
+
+function relayFracDistForTeam(t) {
+  // Auto-distance based on team size; can be overridden by manual select
+  const manual = parseInt(document.getElementById('relayFracDist')?.value) || 0;
+  if (manual > 0) return { mode: 'fixed', dist: manual };
+  const n = (t.members || []).length;
+  if (n >= 5) return { mode: 'fixed', dist: 100 };
+  if (n === 4) return { mode: 'cycle', pattern: [100, 100, 100, 200] }; // 3×100 + 1×200
+  return { mode: 'fixed', dist: 200 }; // default for ≤3
+}
+
+function getFracDistForLap(lt, lapIndex) {
+  const cfg = lt.fracCfg;
+  if (!cfg) return lt.fracDist || 100;
+  if (cfg.mode === 'fixed') return cfg.dist;
+  if (cfg.mode === 'cycle') return cfg.pattern[lapIndex % cfg.pattern.length];
+  return 100;
+}
+
+function startRelay() {
+  if (relayRunning) return;
+  const sid = document.getElementById('relaySeanceSelect').value || state.currentSeance;
+  relayTeams = [];
+  document.querySelectorAll('.relay-team-check:checked').forEach(cb => {
+    const t = state.teams.find(t => t.id === cb.value);
+    if (t) {
+      const fracCfg = relayFracDistForTeam(t);
+      relayTeams.push({ ...t, fracs: [], currentRunnerIdx: 0, done: false, fracCfg, fracDist: fracCfg.dist || fracCfg.pattern[0] });
+    }
+  });
+  if (!relayTeams.length) { alert('Sélectionnez au moins une équipe.'); return; }
+  if (!state.relay) state.relay = {};
+  if (!state.relay[sid]) state.relay[sid] = {};
+  relayTeams.forEach(t => { if (!state.relay[sid][t.id]) state.relay[sid][t.id] = { fracs: [] }; });
+  relayStarted = true;
+  relayRunning = true;
+  relayMs = 0;
+  relayStart0 = Date.now();
+  relayInterval = setInterval(() => {
+    relayMs = Date.now() - relayStart0;
+    document.getElementById('relayChronoDisplay').textContent = fmtTime(relayMs);
+    updateRelayCards();
+  }, 100);
+  renderRelayGrid(sid);
+}
+
+function resetRelay() {
+  clearInterval(relayInterval);
+  relayRunning = false; relayMs = 0; relayStarted = false;
+  document.getElementById('relayChronoDisplay').textContent = '00:00.0';
+  relayTeams = [];
+  renderRelayGrid(null);
+}
+
+function recordTransmission(teamId, receiverName) {
+  if (!relayStarted) return;
+  const sid = document.getElementById('relaySeanceSelect').value || state.currentSeance;
+  const lt = relayTeams.find(t => t.id === teamId);
+  if (!lt || lt.done) return;
+
+  const fracTime = relayMs;
+  const lapIndex = lt.fracs.length; // 0-based index of this lap
+  const fracDist = getFracDistForLap(lt, lapIndex);
+  const prev = lt.fracs.length ? lt.fracs[lt.fracs.length - 1].time : 0;
+  const split = fracTime - prev;
+  const prevDist = lt.fracs.length > 0 ? lt.fracs[lt.fracs.length - 1].totalDist : 0;
+  const totalDist = prevDist + fracDist;
+
+  const finishedRunner = lt.members[lt.currentRunnerIdx % lt.members.length];
+  lt.currentRunnerIdx++;
+  const nextRunner = lt.members[lt.currentRunnerIdx % lt.members.length];
+
+  // Next lap distance preview
+  const nextFracDist = getFracDistForLap(lt, lapIndex + 1);
+
+  lt.fracs.push({ time: fracTime, split, finished: finishedRunner, receiver: receiverName, next: nextRunner, totalDist, fracDist, nextFracDist });
+
+  if (!state.relay[sid][teamId]) state.relay[sid][teamId] = { fracs: [] };
+  state.relay[sid][teamId].fracs = lt.fracs;
+
+  if (totalDist >= BOUIN_DIST) lt.done = true;
+  saveState();
+  updateRelayCards();
+  // Auto-stop chrono when ALL relay teams are done
+  if (relayTeams.length && relayTeams.every(t => t.done)) {
+    clearInterval(relayInterval); relayRunning = false;
+    showToast('🏁 Tous les groupes ont terminé !');
+  }
+}
+
+function renderRelayGrid(sid) {
+  const el = document.getElementById('relayGrid');
+  if (!el) return;
+  if (!relayTeams.length) {
+    el.innerHTML = '<p style="color:var(--muted);padding:20px">Configurez et lancez la course ci-dessus.</p>';
+    return;
+  }
+  el.innerHTML = relayTeams.map(t => `
+    <div class="live-card ${t.done ? 'finished' : ''}" id="rc_${t.id}">
+      <div class="live-card-header" style="background:${t.color || 'var(--navy)'}">
+        <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px">${t.name}</span>
+        <span id="rc_dist_${t.id}" style="font-size:13px;opacity:.9">0 / 3000 m</span>
+      </div>
+      <div class="live-card-body">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px">
+          🏃 Coureur actuel : <strong id="rc_current_${t.id}">${t.members[0]}</strong>
+          &nbsp;→&nbsp; Prochain : <strong id="rc_next_${t.id}">${t.members[1] || '—'}</strong>
+          &nbsp;| Prochaine fraction : <strong id="rc_nextfrac_${t.id}">${getFracDistForLap(t,0)} m</strong>
+          &nbsp;| <span style="color:var(--orange)">${t.fracCfg?.mode==='cycle'?`Cycle ${t.fracCfg.pattern.join('/')+'m'}`:''}</span>
+        </div>
+        <div class="progress-wrap"><div class="progress-bar" id="rc_prog_${t.id}" style="width:0%"></div></div>
+        <div class="live-stats">
+          <div class="live-stat"><div class="live-stat-val" id="rc_lastfrac_${t.id}">—</div><div class="live-stat-lbl" id="rc_lastfrac_lbl_${t.id}">Dernière fraction</div></div>
+          <div class="live-stat"><div class="live-stat-val" id="rc_speed_${t.id}">—</div><div class="live-stat-lbl">km/h groupe</div></div>
+          <div class="live-stat"><div class="live-stat-val" id="rc_diff_${t.id}">—</div><div class="live-stat-lbl">Δ mètres vs Bouin</div></div>
+          <div class="live-stat"><div class="live-stat-val" id="rc_difft_${t.id}">—</div><div class="live-stat-lbl">Δ temps vs Bouin (+ = retard, − = avance)</div></div>
+        </div>
+        <div style="margin-top:12px;margin-bottom:4px;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">
+          ↓ Cliquer sur le coureur qui REÇOIT le témoin
+        </div>
+        <div class="members-btns" id="rc_btns_${t.id}">
+          ${t.members.map((m, i) => `
+            <button class="member-btn ${i === 0 ? 'clicked' : ''}" id="rb_${t.id}_${slugify(m)}"
+              onclick="recordTransmission('${t.id}','${m}')">${m}
+              <span class="click-count" id="rcc_${t.id}_${slugify(m)}">0</span>
+            </button>`).join('')}
+        </div>
+        <div class="lap-log" id="rc_log_${t.id}" style="margin-top:10px"></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function updateRelayCards() {
+  relayTeams.forEach(t => {
+    const fracs = t.fracs;
+    const n = fracs.length;
+    const totalDist = n > 0 ? fracs[n - 1].totalDist : 0;
+    const card = document.getElementById(`rc_${t.id}`);
+    if (!card) return;
+    if (t.done) card.classList.add('finished');
+
+    document.getElementById(`rc_dist_${t.id}`).textContent = `${totalDist} / 3000 m`;
+    document.getElementById(`rc_prog_${t.id}`).style.width = Math.min(100, totalDist / 30) + '%';
+
+    // Coureur actuel et suivant
+    const curIdx = t.currentRunnerIdx % t.members.length;
+    const nxtIdx = (t.currentRunnerIdx + 1) % t.members.length;
+    const curEl = document.getElementById(`rc_current_${t.id}`);
+    const nxtEl = document.getElementById(`rc_next_${t.id}`);
+    if (curEl) curEl.textContent = t.members[curIdx];
+    if (nxtEl) nxtEl.textContent = t.members[nxtIdx];
+    const nfEl = document.getElementById(`rc_nextfrac_${t.id}`);
+    if (nfEl) nfEl.textContent = getFracDistForLap(t, n) + ' m';
+
+    // Highlight bouton coureur actuel
+    t.members.forEach((m, i) => {
+      const btn = document.getElementById(`rb_${t.id}_${slugify(m)}`);
+      if (btn) btn.className = 'member-btn' + (i === curIdx ? ' clicked' : '');
+    });
+
+    // Dernière fraction
+    if (n >= 1) {
+      const lastFrac = fracs[n - 1];
+      const lbl = document.getElementById(`rc_lastfrac_lbl_${t.id}`);
+      if (lbl) lbl.textContent = `Fraction ${n} — ${lastFrac.finished}`;
+      document.getElementById(`rc_lastfrac_${t.id}`).textContent = fmtTime(lastFrac.split);
+    }
+
+    // Vitesse moyenne
+    if (n >= 1 && fracs[n - 1].time > 0) {
+      const speed = (totalDist / (fracs[n - 1].time / 1000)) * 3.6;
+      document.getElementById(`rc_speed_${t.id}`).textContent = speed.toFixed(2) + ' km/h';
+    }
+
+    // Δ mètres & Δ temps vs Bouin
+    if (n >= 1 && fracs[n - 1].time > 0) {
+      const elapsedSec = fracs[n - 1].time / 1000;
+      const bouinDistAtTime = elapsedSec * BOUIN_SPEED;
+      const diffM = totalDist - bouinDistAtTime;
+      const elDist = document.getElementById(`rc_diff_${t.id}`);
+      elDist.textContent = (diffM >= 0 ? '+' : '') + diffM.toFixed(0) + ' m';
+      elDist.className = 'live-stat-val ' + (diffM >= 0 ? 'ahead' : 'behind');
+
+      const bouinTimeAtDist = totalDist / BOUIN_SPEED;
+      const diffT = elapsedSec - bouinTimeAtDist; // + = retard, - = avance
+      const elTime = document.getElementById(`rc_difft_${t.id}`);
+      if (elTime) {
+        elTime.textContent = (diffT > 0 ? '+' : '') + diffT.toFixed(1) + ' s';
+        elTime.className = 'live-stat-val ' + (diffT <= 0 ? 'ahead' : 'behind');
+      }
+    }
+
+    // Click counts
+    const counts = {};
+    fracs.forEach(f => { counts[f.finished] = (counts[f.finished] || 0) + 1; });
+    t.members.forEach(m => {
+      const cc = document.getElementById(`rcc_${t.id}_${slugify(m)}`);
+      if (cc) cc.textContent = counts[m] || 0;
+    });
+
+    // Log
+    const logEl = document.getElementById(`rc_log_${t.id}`);
+    if (logEl) logEl.innerHTML = [...fracs].reverse().map((f, i) => `
+      <div class="lap-row">
+        <span class="lap-num">F.${fracs.length - i}</span>
+        <span title="coureur terminé">${f.finished} →</span>
+        <span style="font-weight:700" title="reçoit le témoin">${f.receiver}</span>
+        <span style="color:var(--muted);margin-left:auto">${fmtTime(f.time)}</span>
+        <span style="color:var(--orange);margin-left:8px">+${fmtTime(f.split)}</span>
+        <span style="margin-left:8px;font-size:11px;color:${(f.totalDist - f.time / 1000 * BOUIN_SPEED) >= 0 ? 'var(--ahead)' : 'var(--behind)'}">
+          ${((f.totalDist - f.time / 1000 * BOUIN_SPEED) >= 0 ? '+' : '')}${(f.totalDist - f.time / 1000 * BOUIN_SPEED).toFixed(0)}m vs Bouin
+        </span>
+      </div>`).join('');
+  });
+}
+
+function saveRelayData() { saveState(); showToast('Données relais sauvegardées ✓'); }
+
+// ════════════════════════════════════════════════════════
+//  BILAN PAGE
+// ════════════════════════════════════════════════════════
+function renderBilan() {
+  const tid = document.getElementById('bilanTeamSelect').value;
+  if (!tid) return;
+  const t = state.teams.find(t=>t.id===tid);
+  if (!t) return;
+  const el = document.getElementById('bilanContent');
+  let html = '';
+
+  // Per seance
+  state.seances.forEach(s => {
+    const d = state.data[s.id]?.[tid];
+    const lv = state.live[s.id]?.[tid];
+    if (!d && !lv) return;
+    html += `<div class="card"><h2 class="section-title">📅 ${s.label}</h2>`;
+
+    if (d) {
+      // Indiv
+      html += `<h3 style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px">400 m Individuel</h3>`;
+      html += `<table><thead><tr><th>Élève</th><th>Temps</th><th>Vitesse (km/h)</th><th>Absent</th></tr></thead><tbody>`;
+      t.members.forEach(m => {
+        const absent = d.absents && d.absents.includes(m);
+        const time = d.indiv400[m];
+        const speed = time ? speedFromTime(time, 400) : null;
+        html += `<tr><td>${m}</td><td>${time||'—'}</td><td>${speed?speed.toFixed(2):' —'}</td><td>${absent?'<span class="absent-badge">Absent</span>':''}</td></tr>`;
+      });
+      html += `</tbody></table>`;
+
+      // Duo
+      if (d.duo400?.length) {
+        html += `<h3 style="font-size:14px;font-weight:700;color:var(--navy);margin:14px 0 8px">400 m à Deux</h3>`;
+        html += `<table><thead><tr><th>Coureur 1</th><th>Coureur 2</th><th>Temps</th><th>Vitesse (km/h)</th></tr></thead><tbody>`;
+        d.duo400.forEach(r => {
+          const sp = r.time ? speedFromTime(r.time,400) : null;
+          html += `<tr><td>${r.m1||'—'}</td><td>${r.m2||'—'}</td><td>${r.time||'—'}</td><td>${sp?sp.toFixed(2):'—'}</td></tr>`;
+        });
+        html += `</tbody></table>`;
+      }
+      // Quad 400
+      if (d.quad400?.length) {
+        html += `<h3 style="font-size:14px;font-weight:700;color:var(--navy);margin:14px 0 8px">400 m à Quatre</h3>`;
+        html += `<table><thead><tr><th>Membres</th><th>Temps</th><th>Vitesse (km/h)</th></tr></thead><tbody>`;
+        d.quad400.forEach(r => {
+          const sp = r.time ? speedFromTime(r.time,400) : null;
+          html += `<tr><td>${[r.m1,r.m2,r.m3,r.m4].filter(Boolean).join(', ')}</td><td>${r.time||'—'}</td><td>${sp?sp.toFixed(2):'—'}</td></tr>`;
+        });
+        html += `</tbody></table>`;
+      }
+      // Quad 800
+      if (d.quad800?.length) {
+        html += `<h3 style="font-size:14px;font-weight:700;color:var(--navy);margin:14px 0 8px">800 m à Quatre</h3>`;
+        html += `<table><thead><tr><th>Membres</th><th>Temps</th><th>Vitesse (km/h)</th></tr></thead><tbody>`;
+        d.quad800.forEach(r => {
+          const sp = r.time ? speedFromTime(r.time,800) : null;
+          html += `<tr><td>${[r.m1,r.m2,r.m3,r.m4].filter(Boolean).join(', ')}</td><td>${r.time||'—'}</td><td>${sp?sp.toFixed(2):'—'}</td></tr>`;
+        });
+        html += `</tbody></table>`;
+      }
+    }
+
+    // Live laps
+    if (lv?.laps?.length) {
+      html += `<h3 style="font-size:14px;font-weight:700;color:var(--navy);margin:14px 0 8px">Course Live — Passages</h3>`;
+      html += `<table><thead><tr><th>Tour</th><th>Élève passé</th><th>Temps chrono</th><th>Split</th><th>Dist. totale</th></tr></thead><tbody>`;
+      lv.laps.forEach((l,i) => {
+        html += `<tr><td>${i+1}</td><td>${l.member}</td><td>${fmtTime(l.time)}</td><td>+${fmtTime(l.split)}</td><td>${l.dist} m</td></tr>`;
+      });
+      html += `</tbody></table>`;
+      const last = lv.laps[lv.laps.length-1];
+      const totalDist = last.dist;
+      const speed = (totalDist / (last.time/1000)) * 3.6;
+      const bouinExpected = (last.time/1000) * BOUIN_SPEED;
+      const diff = totalDist - bouinExpected;
+      html += `<div class="live-stats" style="margin-top:10px">
+        <div class="live-stat"><div class="live-stat-val">${totalDist} m</div><div class="live-stat-lbl">Dist. réalisée</div></div>
+        <div class="live-stat"><div class="live-stat-val">${speed.toFixed(2)} km/h</div><div class="live-stat-lbl">Vitesse moy.</div></div>
+        <div class="live-stat"><div class="live-stat-val ${diff>=0?'ahead':'behind'}">${diff>=0?'+':''}${diff.toFixed(0)} m</div><div class="live-stat-lbl">Δ vs Bouin</div></div>
+      </div>`;
+    }
+
+    html += `</div>`;
+  });
+
+  if (!html) html = `<div class="card"><p style="color:var(--muted)">Aucune donnée enregistrée pour cette équipe.</p></div>`;
+
+  // Recommandations
+  html += `<div class="card" style="border-left:4px solid var(--orange)"><h2 class="section-title">💡 Recommandations</h2><div id="recommDiv">${buildRecommendations(tid)}</div></div>`;
+
+  el.innerHTML = html;
+}
+
+function buildRecommendations(tid) {
+  const t = state.teams.find(t=>t.id===tid);
+  if (!t) return '';
+  let recs = [];
+
+  // Vitesse Bouin par segment
+  const bouinSeg200 = fmtTime((200/BOUIN_SPEED)*1000);
+  const bouinSeg400 = fmtTime((400/BOUIN_SPEED)*1000);
+  recs.push(`Objectif Bouin : 3000 m à <strong>22.07 km/h</strong> (8 min 09 s). Allure cible : 200 m en <strong>${bouinSeg200}</strong> (1er passage), 400 m en <strong>${bouinSeg400}</strong> (tours suivants).`);
+
+  // Collecter les meilleures vitesses individuelles
+  const bestSpeeds = {};
+  state.seances.forEach(s => {
+    const d = state.data[s.id]?.[tid];
+    if (!d) return;
+    t.members.forEach(m => {
+      const sp = d.indiv400[m] ? speedFromTime(d.indiv400[m],400) : null;
+      if (sp && (!bestSpeeds[m] || sp > bestSpeeds[m])) bestSpeeds[m] = sp;
+    });
+  });
+
+  const membersWithData = t.members.filter(m => bestSpeeds[m]);
+  if (membersWithData.length) {
+    const avg = membersWithData.reduce((a,m)=>a+bestSpeeds[m],0)/membersWithData.length;
+    recs.push(`Vitesse individuelle moyenne (meilleure perf) : <strong>${avg.toFixed(2)} km/h</strong> — Objectif : 22.07 km/h.`);
+    if (avg < 22.07) {
+      recs.push(`Le groupe est <strong>${(22.07-avg).toFixed(2)} km/h</strong> en dessous de l'allure Bouin. Objectifs de progression : raccourcir les temps de réaction à la passation et allonger les phases de sprint.`);
+    } else {
+      recs.push(`Excellent ! Le groupe est <strong>${(avg-22.07).toFixed(2)} km/h</strong> au-dessus de l'allure Bouin — visez la régularité sur toute la course.`);
+    }
+
+    // ─── ORDRE DE PASSAGE OPTIMAL ───────────────────────────────────
+    // Logique circulaire : coureur 1 → 2 → ... → N → (retour à 1 si besoin)
+    // Pour faciliter la passation, les vitesses adjacentes doivent être proches.
+    // Algorithme : placer le plus rapide en 1er, puis alterner : lent, rapide, lent, rapide...
+    // Ce schéma minimise les écarts de vitesse entre coureurs consécutifs (y compris dernier→1er).
+
+    const sorted = [...membersWithData].sort((a, b) => bestSpeeds[b] - bestSpeeds[a]);
+    const n = sorted.length;
+
+    // Construction de l'ordre optimal :
+    // Idée : disposer les coureurs en cercle de sorte que chaque voisin soit le plus proche en vitesse.
+    // Stratégie pratique retenue :
+    //   • Place le plus rapide en position 1 (donne l'élan initial)
+    //   • Alterne ensuite : 3e rapide, 5e... en positions paires ; 2e rapide, 4e... en positions impaires
+    //   • Résultat : vitesses décroissantes-croissantes, limitant l'écart à chaque passation circulaire
+
+    const order = new Array(n);
+    let lo = 0, hi = n - 1;
+    sorted.forEach((m, i) => {
+      if (i % 2 === 0) { order[lo] = m; lo++; }
+      else             { order[hi] = m; hi--; }
+    });
+
+    // Calculer les écarts de vitesse entre voisins (y compris dernier→premier, donc circulaire)
+    const gaps = order.map((m, i) => {
+      const next = order[(i + 1) % n];
+      return Math.abs(bestSpeeds[m] - bestSpeeds[next]);
+    });
+    const maxGap = Math.max(...gaps);
+
+    const orderRows = order.map((m, i) => {
+      const sp = bestSpeeds[m];
+      const next = order[(i + 1) % n];
+      const gap = Math.abs(sp - bestSpeeds[next]);
+      const gapColor = gap <= maxGap * 0.4 ? 'var(--ahead)' : gap <= maxGap * 0.7 ? 'var(--yellow)' : 'var(--behind)';
+      let role = '🔄 Relayeur';
+      if (i === 0) role = '🚀 Lanceur';
+      else if (i === n - 1) role = '🏁 Finisseur → passe au Lanceur';
+      const bouinT = fmtTime((400 / BOUIN_SPEED) * 1000);
+      const myT = fmtTime((400 / (sp / 3.6)) * 1000);
+      return `<tr>
+        <td>${i + 1}</td>
+        <td><strong>${m}</strong></td>
+        <td>${sp.toFixed(2)} km/h</td>
+        <td>${myT} <span style="color:var(--muted);font-size:11px">(Bouin : ${bouinT})</span></td>
+        <td><span style="font-weight:700;color:${gapColor}">Δ ${gap.toFixed(2)} km/h → <em>${next}</em></span></td>
+        <td>${role}</td>
+      </tr>`;
+    }).join('');
+
+    const avgGap = (gaps.reduce((a, b) => a + b, 0) / n).toFixed(2);
+
+    recs.push(`__TABLE_ORDRE__`);
+    const tableOrdre = `
+      <div style="margin:10px 0 0 0">
+        <div style="font-weight:700;font-size:13px;color:var(--navy);margin-bottom:4px">🏃 Ordre de passage recommandé — Relais circulaire</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px">
+          Le relais est <strong>circulaire</strong> : le dernier coureur repasse le témoin au premier.
+          L'ordre proposé minimise les <strong>écarts de vitesse entre coureurs adjacents</strong>,
+          ce qui réduit les accélérations/décélérations lors des passations.
+          Écart moyen entre voisins : <strong>${avgGap} km/h</strong>.
+          <span style="color:var(--ahead)">■</span> faible &nbsp;
+          <span style="color:var(--yellow)">■</span> moyen &nbsp;
+          <span style="color:var(--behind)">■</span> élevé
+        </div>
+        <table>
+          <thead><tr><th>#</th><th>Élève</th><th>Vitesse</th><th>Temps estimé / 400 m</th><th>Écart avec suivant</th><th>Rôle</th></tr></thead>
+          <tbody>${orderRows}</tbody>
+        </table>
+      </div>`;
+    return recs.map(r => r === '__TABLE_ORDRE__' ? tableOrdre : `<p style="margin-bottom:8px;font-size:13px">• ${r}</p>`).join('') +
+      `<p style="margin-bottom:8px;font-size:13px">• En cas d'absence, retirez le membre manquant et recalculez l'ordre (exporter JSON, recharger la page).</p>`;
+  }
+
+  recs.push('Saisissez des temps individuels (page Données) pour obtenir l\'ordre de passage optimal.');
+  recs.push('En cas d\'absence, répartir les 3000 m équitablement entre les membres présents.');
+  return recs.map(r=>`<p style="margin-bottom:8px;font-size:13px">• ${r}</p>`).join('');
+}
+
+// ════════════════════════════════════════════════════════
+//  PHYSICS PAGE
+// ════════════════════════════════════════════════════════
+function renderPhysics() {
+  const tid = document.getElementById('physTeamSelect').value;
+  if (!tid) return;
+  const t = state.teams.find(t=>t.id===tid);
+  if (!t) return;
+
+  // Indiv table
+  const indivEl = document.getElementById('physIndivTable');
+  let indivRows = [];
+  state.seances.forEach(s => {
+    const d = state.data[s.id]?.[tid];
+    if (!d) return;
+    t.members.forEach(m => {
+      const time = d.indiv400[m];
+      if (!time) return;
+      const sp = speedFromTime(time,400);
+      const bouinDiff = sp - BOUIN_SPEED*3.6;
+      indivRows.push({m, seance:s.label, time, sp, bouinDiff});
+    });
+  });
+  if (indivRows.length) {
+    indivEl.innerHTML = `<table><thead><tr><th>Élève</th><th>Séance</th><th>Temps 400 m</th><th>Vitesse (km/h)</th><th>Δ vs Bouin</th><th>Allure (s/400m)</th></tr></thead><tbody>` +
+      indivRows.map(r=>`<tr><td>${r.m}</td><td>${r.seance}</td><td>${r.time}</td><td>${r.sp.toFixed(2)}</td><td class="${r.bouinDiff>=0?'ahead':'behind'}">${r.bouinDiff>=0?'+':''}${r.bouinDiff.toFixed(2)}</td><td>${timeToSec(r.time).toFixed(1)} s</td></tr>`).join('') +
+      `</tbody></table>`;
+  } else {
+    indivEl.innerHTML = '<p style="color:var(--muted);font-size:13px">Aucune donnée individuelle disponible.</p>';
+  }
+
+  // Collec table - mesures sur distance fixe + estimation 100m (fractionné course live)
+  const colEl = document.getElementById('physCollecTable');
+  let colRows = [];
+  state.seances.forEach(s => {
+    const d = state.data[s.id]?.[tid];
+    if (!d) return;
+    (d.duo400||[]).forEach(r=>{if(r.time)colRows.push({type:'2×400m',members:[r.m1,r.m2],time:r.time,dist:400,seance:s.label});});
+    (d.quad400||[]).forEach(r=>{if(r.time)colRows.push({type:'4×400m',members:[r.m1,r.m2,r.m3,r.m4],time:r.time,dist:400,seance:s.label});});
+    (d.quad800||[]).forEach(r=>{if(r.time)colRows.push({type:'4×800m',members:[r.m1,r.m2,r.m3,r.m4],time:r.time,dist:800,seance:s.label});});
+  });
+
+  // Données live : chaque passage est un fractionné réel (200m ou 400m)
+  // → on extrapolera aussi la vitesse sur 100m (le fractionné minimal de la course live)
+  let liveRows = [];
+  state.seances.forEach(s => {
+    const lv = state.live[s.id]?.[tid];
+    if (!lv?.laps?.length) return;
+    lv.laps.forEach((lap, i) => {
+      const seg = lap.segDist || (i===0 ? 200 : 400);
+      const spKmh = (seg / (lap.split/1000)) * 3.6;
+      // v sur 100m = même vitesse si allure constante sur le segment
+      const v100ms = seg / (lap.split/1000); // m/s
+      const t100 = 100 / v100ms; // secondes pour 100m à cette vitesse
+      liveRows.push({ seance: s.label, passage: i+1, member: lap.member, seg, split: lap.split, spKmh, v100ms, t100, bouinDiff: spKmh - BOUIN_SPEED*3.6 });
+    });
+  });
+
+  let colHTML = '';
+  if (colRows.length) {
+    colHTML += `<h3 style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px">Mesures sur distance fixe (400 m / 800 m)</h3>`;
+    colHTML += `<div style="font-size:11px;color:var(--muted);margin-bottom:8px">La vitesse sur 100 m est extrapolée depuis la vitesse mesurée en supposant une allure constante.</div>`;
+    colHTML += `<table><thead><tr><th>Type</th><th>Séance</th><th>Membres</th><th>Temps</th><th>v (km/h)</th><th>v extrapolée 100 m</th><th>t estimé 100 m</th><th>Δ vs Bouin</th></tr></thead><tbody>` +
+      colRows.map(r => {
+        const sp = speedFromTime(r.time, r.dist);
+        const spMs = sp / 3.6;
+        const t100 = 100 / spMs;
+        const bd = sp - BOUIN_SPEED*3.6;
+        return `<tr><td>${r.type}</td><td>${r.seance}</td><td>${r.members.filter(Boolean).join(', ')}</td><td>${r.time}</td><td>${sp.toFixed(2)}</td><td>${sp.toFixed(2)} km/h</td><td>${fmtTime(t100*1000)}</td><td class="${bd>=0?'ahead':'behind'}">${bd>=0?'+':''}${bd.toFixed(2)}</td></tr>`;
+      }).join('') + `</tbody></table>`;
+  }
+
+  if (liveRows.length) {
+    // Bouin reference for 100m
+    const bouinV100kmh = BOUIN_SPEED * 3.6;
+    const bouinT100 = 100 / BOUIN_SPEED;
+    colHTML += `
+      <div class="formula-box" style="margin-top:16px">
+        Fractionné 100 m Bouin : <span>v = ${bouinV100kmh.toFixed(2)} km/h — t = ${fmtTime(bouinT100*1000)}</span>
+      </div>`;
+    colHTML += `<h3 style="font-size:14px;font-weight:700;color:var(--navy);margin:14px 0 4px">⚡ Fractionnés live — Vitesses par segment et extrapolation 100 m</h3>`;
+    colHTML += `<div style="font-size:11px;color:var(--muted);margin-bottom:8px">
+      <strong>Logique :</strong> Le 1er passage = 200 m (ligne à mi-piste), les suivants = 400 m (tour complet).
+      La vitesse sur <strong>100 m</strong> est calculée en supposant que l'élève a couru à allure constante sur son segment :
+      <em>v<sub>100m</sub> = distance_segment / t_split</em>, puis <em>t<sub>100m</sub> = 100 / v<sub>100m</sub></em>.
+    </div>`;
+    colHTML += `<table><thead><tr><th>Séance</th><th>P.</th><th>Élève</th><th>Segment</th><th>Split</th><th>v (km/h)</th><th>v sur 100 m</th><th>t estimé 100 m</th><th>Δ vs Bouin</th></tr></thead><tbody>` +
+      liveRows.map(r => {
+        return `<tr>
+          <td>${r.seance}</td>
+          <td>${r.passage}</td>
+          <td><strong>${r.member}</strong></td>
+          <td>${r.seg} m</td>
+          <td>${fmtTime(r.split)}</td>
+          <td>${r.spKmh.toFixed(2)}</td>
+          <td><strong>${r.spKmh.toFixed(2)} km/h</strong></td>
+          <td><strong>${fmtTime(r.t100*1000)}</strong></td>
+          <td class="${r.bouinDiff>=0?'ahead':'behind'}">${r.bouinDiff>=0?'+':''}${r.bouinDiff.toFixed(2)}</td>
+        </tr>`;
+      }).join('') + `</tbody></table>`;
+  }
+  if (!colHTML) colHTML = '<p style="color:var(--muted);font-size:13px">Aucune donnée collective disponible.</p>';
+  colEl.innerHTML = colHTML;
+
+  // Relais calc — basé sur vitesse max mesurée, avec estimation par fractionné de 100m
+  const relEl = document.getElementById('physRelaisCalc');
+  const memberSpeeds = {};
+  state.seances.forEach(s => {
+    const d = state.data[s.id]?.[tid];
+    if (!d) return;
+    t.members.forEach(m => {
+      const time = d.indiv400[m];
+      if (!time) return;
+      const sp = speedFromTime(time,400) / 3.6; // m/s
+      if (!memberSpeeds[m] || sp > memberSpeeds[m]) memberSpeeds[m] = sp;
+    });
+  });
+  // Compléter avec vitesses live si pas de données saisies
+  state.seances.forEach(s => {
+    const lv = state.live[s.id]?.[tid];
+    if (!lv?.laps?.length) return;
+    lv.laps.forEach((lap,i) => {
+      const seg = lap.segDist || (i===0?200:400);
+      const spMs = seg / (lap.split/1000);
+      if (!memberSpeeds[lap.member] || spMs > memberSpeeds[lap.member]) memberSpeeds[lap.member] = spMs;
+    });
+  });
+
+  const present = t.members.filter(m => memberSpeeds[m]);
+  if (present.length === 0) {
+    relEl.innerHTML = '<p style="color:var(--muted);font-size:13px">Saisissez des temps individuels ou lancez une séance live pour calculer le potentiel de relais.</p>';
+    return;
+  }
+
+  // Répartition équitable des 3000 m
+  const distPerMember = BOUIN_DIST / present.length;
+  // Nombre de segments de 100m par coureur
+  const segs100PerMember = distPerMember / 100;
+  const times = present.map(m => ({
+    m,
+    speedMs: memberSpeeds[m],
+    speedKmh: memberSpeeds[m]*3.6,
+    dist: distPerMember,
+    segs100: segs100PerMember,
+    timePerSeg100: 100 / memberSpeeds[m],
+    totalTime: distPerMember / memberSpeeds[m]
+  }));
+  const totalTime = times.reduce((a,x)=>a+x.totalTime, 0);
+  const totalTimeArrete = totalTime + (present.length - 1) * 2.5; // +2.5s par passation arrêtée
+  const diff = BOUIN_TIME - totalTime;
+  const diffArrete = BOUIN_TIME - totalTimeArrete;
+
+  relEl.innerHTML = `
+    <div class="formula-box">Temps potentiel = Σ (distance_i / v_i) &nbsp;|&nbsp; <span>t par fractionné 100 m = 100 / v_i (m/s)</span></div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:12px">
+      La course live se décompose en fractionnés de <strong>100 m</strong> (la plus petite unité mesurable sur la piste). 
+      Ce tableau montre combien de temps chaque élève mettrait pour courir <strong>un fractionné de 100 m</strong> à sa vitesse maximale mesurée.
+    </div>
+    <table><thead><tr>
+      <th>Élève</th><th>Distance assignée</th><th>Nb × 100 m</th><th>v max (m/s)</th><th>v max (km/h)</th><th>t / 100 m</th><th>Temps total</th>
+    </tr></thead><tbody>
+      ${times.map(r=>`<tr>
+        <td><strong>${r.m}</strong></td>
+        <td>${r.dist.toFixed(0)} m</td>
+        <td>${r.segs100.toFixed(0)} × 100 m</td>
+        <td>${r.speedMs.toFixed(2)} m/s</td>
+        <td>${r.speedKmh.toFixed(2)} km/h</td>
+        <td><strong style="color:var(--orange)">${fmtTime(r.timePerSeg100*1000)}</strong></td>
+        <td>${fmtTime(r.totalTime*1000)}</td>
+      </tr>`).join('')}
+      <tr style="background:rgba(26,43,107,.05);font-weight:700">
+        <td colspan="6">TOTAL — Relais lancé</td><td>${fmtTime(totalTime*1000)}</td>
+      </tr>
+      <tr style="background:rgba(232,88,26,.06);font-weight:700">
+        <td colspan="6">TOTAL — Relais arrêté (+2,5 s/passation estimées)</td><td>${fmtTime(totalTimeArrete*1000)}</td>
+      </tr>
+    </tbody></table>
+    <div class="live-stats" style="margin-top:14px">
+      <div class="live-stat"><div class="live-stat-val">${fmtTime(totalTime*1000)}</div><div class="live-stat-lbl">Relais lancé</div></div>
+      <div class="live-stat"><div class="live-stat-val">${fmtTime(totalTimeArrete*1000)}</div><div class="live-stat-lbl">Relais arrêté (est.)</div></div>
+      <div class="live-stat"><div class="live-stat-val">08:09.0</div><div class="live-stat-lbl">Objectif Bouin</div></div>
+      <div class="live-stat"><div class="live-stat-val ${diff>=0?'ahead':'behind'}">${diff>=0?'+':''}${diff.toFixed(1)} s</div><div class="live-stat-lbl">Écart lancé</div></div>
+      <div class="live-stat"><div class="live-stat-val ${diffArrete>=0?'ahead':'behind'}">${diffArrete>=0?'+':''}${diffArrete.toFixed(1)} s</div><div class="live-stat-lbl">Écart arrêté</div></div>
+      <div class="live-stat"><div class="live-stat-val">${((BOUIN_DIST/totalTime)*3.6).toFixed(2)} km/h</div><div class="live-stat-lbl">Vitesse moy. potentielle</div></div>
+    </div>
+    <div class="alert alert-info" style="margin-top:14px">
+      <strong>Interprétation :</strong> Le <em>relais lancé</em> suppose que le relayeur est déjà en mouvement à la passation — cas idéal. 
+      Le <em>relais arrêté</em> ajoute ~2,5 s par passation (accélération depuis l'immobilité). 
+      La colonne <strong>t / 100 m</strong> correspond à la durée d'un fractionné élémentaire de 100 m, soit la plus petite unité mesurée lors de la course live. 
+      Les élèves peuvent comparer leur propre <em>t / 100 m</em> à celui de Bouin (<strong>${fmtTime((100/BOUIN_SPEED)*1000)}</strong>) pour visualiser l'effort à fournir.
+    </div>
+  `;
+}
+
+// ════════════════════════════════════════════════════════
+//  HELPERS
+// ════════════════════════════════════════════════════════
+function timeToSec(t) {
+  if (!t) return 0;
+  const parts = t.split(':');
+  if (parts.length===2) return parseInt(parts[0])*60 + parseFloat(parts[1]);
+  return parseFloat(t);
+}
+function speedFromTime(t, dist) {
+  const s = timeToSec(t);
+  if (!s) return 0;
+  return (dist / s) * 3.6;
+}
+
+// ════════════════════════════════════════════════════════
+//  SELECTS SYNC
+// ════════════════════════════════════════════════════════
+function renderAllSelects() {
+  const teamOpts = state.teams.map(t=>`<option value="${t.id}">${t.name}</option>`).join('');
+  const seanceOpts = state.seances.map(s=>`<option value="${s.id}" ${s.id===state.currentSeance?'selected':''}>${s.label}</option>`).join('');
+  ['dataTeamSelect','bilanTeamSelect','physTeamSelect'].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.innerHTML=teamOpts;
+  });
+  ['dataSeanceSelect','liveSeanceSelect','relaySeanceSelect','grpSeanceSelect','warmSeanceSelect','fracSeanceSelect','libreSeanceSelect'].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.innerHTML=seanceOpts;
+  });
+  const cbWrap = document.getElementById('liveTeamCheckboxes');
+  if (cbWrap) cbWrap.innerHTML = state.teams.map(t=>`
+    <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer">
+      <input type="checkbox" class="live-team-check" value="${t.id}" checked>
+      <span style="background:${t.color||'var(--navy)'};color:#fff;border-radius:4px;padding:2px 8px;font-weight:600;font-size:12px">${t.name}</span>
+    </label>`).join('');
+  const ryCbWrap = document.getElementById('relayTeamCheckboxes');
+  if (ryCbWrap) ryCbWrap.innerHTML = state.teams.map(t=>`
+    <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer">
+      <input type="checkbox" class="relay-team-check" value="${t.id}" checked>
+      <span style="background:${t.color||'var(--navy)'};color:#fff;border-radius:4px;padding:2px 8px;font-weight:600;font-size:12px">${t.name}</span>
+    </label>`).join('');
+  const lbWrap=document.getElementById('libreTeamCheckboxes');
+  if(lbWrap) lbWrap.innerHTML=state.teams.map(t=>`
+    <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer">
+      <input type="checkbox" class="libre-team-check" value="${t.id}" checked>
+      <span style="background:${t.color||'var(--navy)'};color:#fff;border-radius:4px;padding:2px 8px;font-weight:600;font-size:12px">${t.name}</span>
+    </label>`).join('');
+  refreshDataForm();
+  renderBilan();
+  renderPhysics();
+  renderSeanceTabs();
+  renderWarmPage();
+  renderFracGroups();
+}
+
+// ════════════════════════════════════════════════════════
+//  JSON IMPORT / EXPORT
+// ════════════════════════════════════════════════════════
+function exportJSON() {
+  const blob = new Blob([JSON.stringify(state, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'jean_bouin_data_'+new Date().toISOString().slice(0,10)+'.json';
+  a.click();
+}
+function triggerImport() { document.getElementById('importModal').classList.add('open'); }
+function closeModal() { document.getElementById('importModal').classList.remove('open'); }
+function importFromPaste() {
+  try {
+    const raw = document.getElementById('jsonPasteArea').value;
+    const parsed = JSON.parse(raw);
+    state = parsed;
+    if (!state.students) state.students = [];
+    if (!state.seanceGroups) state.seanceGroups = {};
+    if (!state.warm) state.warm = {};
+    saveState(); closeModal(); init();
+    showToast('Données importées ✓');
+  } catch(e) { alert('JSON invalide : '+e.message); }
+}
+function importJSON(event) {
+  const file = event.target.files[0]; if (!file) return;
+  const r = new FileReader();
+  r.onload = e => {
+    try {
+      state = JSON.parse(e.target.result);
+      if (!state.students) state.students = [];
+      if (!state.seanceGroups) state.seanceGroups = {};
+      if (!state.warm) state.warm = {};
+      saveState(); init(); showToast('Données importées ✓');
+    } catch(err) { alert('JSON invalide'); }
+  };
+  r.readAsText(file);
+}
+
+// ════════════════════════════════════════════════════════
+//  ÉCHAUFFEMENT
+// ════════════════════════════════════════════════════════
+const WARM_LIVES_INIT = 20;
+let warmRunning=false, warmMs=0, warmInterval=null, warmStart0=0;
+
+function renderWarmPage() {
+  const sid = document.getElementById('warmSeanceSelect')?.value || state.currentSeance;
+  if (!sid) return;
+  if (!state.warm) state.warm={};
+  if (!state.warm[sid]) state.warm[sid]={};
+  const sw = state.warm[sid];
+  const sg = state.seanceGroups?.[sid];
+  let entries=[];
+  if (sg?.groups?.length) {
+    sg.groups.forEach(g=>{ g.members.filter(m=>!sg.absents.includes(m)).forEach(m=>entries.push({name:m,group:g.name,color:g.color})); });
+  } else {
+    [...new Set(state.teams.flatMap(t=>t.members))].forEach(m=>entries.push({name:m,group:'',color:'var(--navy)'}));
+  }
+  entries.forEach(e=>{ if(!sw[e.name]) sw[e.name]={lives:WARM_LIVES_INIT,validated:false,stops:0}; });
+  const targetMin = parseInt(document.getElementById('warmDuration')?.value||5);
+  const tEl=document.getElementById('warmTargetDisplay');
+  if(tEl) tEl.textContent=String(targetMin).padStart(2,'0')+':00';
+  const grid=document.getElementById('warmStudentsGrid');
+  if(!grid) return;
+  if(!entries.length){grid.innerHTML='<p style="color:var(--muted)">Aucun élève.</p>';return;}
+  grid.innerHTML=entries.map(e=>{
+    const w=sw[e.name];
+    const hearts=Array.from({length:WARM_LIVES_INIT},(_,i)=>`<span style="font-size:13px;opacity:${i<w.lives?1:0.12}">❤️</span>`).join('');
+    const col=w.lives<=5?'var(--red)':w.lives<=10?'var(--orange)':'var(--green)';
+    return `<div class="card" style="border-top:4px solid ${e.color||'var(--navy)'};padding:12px;text-align:center">
+      <div style="font-weight:700;font-size:14px;color:var(--navy)">${e.name}</div>
+      ${e.group?`<div style="font-size:10px;color:var(--muted);margin-bottom:4px">${e.group}</div>`:''}
+      <div style="line-height:1.5;margin:6px 0">${hearts}</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:${col}">${w.lives}<span style="font-size:14px;font-weight:400;color:var(--muted)"> / ${WARM_LIVES_INIT}</span></div>
+      ${w.validated?`<div style="color:var(--green);font-weight:700;margin:4px 0">✅ Validé !</div>`:''}
+      ${w.stops>0?`<div style="font-size:11px;color:var(--muted)">${w.stops} arrêt(s)</div>`:''}
+      <div style="display:flex;gap:6px;margin-top:8px;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn-red btn-sm" onclick="warmStop('${sid}','${e.name}')" ${w.validated?'disabled':''}>🚫 Arrêt (−1)</button>
+        <button class="btn btn-green btn-sm" onclick="warmValidate('${sid}','${e.name}')" ${w.validated?'disabled':''}>✅ Validé</button>
+        <button class="btn btn-outline btn-xs" onclick="warmReset1('${sid}','${e.name}')">↺</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function warmStop(sid,name){
+  if(!state.warm[sid]?.[name]) return;
+  const w=state.warm[sid][name];
+  if(w.lives>0) w.lives--;
+  w.stops=(w.stops||0)+1;
+  saveState(); renderWarmPage();
+}
+function warmValidate(sid,name){
+  if(state.warm[sid]?.[name]) state.warm[sid][name].validated=true;
+  saveState(); renderWarmPage();
+}
+function warmReset1(sid,name){
+  if(state.warm[sid]) state.warm[sid][name]={lives:WARM_LIVES_INIT,validated:false,stops:0};
+  saveState(); renderWarmPage();
+}
+function startWarm(){
+  if(warmRunning) return;
+  warmRunning=true; warmMs=0; warmStart0=Date.now();
+  const targetMin=parseInt(document.getElementById('warmDuration').value||5);
+  warmInterval=setInterval(()=>{
+    warmMs=Date.now()-warmStart0;
+    const s=Math.floor(warmMs/1000),m=Math.floor(s/60),sec=s%60;
+    document.getElementById('warmChronoDisplay').textContent=String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0');
+    const pct=Math.min(100,(warmMs/1000)/(targetMin*60)*100);
+    document.getElementById('warmProgress').style.width=pct+'%';
+    const stEl=document.getElementById('warmStatus');
+    if(warmMs/1000>=targetMin*60){stEl.textContent='🎉 Objectif atteint !';stEl.style.color='var(--green)';}
+    else{const rem=targetMin*60-Math.floor(warmMs/1000);stEl.textContent=`−${String(Math.floor(rem/60)).padStart(2,'0')}:${String(rem%60).padStart(2,'0')}`;stEl.style.color='var(--orange)';}
+  },500);
+}
+function resetWarm(){
+  clearInterval(warmInterval);warmRunning=false;warmMs=0;
+  document.getElementById('warmChronoDisplay').textContent='00:00';
+  document.getElementById('warmProgress').style.width='0%';
+  const stEl=document.getElementById('warmStatus');
+  if(stEl){stEl.textContent='En attente';stEl.style.color='var(--green)';}
+}
+function saveWarmData(){saveState();showToast('Échauffement sauvegardé ✓');}
+
+// ════════════════════════════════════════════════════════
+//  FRACTIONNÉ — multi-programmes
+// ════════════════════════════════════════════════════════
+// fracProgs: list of named programs {id, name, tours, steps[{dist,allureMs,recupMs,recupType}]}
+// groupFracAssign: {groupId -> progId}
+let fracProgs = [];
+let groupFracAssign = {};
+let fracTeams = [];
+let fracRunning = false, fracMs = 0, fracInterval = null, fracStart0 = 0;
+
+// ── Programme library ─────────────────────────────────
+function addFracProg() {
+  const id = 'fp_' + Date.now();
+  fracProgs.push({ id, name: 'Programme ' + fracProgs.length, tours: 6, mode: 'fixed',
+    steps: [{ dist:200, allureMs:45000, recupMs:90000, recupType:'marche' }] });
+  renderFracProgLibrary();
+}
+
+function deleteFracProg(id) {
+  fracProgs = fracProgs.filter(p => p.id !== id);
+  // Unassign groups that had this program
+  Object.keys(groupFracAssign).forEach(gid => { if (groupFracAssign[gid] === id) delete groupFracAssign[gid]; });
+  renderFracProgLibrary();
+  renderFracGroupAssign();
+}
+
+function renameFracProg(id, name) {
+  const p = fracProgs.find(p => p.id === id);
+  if (p) { p.name = name; renderFracGroupAssign(); }
+}
+
+function buildProgFromCard(id) {
+  const card = document.getElementById('fp_card_' + id);
+  if (!card) return;
+  const p = fracProgs.find(p => p.id === id);
+  if (!p) return;
+  p.tours = parseInt(card.querySelector('.fp-tours')?.value) || 6;
+  p.mode  = card.querySelector('.fp-mode')?.value || 'fixed';
+  p.name  = card.querySelector('.fp-name')?.value?.trim() || p.name;
+  if (p.mode === 'fixed') {
+    const dist     = parseInt(card.querySelector('.fp-dist')?.value) || 200;
+    const allureS  = timeToSec(card.querySelector('.fp-allure')?.value || '0:45');
+    const allureMs = allureS > 0 ? allureS * 1000 : (dist / BOUIN_SPEED) * 1000;
+    const recupMs  = timeToSec(card.querySelector('.fp-recup')?.value || '1:30') * 1000;
+    const rType    = card.querySelector('.fp-recuptype')?.value || 'marche';
+    p.steps = Array.from({ length: p.tours }, () => ({ dist, allureMs, recupMs, recupType: rType }));
+  } else {
+    p.steps = [];
+    card.querySelectorAll('.fp-evol-row').forEach(row => {
+      const dist    = parseInt(row.querySelector('.fe-dist')?.value) || 200;
+      const allureS = timeToSec(row.querySelector('.fe-allure')?.value || '0:45');
+      const allureMs = allureS > 0 ? allureS * 1000 : (dist / BOUIN_SPEED) * 1000;
+      const recupMs  = timeToSec(row.querySelector('.fe-recup')?.value || '1:30') * 1000;
+      const rType    = row.querySelector('.fe-recuptype')?.value || 'marche';
+      p.steps.push({ dist, allureMs, recupMs, recupType: rType });
+    });
+  }
+  showToast('"' + p.name + '" validé ✓');
+  renderFracGroupAssign();
+  computeFracEstimation();
+}
+
+function toggleProgMode(id) {
+  const card = document.getElementById('fp_card_' + id);
+  if (!card) return;
+  const mode = card.querySelector('.fp-mode')?.value;
+  card.querySelector('.fp-fixed-section').style.display  = mode === 'fixed'    ? '' : 'none';
+  card.querySelector('.fp-evol-section').style.display   = mode === 'evolving' ? '' : 'none';
+  if (mode === 'evolving') generateProgEvolRows(id);
+}
+
+function generateProgEvolRows(id) {
+  const card = document.getElementById('fp_card_' + id);
+  if (!card) return;
+  const n = parseInt(card.querySelector('.fp-tours')?.value) || 6;
+  const body = card.querySelector('.fp-evol-body');
+  if (!body) return;
+  const rt = '<option value="marche">Marche</option><option value="trot">Trot</option><option value="passive">Passive</option>';
+  body.innerHTML = Array.from({ length: n }, (_, i) => `<tr class="fp-evol-row">
+    <td style="font-weight:700;color:var(--navy);text-align:center;width:40px">${i+1}</td>
+    <td><input type="number" class="fe-dist" value="200" min="50" step="50" style="width:70px;border:1px solid var(--border);border-radius:4px;padding:3px"></td>
+    <td><input type="text" class="fe-allure" placeholder="0:45" style="width:70px;border:1px solid var(--border);border-radius:4px;padding:3px"></td>
+    <td><input type="text" class="fe-recup" placeholder="1:30" style="width:70px;border:1px solid var(--border);border-radius:4px;padding:3px"></td>
+    <td><select class="fe-recuptype" style="border:1px solid var(--border);border-radius:4px;padding:3px">${rt}</select></td>
+  </tr>`).join('');
+}
+
+function renderFracProgLibrary() {
+  const el = document.getElementById('fracProgLibrary');
+  if (!el) return;
+  if (!fracProgs.length) {
+    el.innerHTML = '<p style="color:var(--muted);font-size:13px">Aucun programme. Cliquez "+ Nouveau programme".</p>';
+    return;
+  }
+  const rt = '<option value="marche">Marche</option><option value="trot">Trot</option><option value="passive">Passive</option>';
+  el.innerHTML = fracProgs.map(p => `
+    <div class="card" id="fp_card_${p.id}" style="border-left:4px solid var(--orange);margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+        <input class="fp-name" type="text" value="${p.name}" style="font-weight:700;font-size:15px;border:1px solid var(--border);border-radius:5px;padding:4px 8px;color:var(--navy);width:180px"
+          onchange="renameFracProg('${p.id}',this.value)">
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <div><label style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase">Tours</label>
+            <input class="fp-tours" type="number" value="${p.tours}" min="1" max="30" style="width:60px;margin-left:6px;border:1px solid var(--border);border-radius:4px;padding:4px"></div>
+          <div><label style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-right:6px">Type</label>
+            <select class="fp-mode" onchange="toggleProgMode('${p.id}')" style="border:1px solid var(--border);border-radius:4px;padding:4px">
+              <option value="fixed" ${p.mode!=='evolving'?'selected':''}>Fixe</option>
+              <option value="evolving" ${p.mode==='evolving'?'selected':''}>Évolutif</option>
+            </select></div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:6px">
+          <button class="btn btn-orange btn-sm" onclick="buildProgFromCard('${p.id}')">✅ Valider</button>
+          <button class="btn btn-red btn-xs" onclick="deleteFracProg('${p.id}')">🗑</button>
+        </div>
+      </div>
+      <!-- Fixed section -->
+      <div class="fp-fixed-section" style="${p.mode==='evolving'?'display:none':''}">
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <div><label style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase">Distance (m)</label>
+            <input class="fp-dist" type="number" value="${p.steps[0]?.dist||200}" min="50" step="50" style="width:80px;border:1px solid var(--border);border-radius:4px;padding:4px;display:block;margin-top:4px"></div>
+          <div><label style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase">Temps cible (mm:ss)</label>
+            <input class="fp-allure" type="text" value="${p.steps[0]?.allureMs?fmtTime(p.steps[0].allureMs):''}" placeholder="0:45" style="width:80px;border:1px solid var(--border);border-radius:4px;padding:4px;display:block;margin-top:4px"></div>
+          <div><label style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase">Récupération (mm:ss)</label>
+            <input class="fp-recup" type="text" value="${p.steps[0]?.recupMs?fmtTime(p.steps[0].recupMs):''}" placeholder="1:30" style="width:80px;border:1px solid var(--border);border-radius:4px;padding:4px;display:block;margin-top:4px"></div>
+          <div><label style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase">Type récup.</label>
+            <select class="fp-recuptype" style="border:1px solid var(--border);border-radius:4px;padding:4px;display:block;margin-top:4px">
+              <option value="marche" ${p.steps[0]?.recupType==='marche'?'selected':''}>Marche</option>
+              <option value="trot" ${p.steps[0]?.recupType==='trot'?'selected':''}>Trot</option>
+              <option value="passive" ${p.steps[0]?.recupType==='passive'?'selected':''}>Passive</option>
+            </select></div>
+        </div>
+      </div>
+      <!-- Evolving section -->
+      <div class="fp-evol-section" style="${p.mode==='evolving'?'':'display:none'}">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+          <button class="btn btn-primary btn-xs" onclick="generateProgEvolRows('${p.id}')">↺ Générer lignes</button>
+        </div>
+        <div style="overflow-x:auto"><table style="font-size:12px;min-width:500px">
+          <thead><tr><th>Tour</th><th>Distance (m)</th><th>Temps cible (mm:ss)</th><th>Récupération</th><th>Type récup.</th></tr></thead>
+          <tbody class="fp-evol-body">
+            ${(p.steps.length>0?p.steps:Array.from({length:p.tours})).map((s,i)=>`<tr class="fp-evol-row">
+              <td style="font-weight:700;color:var(--navy);text-align:center">${i+1}</td>
+              <td><input type="number" class="fe-dist" value="${s?.dist||200}" min="50" step="50" style="width:70px;border:1px solid var(--border);border-radius:4px;padding:3px"></td>
+              <td><input type="text" class="fe-allure" value="${s?.allureMs?fmtTime(s.allureMs):''}" placeholder="0:45" style="width:70px;border:1px solid var(--border);border-radius:4px;padding:3px"></td>
+              <td><input type="text" class="fe-recup" value="${s?.recupMs?fmtTime(s.recupMs):''}" placeholder="1:30" style="width:70px;border:1px solid var(--border);border-radius:4px;padding:3px"></td>
+              <td><select class="fe-recuptype" style="border:1px solid var(--border);border-radius:4px;padding:3px">${rt}</select></td>
+            </tr>`).join('')}
+          </tbody>
+        </table></div>
+      </div>
+    </div>`).join('');
+  renderFracGroupAssign();
+}
+
+// ── Group → Program assignment ────────────────────────
+function renderFracGroupAssign() {
+  const el = document.getElementById('fracGroupAssign');
+  if (!el) return;
+  const sid = document.getElementById('fracSeanceSelect')?.value || state.currentSeance;
+  const sg  = state.seanceGroups?.[sid];
+  const allGroups = sg?.groups?.length ? sg.groups : state.teams;
+  if (!allGroups.length) { el.innerHTML='<p style="color:var(--muted);font-size:13px">Créez d\'abord des équipes (page Classe).</p>'; return; }
+  const progOpts = '<option value="">— Aucun programme —</option>' +
+    fracProgs.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+  el.innerHTML = `<table><thead><tr><th>Groupe</th><th>Membres présents</th><th>Programme affecté</th></tr></thead><tbody>` +
+    allGroups.map(g => {
+      const present = g.members.filter(m => !(sg?.absents||[]).includes(m) && !(sg?.blesses||[]).includes(m));
+      const assigned = groupFracAssign[g.id] || '';
+      return `<tr>
+        <td><span style="display:inline-block;background:${g.color||'var(--navy)'};color:#fff;border-radius:4px;padding:2px 8px;font-weight:700;font-size:12px">${g.name}</span></td>
+        <td style="font-size:12px">${present.join(', ')||'<span style="color:var(--muted)">aucun</span>'}</td>
+        <td>
+          <select style="border:1px solid var(--border);border-radius:5px;padding:5px 8px;font-size:13px"
+            onchange="groupFracAssign['${g.id}']=this.value">
+            ${progOpts.replace(`value="${assigned}"`, `value="${assigned}" selected`)}
+          </select>
+        </td>
+      </tr>`;
+    }).join('') + '</tbody></table>';
+}
+
+// ── Estimation ────────────────────────────────────────
+function computeFracEstimation() {
+  const el = document.getElementById('fracEstimation');
+  const card = document.getElementById('fracEstimationCard');
+  if (!el) return;
+  const sid = document.getElementById('fracSeanceSelect')?.value || state.currentSeance;
+  const sg  = state.seanceGroups?.[sid];
+  const allGroups = sg?.groups?.length ? sg.groups : state.teams;
+  const rows = allGroups.map(g => {
+    const pid = groupFracAssign[g.id];
+    const prog = fracProgs.find(p => p.id === pid);
+    if (!prog) return '';
+    const tWork  = prog.steps.reduce((a,s)=>a+s.allureMs,0);
+    const tRecup = prog.steps.reduce((a,s)=>a+s.recupMs,0);
+    const tDist  = prog.steps.reduce((a,s)=>a+s.dist,0);
+    return `<tr>
+      <td><span style="background:${g.color||'var(--navy)'};color:#fff;border-radius:4px;padding:2px 8px;font-weight:700;font-size:12px">${g.name}</span></td>
+      <td><strong>${prog.name}</strong></td>
+      <td>${prog.tours}</td>
+      <td>${tDist} m</td>
+      <td>${fmtTime(tWork)}</td>
+      <td>${fmtTime(tRecup)}</td>
+      <td><strong>${fmtTime(tWork+tRecup)}</strong></td>
+    </tr>`;
+  }).filter(Boolean).join('');
+  if (!rows) { if(card) card.style.display='none'; return; }
+  el.innerHTML = `<table><thead><tr><th>Groupe</th><th>Programme</th><th>Tours</th><th>Distance</th><th>Travail</th><th>Récup</th><th>Total estimé</th></tr></thead><tbody>${rows}</tbody></table>`;
+  if (card) card.style.display = '';
+}
+
+// ── Lifecycle ─────────────────────────────────────────
+function renderFracGroups() {
+  const sid = document.getElementById('fracSeanceSelect')?.value || state.currentSeance;
+  const sg  = state.seanceGroups?.[sid];
+  const allGroups = sg?.groups?.length ? sg.groups : state.teams;
+  // Sync assign keys
+  allGroups.forEach(g => { if (!(g.id in groupFracAssign)) groupFracAssign[g.id] = ''; });
+  renderFracProgLibrary();
+  renderFracGroupAssign();
+}
+
+function startFrac() {
+  if (fracRunning) return;
+  const sid = document.getElementById('fracSeanceSelect').value || state.currentSeance;
+  const sg  = state.seanceGroups?.[sid];
+  const allGroups = sg?.groups?.length ? sg.groups : state.teams;
+  fracTeams = [];
+  allGroups.forEach(g => {
+    const pid = groupFracAssign[g.id];
+    const prog = fracProgs.find(p => p.id === pid);
+    if (!prog) return; // skip groups without a program
+    const members = g.members.filter(m => !(sg?.absents||[]).includes(m) && !(sg?.blesses||[]).includes(m));
+    if (!members.length) return;
+    fracTeams.push({ id:g.id, name:g.name, color:g.color, members, laps:[], abandoned:false, done:false, prog });
+  });
+  if (!fracTeams.length) { alert("Aucun groupe avec un programme valide. Affiliez chaque groupe à un programme et cliquez Valider."); return; }
+  fracRunning=true; fracMs=0; fracStart0=Date.now();
+  fracInterval=setInterval(()=>{
+    fracMs=Date.now()-fracStart0;
+    document.getElementById('fracChronoDisplay').textContent=fmtTime(fracMs);
+  },100);
+  renderFracGrid();
+}
+
+function resetFrac() {
+  clearInterval(fracInterval); fracRunning=false; fracMs=0;
+  document.getElementById('fracChronoDisplay').textContent='00:00.0';
+  fracTeams=[];
+  const g=document.getElementById('fracLiveGrid'); if(g) g.innerHTML='';
+}
+
+function fracPassage(gid) {
+  if(!fracRunning) return;
+  const ft=fracTeams.find(t=>t.id===gid);
+  if(!ft||ft.abandoned||ft.done) return;
+  const lapTime=fracMs;
+  const prev=ft.laps.length?ft.laps[ft.laps.length-1].time:0;
+  const split=lapTime-prev;
+  const lapIdx=ft.laps.length;
+  const prog=ft.prog;
+  const step=prog.steps[Math.min(lapIdx,prog.steps.length-1)];
+  // Expected time for 400m at this step's pace
+  const expectedPer400=step?(400/step.dist)*step.allureMs:null;
+  let rating='—', ratingColor='var(--muted)';
+  if(expectedPer400!==null){
+    const diff=split-expectedPer400;
+    if(Math.abs(diff)<=30000){rating='⭐ Excellent';ratingColor='var(--green)';}
+    else if(diff>0&&diff<=59000){rating='✅ Bon';ratingColor='var(--green)';}
+    else if(diff>0&&diff<=90000){rating='⚠️ Retard';ratingColor='var(--orange)';}
+    else if(diff>90000){rating='🔴 Très en retard';ratingColor='var(--red)';}
+    else{rating='⭐ Excellent';ratingColor='var(--green)';}
+  }
+  ft.laps.push({time:lapTime,split,lapIdx,rating,ratingColor,expectedPer400});
+  if(lapIdx+1>=prog.tours) ft.done=true;
+  updateFracCards();
+}
+
+function fracAbandon(gid){
+  const ft=fracTeams.find(t=>t.id===gid);
+  if(ft){ft.abandoned=true;updateFracCards();showToast(ft.name+' — abandon enregistré');}
+}
+
+function renderFracGrid(){
+  const el=document.getElementById('fracLiveGrid'); if(!el) return;
+  el.innerHTML=fracTeams.map(t=>`
+    <div class="live-card" id="fc_${t.id}">
+      <div class="live-card-header" style="background:${t.color||'var(--navy)'}">
+        <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px">${t.name}</span>
+        <span id="fc_status_${t.id}" style="font-size:12px;opacity:.9"></span>
+      </div>
+      <div class="live-card-body">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:8px">
+          ${t.members.join(' · ')} &nbsp;|&nbsp;
+          <strong>${t.prog.name}</strong> — ${t.prog.tours} tour(s) prévus
+        </div>
+        <div class="live-stats">
+          <div class="live-stat"><div class="live-stat-val" id="fc_lap_${t.id}">0 / ${t.prog.tours}</div><div class="live-stat-lbl">Passages 400 m</div></div>
+          <div class="live-stat"><div class="live-stat-val" id="fc_split_${t.id}">—</div><div class="live-stat-lbl">Dernier 400 m</div></div>
+          <div class="live-stat" style="grid-column:span 2"><div class="live-stat-val" id="fc_rating_${t.id}" style="font-size:18px">—</div><div class="live-stat-lbl">Évaluation</div></div>
+          <div class="live-stat"><div class="live-stat-val" id="fc_diff_${t.id}">—</div><div class="live-stat-lbl">Δ vs programme (+ retard)</div></div>
+          <div class="live-stat"><div class="live-stat-val" id="fc_exp_${t.id}">—</div><div class="live-stat-lbl">Temps attendu 400 m</div></div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+          <button class="btn btn-orange" onclick="fracPassage('${t.id}')">📍 Passage 400 m</button>
+          <button class="btn btn-red btn-sm" onclick="fracAbandon('${t.id}')">🏳 Abandon</button>
+        </div>
+        <div class="lap-log" id="fc_log_${t.id}" style="margin-top:10px"></div>
+      </div>
+    </div>`).join('');
+}
+
+function updateFracCards(){
+  fracTeams.forEach(t=>{
+    const laps=t.laps,n=laps.length;
+    const card=document.getElementById('fc_'+t.id); if(!card) return;
+    const stEl=document.getElementById('fc_status_'+t.id);
+    if(t.abandoned){card.style.opacity='.55';if(stEl)stEl.textContent='🏳 Abandonné';return;}
+    if(t.done&&stEl) stEl.textContent='🏁 Terminé !';
+    document.getElementById('fc_lap_'+t.id).textContent=n+' / '+t.prog.tours;
+    if(n>=1){
+      const last=laps[n-1];
+      document.getElementById('fc_split_'+t.id).textContent=fmtTime(last.split);
+      const rEl=document.getElementById('fc_rating_'+t.id);
+      if(rEl){rEl.textContent=last.rating;rEl.style.color=last.ratingColor;}
+      if(last.expectedPer400!==null){
+        const diff=last.split-last.expectedPer400;
+        const dEl=document.getElementById('fc_diff_'+t.id);
+        if(dEl){dEl.textContent=(diff>0?'+':'')+Math.round(diff/1000)+'s';dEl.className='live-stat-val '+(diff<=0?'ahead':'behind');}
+        const eEl=document.getElementById('fc_exp_'+t.id);
+        if(eEl) eEl.textContent=fmtTime(last.expectedPer400);
+      }
+    }
+    const logEl=document.getElementById('fc_log_'+t.id);
+    if(logEl) logEl.innerHTML=[...laps].reverse().map((l,i)=>`
+      <div class="lap-row">
+        <span class="lap-num">P.${laps.length-i}</span>
+        <span style="color:var(--orange)">${fmtTime(l.split)}</span>
+        <span style="margin-left:8px;font-weight:600;color:${l.ratingColor}">${l.rating}</span>
+        ${l.expectedPer400!==null?`<span style="margin-left:auto;font-size:11px;color:var(--muted)">attendu:${fmtTime(l.expectedPer400)}</span>`:''}
+      </div>`).join('');
+  });
+}
+
+function saveFracData(){saveState();showToast('Fractionné sauvegardé ✓');}
+
+
+// ════════════════════════════════════════════════════════
+//  LIVE DISTANCE LIBRE (pLibre)
+// ════════════════════════════════════════════════════════
+let libreTeams=[], libreRunning=false, libreMs=0, libreInterval=null, libreStart0=0;
+
+function startLibre() {
+  if (libreRunning) return;
+  const dist = parseInt(document.getElementById('libreTargetDist').value)||1000;
+  const sid = document.getElementById('libreSeanceSelect').value || state.currentSeance;
+  libreTeams = [];
+  document.querySelectorAll('.libre-team-check:checked').forEach(cb => {
+    const t = state.teams.find(t=>t.id===cb.value);
+    if (t) libreTeams.push({...t, laps:[], done:false, targetDist:dist});
+  });
+  if (!libreTeams.length) { alert('Sélectionnez au moins un groupe.'); return; }
+  const bouinTime = dist / BOUIN_SPEED;
+  document.getElementById('libreBouin').textContent =
+    'Bouin sur '+dist+' m : '+fmtTime(bouinTime*1000)+' ('+( BOUIN_SPEED*3.6).toFixed(2)+' km/h)';
+  libreRunning=true; libreMs=0; libreStart0=Date.now();
+  libreInterval=setInterval(()=>{
+    libreMs=Date.now()-libreStart0;
+    document.getElementById('libreChronoDisplay').textContent=fmtTime(libreMs);
+    updateLibreCards();
+  },100);
+  renderLibreGrid(dist);
+}
+
+function resetLibre() {
+  clearInterval(libreInterval); libreRunning=false; libreMs=0;
+  document.getElementById('libreChronoDisplay').textContent='00:00.0';
+  libreTeams=[];
+  const g=document.getElementById('libreGrid'); if(g) g.innerHTML='';
+}
+
+function recordLibreLap(teamId, memberName) {
+  if (!libreRunning) return;
+  const lt=libreTeams.find(t=>t.id===teamId);
+  if (!lt||lt.done) return;
+  const lapTime=libreMs;
+  const lapIdx=lt.laps.length;
+  const prev=lapIdx>0?lt.laps[lapIdx-1].time:0;
+  const split=lapTime-prev;
+  const segDist=lapIdx===0?200:400;
+  const prevDist=lapIdx>0?(lt.laps[lapIdx-1].dist||0):0;
+  const totalDist=Math.min(prevDist+segDist, lt.targetDist);
+  lt.laps.push({time:lapTime,split,member:memberName,dist:totalDist,segDist});
+  if (totalDist>=lt.targetDist) lt.done=true;
+  updateLibreCards();
+  if (libreTeams.length && libreTeams.every(t=>t.done)) {
+    clearInterval(libreInterval); libreRunning=false;
+    showToast('🏁 Tous les groupes ont terminé !');
+  }
+  saveState();
+}
+
+function renderLibreGrid(dist) {
+  const el=document.getElementById('libreGrid'); if(!el) return;
+  if (!libreTeams.length) { el.innerHTML='<p style="color:var(--muted);padding:20px">Configurez et lancez.</p>'; return; }
+  el.innerHTML=libreTeams.map(t=>`
+    <div class="live-card ${t.done?'finished':''}" id="ll_${t.id}">
+      <div class="live-card-header" style="background:${t.color||'var(--navy)'}">
+        <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px">${t.name}</span>
+        <span id="ll_dist_${t.id}" style="font-size:13px;opacity:.9">0 / ${dist} m</span>
+      </div>
+      <div class="live-card-body">
+        <div class="progress-wrap"><div class="progress-bar" id="ll_prog_${t.id}" style="width:0%"></div></div>
+        <div class="live-stats">
+          <div class="live-stat"><div class="live-stat-val" id="ll_split_${t.id}">—</div><div class="live-stat-lbl" id="ll_split_lbl_${t.id}">1er passage (200 m)</div></div>
+          <div class="live-stat"><div class="live-stat-val" id="ll_speed_${t.id}">—</div><div class="live-stat-lbl">km/h</div></div>
+          <div class="live-stat"><div class="live-stat-val" id="ll_diffm_${t.id}">—</div><div class="live-stat-lbl">Δ mètres vs Bouin</div></div>
+          <div class="live-stat" style="grid-column:span 2"><div class="live-stat-val" id="ll_difft_${t.id}">—</div><div class="live-stat-lbl">Δ temps vs Bouin (+ retard, − avance)</div></div>
+        </div>
+        <div class="members-btns" id="ll_btns_${t.id}">
+          ${t.members.map(m=>`<button class="member-btn" id="lb_${t.id}_${slugify(m)}" onclick="recordLibreLap('${t.id}','${m}')">${m}<span class="click-count" id="lcc_${t.id}_${slugify(m)}">0</span></button>`).join('')}
+        </div>
+        <div class="lap-log" id="ll_log_${t.id}" style="margin-top:10px"></div>
+      </div>
+    </div>`).join('');
+}
+
+function updateLibreCards() {
+  libreTeams.forEach(t=>{
+    const laps=t.laps, n=laps.length;
+    const card=document.getElementById('ll_'+t.id); if(!card) return;
+    if(t.done) card.classList.add('finished');
+    const totalDist=n>0?laps[n-1].dist:0;
+    document.getElementById('ll_dist_'+t.id).textContent=totalDist+' / '+t.targetDist+' m';
+    document.getElementById('ll_prog_'+t.id).style.width=Math.min(100,totalDist/t.targetDist*100)+'%';
+    if(n>=1){
+      const last=laps[n-1];
+      document.getElementById('ll_split_'+t.id).textContent=fmtTime(last.split);
+      const lbl=document.getElementById('ll_split_lbl_'+t.id);
+      if(lbl) lbl.textContent=last.segDist===200?'1er passage (200 m)':'Dernier 400 m (P.'+n+')';
+    }
+    if(n>=1&&laps[n-1].time>0){
+      const elapsedSec=laps[n-1].time/1000;
+      const speed=(totalDist/elapsedSec)*3.6;
+      document.getElementById('ll_speed_'+t.id).textContent=speed.toFixed(2)+' km/h';
+      const bouinDistAtTime=elapsedSec*BOUIN_SPEED;
+      const diffM=totalDist-bouinDistAtTime;
+      const elDist=document.getElementById('ll_diffm_'+t.id);
+      if(elDist){ elDist.textContent=(diffM>=0?'+':'')+diffM.toFixed(0)+' m'; elDist.className='live-stat-val '+(diffM>=0?'ahead':'behind'); }
+      const bouinTimeAtDist=totalDist/BOUIN_SPEED;
+      const diffT=elapsedSec-bouinTimeAtDist;
+      const elTime=document.getElementById('ll_difft_'+t.id);
+      if(elTime){ elTime.textContent=(diffT>0?'+':'')+diffT.toFixed(1)+' s'; elTime.className='live-stat-val '+(diffT<=0?'ahead':'behind'); }
+    }
+    const counts={};
+    laps.forEach(l=>{ counts[l.member]=(counts[l.member]||0)+1; });
+    t.members.forEach(m=>{
+      const cc=document.getElementById('lcc_'+t.id+'_'+slugify(m));
+      if(cc) cc.textContent=counts[m]||0;
+      const mb=document.getElementById('lb_'+t.id+'_'+slugify(m));
+      if(mb) mb.className='member-btn'+(counts[m]?' clicked':'');
+    });
+    const logEl=document.getElementById('ll_log_'+t.id);
+    if(logEl) logEl.innerHTML=[...laps].reverse().map((l,idx)=>{
+      const dv=l.dist-l.time/1000*BOUIN_SPEED;
+      return '<div class="lap-row">'
+        +'<span class="lap-num">P.'+(laps.length-idx)+' ('+l.segDist+'m)</span>'
+        +'<span>'+l.member+'</span>'
+        +'<span style="color:var(--muted);margin-left:auto">'+fmtTime(l.time)+'</span>'
+        +'<span style="color:var(--orange);margin-left:8px">+'+fmtTime(l.split)+'</span>'
+        +'<span style="margin-left:8px;font-size:11px;color:'+(dv>=0?'var(--ahead)':'var(--behind)')+'">'+
+          (dv>=0?'+':'')+dv.toFixed(0)+'m vs Bouin</span>'
+        +'</div>';
+    }).join('');
+  });
+}
+
+// ════════════════════════════════════════════════════════
+//  TOAST
+// ════════════════════════════════════════════════════════
+function showToast(msg) {
+  let t = document.getElementById('toast');
+  if (!t) { t = document.createElement('div'); t.id='toast'; t.style.cssText='position:fixed;bottom:24px;right:24px;background:var(--navy);color:#fff;padding:12px 20px;border-radius:8px;font-size:14px;font-weight:600;z-index:9999;transition:opacity .3s'; document.body.appendChild(t); }
+  t.textContent = msg; t.style.opacity='1';
+  setTimeout(() => { t.style.opacity='0'; }, 2500);
+}
+
+// ════════════════════════════════════════════════════════
+//  PAGE NAVIGATION
+// ════════════════════════════════════════════════════════
+const PAGE_IDS = ['p1','p2','p2b','pWarm','p3','p3b','pFrac','pLibre','p4','p5'];
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('nav button').forEach((b,i)=>{
+    b.classList.toggle('active', PAGE_IDS[i]===id);
+  });
+  if (id==='p2')    refreshDataForm();
+  if (id==='p2b')   renderGroupPage();
+  if (id==='pWarm') renderWarmPage();
+  if (id==='pFrac') { renderFracGroups(); renderFracEstimation(); }
+  if (id==='p4')    renderBilan();
+  if (id==='p5')    renderPhysics();
+}
+
+// ════════════════════════════════════════════════════════
+//  INIT
+// ════════════════════════════════════════════════════════
+function init() {
+  if (!state.warm) state.warm={};
+  renderStudentTable();
+  renderClassPicker();
+  renderTeamsList();
+  renderAllSelects();
+}
+
+loadState();
+init();
+</script>
+</body>
+</html>
